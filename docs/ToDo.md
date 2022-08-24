@@ -1,19 +1,21 @@
-# Needed
-
-1. Monster Generator
-2. Generate to pdf
-3. NPC Creator
-4. Spell Creator
-5. Class Creator
-    - Tables
-    - Half Tables
-6. Enocounter Generator
-7. Town Creator 
-    - different settings
-    - map
-    - npcs 
-    - shops
-    - homes 
-8. 
-
-
+# Needed  
+  
+[] Generate to PDF  
+[] Encounter Generator  
+[] Monster Generator  
+[] NPC Creator  
+[] Combat Map Creator  
+[] Town Creator  
+    - List of shops  
+       - Inventory  
+       - Prices  
+       - Link with NPC generator/creator  
+    - List of points of interest  
+    - Different Settings  
+    - Homes  
+    - Map  
+[] Shops  
+[] Spell Creator  
+[] Class Creator  
+    - Tables  
+    - Half Tables  
