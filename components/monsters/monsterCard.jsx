@@ -18,7 +18,7 @@ export const MonsterCard = () => {
       return (
         <div
           key={monsters.index}
-          className="ae-blog-card hover:scale-105 xl:w-1/3 sm:w-5/12 sm:max-w-xs relative mb-32 lg:mb-20 xl:max-w-sm lg:w-1/2 w-11/12 sm:mx-0"
+          className="hover:scale-105 xl:w-1/3 sm:w-5/12 sm:max-w-xs relative mb-32 lg:mb-20 xl:max-w-sm lg:w-1/2 w-11/12 sm:mx-0"
         >
           <div>
             <div className="shadow h-64 rounded-full relative">
@@ -35,5 +35,5 @@ export const MonsterCard = () => {
     });
   };
 
-  return <div className="text-white flex inline-flex max-w-screen">{renderCards()}</div>;
+  return <div className="inline-flex flex-wrap">{renderCards()}</div>;
 };
