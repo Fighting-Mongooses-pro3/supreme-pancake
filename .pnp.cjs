@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:13.3.0"],\
             ["@testing-library/user-event", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:14.4.3"],\
             ["autoprefixer", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:10.4.8"],\
+            ["axios", "npm:0.27.2"],\
             ["babel-loader", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:8.2.5"],\
             ["eslint", "npm:8.21.0"],\
             ["eslint-config-next", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:12.2.4"],\
@@ -9020,6 +9021,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["axios", [\
+        ["npm:0.27.2", {\
+          "packageLocation": "./.yarn/cache/axios-npm-0.27.2-dbe3a48aea-38cb754046.zip/node_modules/axios/",\
+          "packageDependencies": [\
+            ["axios", "npm:0.27.2"],\
+            ["follow-redirects", "virtual:dbe3a48aea1dd5649e16abaf23d4ae05582d2149e16141955113766a0f84f681baf358c77ddccfc82eb23e4ccc66c6c912df62a9c01f2a83f1842bf86cc297b1#npm:1.15.1"],\
+            ["form-data", "npm:4.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["axobject-query", [\
         ["npm:2.2.0", {\
           "packageLocation": "./.yarn/cache/axobject-query-npm-2.2.0-6553738f52-96b8c7d807.zip/node_modules/axobject-query/",\
@@ -12955,6 +12967,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["flush-write-stream", "npm:1.1.1"],\
             ["inherits", "npm:2.0.4"],\
             ["readable-stream", "npm:2.3.7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["follow-redirects", [\
+        ["npm:1.15.1", {\
+          "packageLocation": "./.yarn/cache/follow-redirects-npm-1.15.1-6b191885cd-6aa4e3e3cd.zip/node_modules/follow-redirects/",\
+          "packageDependencies": [\
+            ["follow-redirects", "npm:1.15.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:dbe3a48aea1dd5649e16abaf23d4ae05582d2149e16141955113766a0f84f681baf358c77ddccfc82eb23e4ccc66c6c912df62a9c01f2a83f1842bf86cc297b1#npm:1.15.1", {\
+          "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-659894389a/0/cache/follow-redirects-npm-1.15.1-6b191885cd-6aa4e3e3cd.zip/node_modules/follow-redirects/",\
+          "packageDependencies": [\
+            ["follow-redirects", "virtual:dbe3a48aea1dd5649e16abaf23d4ae05582d2149e16141955113766a0f84f681baf358c77ddccfc82eb23e4ccc66c6c912df62a9c01f2a83f1842bf86cc297b1#npm:1.15.1"],\
+            ["@types/debug", null],\
+            ["debug", null]\
+          ],\
+          "packagePeers": [\
+            "@types/debug",\
+            "debug"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -18639,6 +18673,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:13.3.0"],\
             ["@testing-library/user-event", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:14.4.3"],\
             ["autoprefixer", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:10.4.8"],\
+            ["axios", "npm:0.27.2"],\
             ["babel-loader", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:8.2.5"],\
             ["eslint", "npm:8.21.0"],\
             ["eslint-config-next", "virtual:b84fc01d03404cf0388848130c734ac244bc0333c660e2ed61e741def95bd79e7a066a9d19022e2a0b9f6bede8e9b5996567e4f637b2a27c06dc7b000dc9e969#npm:12.2.4"],\
