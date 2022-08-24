@@ -1,11 +1,11 @@
 # Needed  
   
-[] Generate to PDF  
-[] Encounter Generator  
-[] Monster Generator  
-[] NPC Creator  
-[] Combat Map Creator  
-[] Town Creator  
+[ ] Generate to PDF  
+[ ] Encounter Generator  
+[ ] Monster Generator  
+[ ] NPC Creator  
+[ ] Combat Map Creator  
+[ ] Town Creator  
     - List of shops  
        - Inventory  
        - Prices  
@@ -14,8 +14,8 @@
     - Different Settings  
     - Homes  
     - Map  
-[] Shops  
-[] Spell Creator  
-[] Class Creator  
+[ ] Shops  
+[ ] Spell Creator  
+[ ] Class Creator  
     - Tables  
     - Half Tables  
