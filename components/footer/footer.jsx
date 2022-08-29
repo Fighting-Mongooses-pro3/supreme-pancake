@@ -1,10 +1,8 @@
-
-
-const Footer = () => {
+export const Footer = () => {
     
     
     return(
-        <div>
+        <div className="text-5xl">
             Footer goes here
         </div>
     )
