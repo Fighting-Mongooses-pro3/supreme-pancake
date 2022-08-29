@@ -11,7 +11,7 @@ const Monster = () => {
 
   useEffect(() => {
     console.log("THIS PAGE", pageId);
-    axios.get(`https://www.dnd5eapi.co/api/classes/${pageId}`).then((res) => {
+    axios.get(`https://www.dnd5eapi.co/api/monster/${pageId}`).then((res) => {
       console.info("RESPONSE.DATA", res.data);
       setMonster(res.data);
     });
