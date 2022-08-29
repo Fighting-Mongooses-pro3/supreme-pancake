@@ -12,7 +12,7 @@ const Races = () => {
       setRaces(res.data.results);
       console.log(races);
     });
-  }, []);
+  }, [races]);
 
   const renderCards = () => {
     return races.map((races) => {

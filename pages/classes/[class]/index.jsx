@@ -16,7 +16,7 @@ const DndClass = () => {
       setDndClass(res.data);
     });
     console.log("STATE", dndClass);
-  }, []);
+  }, [dndClass, pageId]);
 
   return (
     <Page currentPage={`${pageId}`}>

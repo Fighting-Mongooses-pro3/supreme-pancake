@@ -12,7 +12,7 @@ const Classes = () => {
       setClasses(res.data.results);
       console.log(classes);
     });
-  }, []);
+  }, [classes]);
 
   const renderCards = () => {
     return classes.map((classes) => {

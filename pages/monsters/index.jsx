@@ -12,7 +12,7 @@ const Monsters = () => {
       setMonsters(res.data.results);
       console.log(monsters);
     });
-  }, []);
+  }, [monsters]);
 
   const renderCards = () => {
     return monsters.map((monsters) => {
