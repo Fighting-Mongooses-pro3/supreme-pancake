@@ -33,9 +33,13 @@ export const Navbar = ({ currentPage }) => {
 
   return (
     <>
-      <section className="text-white texkt-xl cursor-pointer">
-        LOGO HERE
-      </section>
+      <Link href="/">
+        <a>
+          <section className="text-white texkt-xl cursor-pointer">
+            LOGO HERE
+          </section>
+        </a>
+      </Link>
       <ul className="nav-menu inline-flex mr-4 flex-wrap ae-nav-links text-lg lg:text-xl 2xl:text-2xl">
         {routes.map((item, index) => {
           return (
@@ -63,19 +67,17 @@ export const Navbar = ({ currentPage }) => {
             <span className="block text-sm font-medium text-white truncate"></span>
           </div>
           <ul className="py-1" aria-labelledby="user-menu-button">
-            {
-              defaultRoutes.map((item, index) => {
-                return(
-                  <li key={index}>
-                  <Link href={item.title}>
+            {defaultRoutes.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Link href={item.path}>
                     <a className="block py-2 px-4 text-sm text-lime-500 hover:bg-lime-500 hover:text-white">
                       {item.title}
                     </a>
                   </Link>
                 </li>
-                )
-              })
-            }
+              );
+            })}
           </ul>
         </div>
       </ul>

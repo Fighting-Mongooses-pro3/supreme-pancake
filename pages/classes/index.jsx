@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Page } from "../../components";
+import { Card, Page, Container } from "../../components";
 import axios from "axios";
 
 const Classes = () => {
@@ -16,13 +16,15 @@ const Classes = () => {
 
   const renderCards = () => {
     return classes.map((classes) => {
-      return <Card index={classes.index} name={classes.name} />;
+      return <Card index={classes.name} name={classes.name} />;
     });
   };
 
   return (
     <Page currentPage="Classes">
-      <section>{renderCards()}</section>
+      <Container>
+        <section>{renderCards()}</section>
+      </Container>
     </Page>
   );
 };

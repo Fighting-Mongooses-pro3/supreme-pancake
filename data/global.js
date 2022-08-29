@@ -23,10 +23,6 @@ export const defaultRoutes = [
     path: "/spells",
   },
   {
-    title: "Default Feats",
-    path: "/feats",
-  },
-  {
     title: "Default Monsters",
     path: "/monsters"
   }

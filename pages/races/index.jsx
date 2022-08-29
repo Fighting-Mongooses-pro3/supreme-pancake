@@ -2,26 +2,26 @@ import React, { useState, useEffect } from "react";
 import { Card, Page, Container } from "../../components";
 import axios from "axios";
 
-const Monsters = () => {
-  const [monsters, setMonsters] = useState([]);
+const Races = () => {
+  const [races, setRaces] = useState([]);
 
   useEffect(() => {
-    axios.get("https://www.dnd5eapi.co/api/monsters").then((res) => {
+    axios.get("https://www.dnd5eapi.co/api/races").then((res) => {
       console.info("RESPONSE.DATA", res.data);
       console.info("RESPONSE.DATA.RESULTS", res.data.results);
-      setMonsters(res.data.results);
-      console.log(monsters);
+      setRaces(res.data.results);
+      console.log(races);
     });
   }, []);
 
   const renderCards = () => {
-    return monsters.map((monsters) => {
-      return <Card index={monsters.name} name={monsters.name} />;
+    return races.map((races) => {
+      return <Card index={races.name} name={races.name} />;
     });
   };
 
   return (
-    <Page currentPage="Monsters">
+    <Page currentPage="Default Races">
       <Container>
         <section>{renderCards()}</section>
       </Container>
@@ -29,4 +29,4 @@ const Monsters = () => {
   );
 };
 
-export default Monsters;
+export default Races;

@@ -20,9 +20,7 @@ const DndClass = () => {
 
   return (
     <Page currentPage={`${pageId}`}>
-      <Container
-      customCss="grid"
-      >
+      <Container>
       <Header 
       title={`${pageId}`}
       customCss="text-6xl"
