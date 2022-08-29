@@ -16,7 +16,7 @@ const Monsters = () => {
 
   const renderCards = () => {
     return monsters.map((monsters) => {
-      return <Card index={monsters.name} name={monsters.name} />;
+      return <Card index={monsters.name} name={monsters.name} key={monsters.index} />;
     });
   };
 
