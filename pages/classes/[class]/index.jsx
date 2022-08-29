@@ -18,6 +18,8 @@ const DndClass = () => {
     console.log("STATE", dndClass);
   }, [dndClass, pageId]);
 
+  //test
+
   return (
     <Page currentPage={`${pageId}`}>
       <Container>
