@@ -16,7 +16,7 @@ const Spells = () => {
 
   const renderCards = () => {
     return spells.map((spells) => {
-      return <Card index={spells.name} name={spells.name} />;
+      return <Card index={spells.name} name={spells.name} key={spells.index} />;
     });
   };
 

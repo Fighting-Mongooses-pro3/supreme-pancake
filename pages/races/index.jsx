@@ -16,7 +16,7 @@ const Races = () => {
 
   const renderCards = () => {
     return races.map((races) => {
-      return <Card index={races.name} name={races.name} />;
+      return <Card index={races.name} name={races.name} key={races.index} />;
     });
   };
 
