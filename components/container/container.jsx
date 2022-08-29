@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export const Container = () => {
+export const Container = (props) => {
   return (
-    <div>Container</div>
-  )
-}
+    <section className={`w-full h-screen ${props.customCss}`}>
+      {props.children}
+    </section>
+  );
+};

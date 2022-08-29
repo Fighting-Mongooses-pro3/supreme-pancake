@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const Aside = () => {
+export const Aside = (props) => {
   return (
-    <div>
+    <div className={`${props.customCss} `}>
         {props.side}
     </div>
   )

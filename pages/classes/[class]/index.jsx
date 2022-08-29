@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, Page } from "../../../components";
+import { Aside, Container, Header, Page } from "../../../components";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -14,19 +14,23 @@ const DndClass = () => {
     axios.get(`https://www.dnd5eapi.co/api/classes/${pageId}`).then((res) => {
       console.info("RESPONSE.DATA", res.data);
       setDndClass(res.data);
-      console.log("STATE", dndClass);
     });
+    console.log("STATE", dndClass);
   }, []);
 
   return (
     <Page currentPage={`${pageId}`}>
-      <section>
+      <Container
+      customCss="grid"
+      >
       <Header 
       title={`${pageId}`}
       customCss="text-6xl"
       />
-      
-      </section>
+      <Aside 
+      side=""
+      />
+      </Container>
     </Page>
   );
 };

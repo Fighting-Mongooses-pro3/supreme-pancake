@@ -1,7 +1,7 @@
 // navbar and footer template so therye static for every page
 import Head from "next/head";
 import React from "react";
-import { Footer, Navbar } from "../../";
+import { Footer, Navbar } from "../..";
 
 export const Page = (props, { children }) => {
   const pageTitle = `${
