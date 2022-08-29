@@ -10,7 +10,7 @@ const DndClass = () => {
   const [dndClass, setDndClass] = useState();
 
   useEffect(() => {
-    console.log("THIS PAGE", thisPage.class);
+    console.log("THIS PAGE", pageId);
     axios.get(`https://www.dnd5eapi.co/api/classes/${pageId}`).then((res) => {
       console.info("RESPONSE.DATA", res.data);
       setDndClass(res.data);
@@ -20,11 +20,13 @@ const DndClass = () => {
 
   return (
     <Page currentPage={`${pageId}`}>
+      <section>
       <Header 
       title={`${pageId}`}
-      customCss=""
+      customCss="text-6xl"
       />
-      <section></section>
+      
+      </section>
     </Page>
   );
 };
