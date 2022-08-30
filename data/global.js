@@ -3,10 +3,6 @@ export const routes = [
     title: "Home",
     path: "/",
   },
-  {
-    title: "Defaults",
-    path: " ",
-  },
 ];
 
 export const defaultRoutes = [
