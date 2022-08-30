@@ -16,7 +16,7 @@ const Classes = () => {
 
   const renderCards = () => {
     return classes.map((classes) => {
-      return <Card index={classes.name} name={classes.name} key={classes.index} />;
+      return <Card index={classes.index} name={classes.name} key={classes.index} />;
     });
   };
 
