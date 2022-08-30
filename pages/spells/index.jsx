@@ -12,7 +12,7 @@ const Spells = () => {
       setSpells(res.data.results);
       console.log(spells);
     });
-  }, []);
+  }, [spells]);
 
   const renderCards = () => {
     return spells.map((spells) => {

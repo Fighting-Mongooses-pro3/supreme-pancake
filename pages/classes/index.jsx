@@ -12,11 +12,11 @@ const Classes = () => {
       setClasses(res.data.results);
       console.log(classes);
     });
-  }, []);
+  }, [classes]);
 
   const renderCards = () => {
     return classes.map((classes) => {
-      return <Card index={classes.name} name={classes.name} key={classes.index} />;
+      return <Card index={classes.index} name={classes.name} key={classes.index} />;
     });
   };
 
