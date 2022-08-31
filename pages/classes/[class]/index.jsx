@@ -5,10 +5,14 @@ import axios from "axios";
 
 const DndClass = () => {
   const router = useRouter();
-  const thisPage = router.query;
-  const pageId = thisPage.class;
+  let thisPage = router.query;
+  let pageId = thisPage.class;
   const [dndClass, setDndClass] = useState();
+<<<<<<< HEAD
   const [isLoaded, setLoaded] = useState(false);
+=======
+
+>>>>>>> 8bc1517b9f89d5839c12a3bf2c68ff6521b4f3f3
   console.log(pageId);
 
   useEffect(() => {
@@ -19,6 +23,7 @@ const DndClass = () => {
     setLoaded(true);
   }, []);
 
+<<<<<<< HEAD
   console.log("STATE", dndClass);
   return (
     <Page currentPage={`${pageId}`}>
@@ -65,6 +70,29 @@ const DndClass = () => {
           </section>
         </Container>
       ) : null}
+=======
+  // useEffect(() => {
+  //   const url = `https://www.dnd5eapi.co/api/classes/${pageId}`;
+  //   const options = {
+  //     method: "GET",
+  //   };
+  //   fetch(url)
+  //     .then((res) => console.log(res.json()))
+  //     .then((data) => {
+  //       setDndClass(data);
+  //       console.log("DATA", data);
+  //     });
+  //   console.log("STATE", dndClass);
+  // }, );
+
+  return (
+    <Page currentPage={`${pageId}`}>
+      <Container>
+        <Header title={`${pageId}`} customCss="text-6xl" />
+
+        <section className="text-white text-6xl"></section>
+      </Container>
+>>>>>>> 8bc1517b9f89d5839c12a3bf2c68ff6521b4f3f3
     </Page>
   );
 };
