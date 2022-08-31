@@ -4,7 +4,7 @@ import { NPCBuilder } from "../NPCBuilder/NPCBuilder";
 
 export const BuildTools = () => {
   return (
-    <div>
+    <div className="bg-red-500">
       <MonsterBuilder />
       <NPCBuilder />
     </div>
