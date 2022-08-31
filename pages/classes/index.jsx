@@ -6,17 +6,21 @@ const Classes = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    axios.get("https://www.dnd5eapi.co/api/classes").then((res) => {
-      console.info("RESPONSE.DATA", res.data);
-      console.info("RESPONSE.DATA.RESULTS", res.data.results);
-      setClasses(res.data.results);
-      console.log(classes);
-    });
-  }, [classes]);
+    axios
+      .get("https://api.open5e.com/monsters/?format=json&limit=1000")
+      .then((res) => {
+        console.info("RESPONSE.DATA", res.data)
+        console.info("RESPONSE.DATA.RESULTS", res.results);
+        setClasses(res.data.results);
+        console.log(classes);
+      });
+  }, []);
 
   const renderCards = () => {
     return classes.map((classes) => {
-      return <Card index={classes.index} name={classes.name} key={classes.index} />;
+      return (
+        <Card index={classes.index} name={classes.name} key={classes.index} />
+      );
     });
   };
 

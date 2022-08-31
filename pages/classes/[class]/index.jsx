@@ -5,9 +5,10 @@ import axios from "axios";
 
 const DndClass = () => {
   const router = useRouter();
-  const thisPage = router.query;
-  const pageId = thisPage.class;
+  let thisPage = router.query;
+  let pageId = thisPage.class;
   const [dndClass, setDndClass] = useState();
+
   console.log(pageId);
 
   useEffect(() => {
@@ -18,14 +19,26 @@ const DndClass = () => {
     console.log("STATE", dndClass);
   }, []);
 
+  // useEffect(() => {
+  //   const url = `https://www.dnd5eapi.co/api/classes/${pageId}`;
+  //   const options = {
+  //     method: "GET",
+  //   };
+  //   fetch(url)
+  //     .then((res) => console.log(res.json()))
+  //     .then((data) => {
+  //       setDndClass(data);
+  //       console.log("DATA", data);
+  //     });
+  //   console.log("STATE", dndClass);
+  // }, );
+
   return (
     <Page currentPage={`${pageId}`}>
       <Container>
         <Header title={`${pageId}`} customCss="text-6xl" />
 
-        <section className="text-white text-6xl">
-          
-        </section>
+        <section className="text-white text-6xl"></section>
       </Container>
     </Page>
   );
