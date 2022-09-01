@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Monsters = () => {
+export const Sidebar = () => {
   return (
     <div>
         
