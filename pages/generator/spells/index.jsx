@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Container, Page } from "../../components";
+import { Card, Container, Page } from "../../../components";
 import axios from "axios";
 
 const Spells = () => {
