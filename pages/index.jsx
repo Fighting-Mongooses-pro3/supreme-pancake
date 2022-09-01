@@ -16,9 +16,7 @@ export default function Home() {
         return (
           <>
             <Page currentPage="Home">
-              <Container customCss="flex justify-center bg-transparent drop-shadow-md min-h-min mr-1 overflow-hidden min-w-min h-screen">
-                
-              </Container>
+              <Container customCss="flex justify-center bg-transparent drop-shadow-md min-h-min mr-1 overflow-hidden min-w-min h-screen"></Container>
             </Page>
           </>
         );
