@@ -23,6 +23,7 @@ type props = {
 export const Statblock = (props) => {
   return (
     <div className="ae-stat-block inline-block">
+      <Line />
 
       <section className={`ae-border ${props.customCss}`}>
         <h1 className="text-red-600 font-mono text-xl">{props.name}</h1>
@@ -55,20 +56,34 @@ export const Statblock = (props) => {
       <article className="inline-flex">
         <table className="">
           <tr className="">
-            <td className="">STR</td>
-            <td className="">DEX</td>
-            <td className="">CON</td>
-            <td className="">INT</td>
-            <td className="">WIS</td>
-            <td className="">CHA</td>
+            <thead>
+              <td className="text-black p-2">STR</td>
+              <td className="text-black p-2">DEX</td>
+              <td className="text-black p-2">CON</td>
+              <td className="text-black p-2">INT</td>
+              <td className="text-black p-2">WIS</td>
+              <td className="text-black p-2">CHA</td>
+            </thead>
           </tr>
           <tr className="">
-            <td className="">{props.str}</td>
-            <td className="">{props.dex}</td>
-            <td className="">{props.con}</td>
-            <td className="">{props.int}</td>
-            <td className="">{props.wis}</td>
-            <td className="">{props.cha}</td>
+            <td className="text-black text-lg border-r-8 border-transparent">
+              {props.str}
+            </td>
+            <td className="text-black text-lg border-r-8 border-transparent">
+              {props.dex}
+            </td>
+            <td className="text-black text-lg border-r-8 border-transparent">
+              {props.con}
+            </td>
+            <td className="text-black text-lg border-r-8 border-transparent">
+              {props.int}
+            </td>
+            <td className="text-black text-lg border-r-8 border-transparent">
+              {props.wis}
+            </td>
+            <td className="text-black text-lg border-r-8 border-transparent">
+              {props.cha}
+            </td>
           </tr>
         </table>
       </article>
@@ -78,6 +93,7 @@ export const Statblock = (props) => {
       <article className="inline-flex">
         <h1>Senses</h1>
         <p>{props.senses}</p>
+        <br />
         <h1>Languages </h1>
         <p>{props.lang}</p>
         <h1>Challenge</h1>
@@ -85,7 +101,6 @@ export const Statblock = (props) => {
       </article>
 
       <Line />
-      
     </div>
   );
 };
