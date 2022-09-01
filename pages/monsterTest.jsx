@@ -3,7 +3,7 @@ import { Statblock } from "../components";
 
 const MonsterTest = () => {
   return (
-    <div className="w-screen h-screen ae-paper">
+    <div className="w-screen h-screen ae-paper bg-center bg-no-repeat bg-cover p-56">
       <Statblock
         customCss=""
         name="Monster"
