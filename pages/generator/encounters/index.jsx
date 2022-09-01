@@ -20,8 +20,8 @@ export const Encounters = () => {
             </p>
             <p>
               Below you will find a table showing the XP thresholds of different
-              difficulty levels of encounters for a single player character at a
-              given level. We have provided a row below the table that will
+              difficulty ratings of encounters for a single player character at
+              a given level. We have provided a row below the table that will
               allow you to input an XP threshold from this table and multiply
               that number by the number of players at the associated level. You
               can
