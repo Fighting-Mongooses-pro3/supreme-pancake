@@ -1,61 +1,57 @@
-import React, { useState, useRef  } from 'react'
-import Draggable from 'react-draggable';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
-
+import React, { useState, useRef } from "react";
+import Draggable from "react-draggable";
+import ReactToPrint from "react-to-print";
 
 export default function buildTest() {
-  let page;
-   let gridX;
-   let cardX;
-   let card1;
-  if(typeof window !== "undefined"){
-    page = document.getElementById("page")
-    gridX = (document.getElementById("page").clientWidth)
-    cardX = Math.round(gridX*.40)
-    card1 = document.getElementById("card1")
-  }
-  const [componentEl, setComponents] = useState();
+  const [componentEl, setComponents] = useState("");
   const [cardInfo, setCardInfo] = useState([]);
-  // let cardInfo = []
+  
+  
+  function addCard(loc){
+    cardInfo.push({ text: "new card", location:loc });
 
-  function addCard(){
-    cardInfo.push({text:"new card"})
-    
-    let cardEls = cardInfo.map(e=>{return <Draggable grid={[gridX/2, 20]} scale={1}><div id='card1'  className='absolute text-5xl left-5  w-2/5 h-1/4 border'>{e.text}<br/><span className='text-lg'>here is some body text</span></div></Draggable> })
-    setComponents(cardEls)
+    let cardEls = cardInfo.map((e)=>{
+      let side = e.location ==="l"?"left-[5%]":"right-[5%]";
+     return <Draggable axis="y" grid={[20, 20]} scale={1}>
+          <div id="card1" className={`bg-red-300 absolute text-3xl ${side} w-2/5 h-1/4 border`}>
+            {e.text}
+          </div>
+        </Draggable>
+    });
+    console.log(cardInfo)
+    setComponents(cardEls);
   }
 
- 
-  const printRef = useRef();
-
-  const downloadPDF = async () => {
-    const element = printRef.current;
-    const canvas = await html2canvas(element);
-    const data = canvas.toDataURL('image/pdf');
-
-    const pdf = new jsPDF();
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-
-    pdf.addImage(data, 'pdf', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('DnD.pdf');
-  };
-
+  const componentRef = useRef();
   return (
-    <div className='flex justify-center items-center h-screen'>
-      <div>
-      <button className='border' onClick={()=>addCard()}>add</button><br />
-      <button className='border' onClick={()=>downloadPDF()}>save pdf</button>
+    <>
+      <div className="flex justify-center items-center h-screen">
+    <div>
+      <div className="flex justify-around">
+      <button className="border" onClick={() => addCard("r")}>
+          add right
+        </button>
+        <br />
+        <button className="border" onClick={() => addCard("l")}>add left </button>
+        <ReactToPrint
+        trigger={() => <button className="border">Print this out!</button>}
+        content={() => componentRef.current}
+      />
       </div>
-
-    <div id='page'  ref={printRef} className=' w-[92vh] h-[120vh]  overflow-hidden relative   border '>
-
-    {componentEl}
-    
-  </div>
+    <div
+      id="page"
+      className=" w-[65vh] h-[85vh]   overflow-auto    relative border "
+       
+    >
+      <div ref={componentRef} className='h-auto w-auto' >
+        {componentEl}
+        </div>
+        
     </div>
+    </div>
+  </div>
     
-    
-  )
+
+    </>
+  );
 }
