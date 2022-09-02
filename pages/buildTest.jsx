@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Draggable from 'react-draggable';
-import ReactDOM from 'react-dom';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 export default function buildTest() {
    let gridX;
@@ -17,31 +18,40 @@ export default function buildTest() {
 
   function addCard(){
     cardInfo.push({text:"new card"})
-    renderCard()
+    
+    let cardEls = cardInfo.map(e=>{return <Draggable grid={[gridX/2, 20]} scale={1}><div id='card1'  className='absolute left-5  w-2/5 h-1/4 border'>{e.text}</div></Draggable> })
+    setComponents(cardEls)
   }
 
-  function renderCard(){
-    
-    let cardEls = cardInfo.map(e=>{return <Draggable grid={[gridX/2, 20]} scale={1}><div id='card1'  className='relative left-5 top-5 w-2/5 h-1/4 border'>{e.text}</div></Draggable> })
-    setComponents(cardEls)
-    
-  }
+ 
+  const printRef = React.useRef();
+  
+  const downloadPDF = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element);
+    const data = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF();
+    const imgProperties = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight =
+      (imgProperties.height * pdfWidth) / imgProperties.width;
+
+    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('print.pdf');
+  };
 
   return (
     <div className='flex justify-center items-center h-screen'>
       <div>
-      <button className='border' onClick={()=>renderCard()}>render</button> <br />
-      <button className='border' onClick={()=>addCard()}>add</button>
+      <button className='border' onClick={()=>addCard()}>add</button><br />
+      <button className='border' onClick={()=>downloadPDF()}>save pdf</button>
       </div>
-    <div id='page' className=' w-1/4 h-2/3  overflow-hidden   border '>
+    <div id='page'  ref={printRef} className=' w-1/4 h-2/3  overflow-hidden relative   border '>
 
     {componentEl}
     
-    {/* <Draggable grid={[gridX/2, 20]} scale={1}><div id='card1'  className='relative left-5 top-5 w-2/5 h-1/4 border'>card</div></Draggable>  */}
-  
-
-
-    </div>
+  </div>
     </div>
     
     
