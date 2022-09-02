@@ -10,8 +10,8 @@ export const EntityBuilder = () => {
         size="Medium"
         type="humanoid"
         alignment="true neutral"
-        ac="10"
-        hp="22"
+        armor_class="10"
+        hit_points="22"
         hit_dice="5d8"
         speed={{ walk: 30 }}
         strength="1"
