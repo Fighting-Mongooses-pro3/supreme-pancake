@@ -56,28 +56,6 @@ type action = {
 export const BuilderStatblock = (props) => {
   const {
     customCss,
-    name,
-    size,
-    type,
-    subtype,
-    alignment,
-    ac,
-    armor_desc,
-    hp,
-    hit_dice,
-    speed,
-    strength,
-    strength_save,
-    dexterity,
-    dexterity_save,
-    constitution,
-    constitution_save,
-    intelligence,
-    intelligence_save,
-    wisdom,
-    wisdom_save,
-    charisma,
-    charisma_save,
     perception,
     senses,
     lang,
@@ -106,35 +84,15 @@ export const BuilderStatblock = (props) => {
     <div className="inline-block ae-stat-block self-center">
       <section className="ae-stat-border"></section>
 
-      <BuilderEntityHeader
-        name={name}
-        size={size}
-        type={type}
-        subtype={subtype}
-        alignment={alignment}
-        customCss={customCss}
-      />
+      <BuilderEntityHeader customCss={customCss} />
 
       <Line />
 
-      <BuilderEntityAttributes
-        armor_class={ac}
-        armor_desc={armor_desc}
-        hit_points={hp}
-        hit_dice={hit_dice}
-        speed={speed}
-      />
+      <BuilderEntityAttributes />
 
       <Line />
 
-      <BuilderEntityAbilityScoreRow
-        strength={strength}
-        dexterity={dexterity}
-        constitution={constitution}
-        intelligence={intelligence}
-        wisdom={wisdom}
-        charisma={charisma}
-      />
+      <BuilderEntityAbilityScoreRow />
 
       <Line />
 

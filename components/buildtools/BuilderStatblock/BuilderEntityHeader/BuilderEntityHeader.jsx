@@ -1,8 +1,21 @@
 import React from "react";
 import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
+import { useBuilderContext } from "../../BuilderContext/BuilderContext";
 
 export const BuilderEntityHeader = (props) => {
-  const { name, size, type, subtype, alignment, customCss } = props;
+  const { customCss } = props;
+  const {
+    name,
+    setName,
+    size,
+    setSize,
+    type,
+    setType,
+    subtype,
+    setSubtype,
+    alignment,
+    setAlignment,
+  } = useBuilderContext();
   return (
     <div className={`ae-border ${customCss}`}>
       <BuilderInput
@@ -10,6 +23,7 @@ export const BuilderEntityHeader = (props) => {
         label={"Name"}
         value={name}
         placeholder="name"
+        onChange={setName}
       />
       <div className="flex flex-wrap gap-x-1">
         <BuilderInput
@@ -17,24 +31,28 @@ export const BuilderEntityHeader = (props) => {
           label={"Size"}
           value={size}
           placeholder="Size"
+          onChange={setSize}
         />
         <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Type"}
           value={type}
           placeholder="Type"
+          onChange={setType}
         />
         <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Subtype"}
           value={subtype}
           placeholder="Subtype"
+          onChange={setSubtype}
         />
         <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Alignment"}
           value={alignment}
           placeholder="Alignment"
+          onChange={setAlignment}
         />
       </div>
     </div>

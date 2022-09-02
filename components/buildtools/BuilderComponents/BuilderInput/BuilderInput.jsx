@@ -11,14 +11,6 @@ export const BuilderInput = (props) => {
     id = label ? label.toLowerCase() : Math.random() * 10000,
     placeholder,
   } = props;
-  // const [value, setValue] = useState(text);
-
-  // const handleChange = (e) => {
-  //   setValue(e.target.value);
-
-  //   // Modify context
-  //   if (passedInFunction) callFunction(e.target.value)
-  // };
 
   return (
     <div className={containerClasses}>
@@ -39,16 +31,3 @@ export const BuilderInput = (props) => {
     </div>
   );
 };
-
-// const createClassString = (weight, background, color, size, font) => {
-//   let result = "";
-//   if (weight) result += `font-${weight} `;
-//   if (background) result += `bg-${background} `;
-//   if (color) result += `text-${color} `;
-//   if (size) result += `text-${size} `;
-//   if (font) result += `font-${font}`;
-
-//   return result;
-// };
-
-// const classString = createClassString(weight, background, color, size, font);
