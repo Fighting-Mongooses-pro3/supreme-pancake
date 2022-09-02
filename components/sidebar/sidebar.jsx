@@ -1,5 +1,11 @@
 import React from 'react'
-<FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
+import {BsTextParagraph} from 'react-icons/bs'
+import {GiMonsterGrasp} from 'react-icons/gi'
+import {GiScrollUnfurled} from 'react-icons/gi'
+import {BsCardImage} from 'react-icons/bs'
+import {GiMagicAxe} from 'react-icons/gi'
+import { FaUsers} from "react-icons/fa";
+import {AiFillFolderOpen} from "react-icons/ai";
 export const Sidebar = () => {
   return (
     <sidebar>
@@ -8,32 +14,37 @@ export const Sidebar = () => {
             <button 
               id='add__text'
               text='Text'
-              FontAwesomeIcon icon="fa-solid fa-pen-to-square"
+              icon={< BsTextParagraph />}
               /></li>
           <li><button 
               id='add__NPC'
               text='NPC'
-              FontAwesomeIcon icon="fa-solid fa-users"
+              icon={< FaUsers />}
               /></li>
           <li><button 
               id='add__monster'
               text='Monster'
-              FontAwesomeIcon icon="fa-solid fa-dragon" 
+              icon={< GiMonsterGrasp />}
               /></li>
           <li><button 
               id='add--spell'
               text='Spell'
-              FontAwesomeIcon icon="fa-solid fa-scroll" 
+              icon={< GiScrollUnfurled />} 
+              /></li>
+              <li><button 
+              id='add--item'
+              text='Magic Item'
+              icon={< GiMagicAxe />} 
               /></li>
           <li><button 
               id='import__image'
               text='Image'
-              FontAwesomeIcon icon="fa-regular fa-image"
+              icon={< BsCardImage />}
               /></li>
           <li><button 
               id='my__components'
               text='My Components'
-              FontAwesomeIcon icon="fa-regular fa-folder-open"
+              icon={< AiFillFolderOpen />}
               /></li>
       </ul>
      

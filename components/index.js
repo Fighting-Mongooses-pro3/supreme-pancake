@@ -11,3 +11,4 @@ export { Line } from './utils/reuse/line'
 export { BuildTools } from "./buildtools/BuildTools";
 export { DisplayBuild } from "./displaybuild/DisplayBuild";
 export { Statblock } from './statblock/Statblock'
+export { Sidebar} from "./sidebar/Sidebar"
