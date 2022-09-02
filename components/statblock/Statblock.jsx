@@ -48,7 +48,7 @@ export const Statblock = (props) => {
   };
 
   return (
-    <div className="inline-block ae-stat-block self-center">
+    <div className="inline-block ae-stat-block self-center -z-50">
       <section className="ae-stat-border"></section>
 
       <section className={`ae-border ${props.customCss}`}>
@@ -100,12 +100,12 @@ export const Statblock = (props) => {
         <table className="">
           <thead>
             <tr className="">
-              <th className="text-black">STR</th>
-              <th className="text-black">DEX</th>
-              <th className="text-black">CON</th>
-              <th className="text-black">INT</th>
-              <th className="text-black">WIS</th>
-              <th className="text-black">CHA</th>
+              <th className="text-black text-xl">STR</th>
+              <th className="text-black text-xl">DEX</th>
+              <th className="text-black text-xl">CON</th>
+              <th className="text-black text-xl">INT</th>
+              <th className="text-black text-xl">WIS</th>
+              <th className="text-black text-xl">CHA</th>
             </tr>
           </thead>
           <tbody>
@@ -183,6 +183,7 @@ export const Statblock = (props) => {
           </p>
         </article>
         <br />
+
         <article className="inline-flex mb-2">
           <h1>Proficenicy Bonus</h1>&nbsp;
           <p className="cursor-cell" contentEditable>
