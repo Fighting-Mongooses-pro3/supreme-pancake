@@ -22,7 +22,7 @@ export default function buildTest() {
   function addCard(){
     cardInfo.push({text:"new card"})
     
-    let cardEls = cardInfo.map(e=>{return <Draggable grid={[gridX/2, 20]} scale={1}><div id='card1'  className='absolute left-5  w-2/5 h-1/4 border'>{e.text}</div></Draggable> })
+    let cardEls = cardInfo.map(e=>{return <Draggable grid={[gridX/2, 20]} scale={1}><div id='card1'  className='absolute text-5xl left-5  w-2/5 h-1/4 border'>{e.text}<br/><span className='text-lg'>here is some body text</span></div></Draggable> })
     setComponents(cardEls)
   }
 
@@ -32,15 +32,14 @@ export default function buildTest() {
   const downloadPDF = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
-    const data = canvas.toDataURL('image/png');
+    const data = canvas.toDataURL('image/pdf');
 
     const pdf = new jsPDF();
-    const imgProperties = pdf.getImageProperties(data);
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
 
-    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('print.pdf');
+    pdf.addImage(data, 'pdf', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('DnD.pdf');
   };
 
   return (
@@ -50,7 +49,7 @@ export default function buildTest() {
       <button className='border' onClick={()=>downloadPDF()}>save pdf</button>
       </div>
 
-    <div id='page'  ref={printRef} className=' w-1/4 h-2/3  overflow-hidden relative   border '>
+    <div id='page'  ref={printRef} className=' w-[92vh] h-[120vh]  overflow-hidden relative   border '>
 
     {componentEl}
     
