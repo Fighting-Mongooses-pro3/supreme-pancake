@@ -1,9 +1,11 @@
 import React from "react";
+import { BuilderContextProvider } from "../BuilderContext/BuilderContext";
 import { BuilderStatblock } from "../BuilderStatblock/BuilderStatblock";
 
 export const EntityBuilder = () => {
   return (
     <div>
+      {/* <BuilderContextProvider> */}
       <BuilderStatblock
         name="Monster"
         size="Medium"
@@ -23,6 +25,7 @@ export const EntityBuilder = () => {
         lang="----"
         challenge="1/4"
       />
+      {/* </BuilderContextProvider> */}
     </div>
   );
 };

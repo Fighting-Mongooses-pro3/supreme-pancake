@@ -1,6 +1,5 @@
 import React from "react";
-import { BuilderDefinition } from "../../BuilderComponents/BuilderDefinition/BuilderDefinition";
-import { BuilderTextField } from "../../BuilderComponents/BuilderTextField/BuilderTextField";
+import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
 
 export const BuilderEntityAttributes = (props) => {
   const { armor_class, armor_desc, hit_points, hit_dice, speed } = props;
@@ -8,47 +7,43 @@ export const BuilderEntityAttributes = (props) => {
   return (
     <div>
       <div>
-        <BuilderTextField
+        <BuilderInput
           label="Armor Class"
-          text={armor_class}
+          value={armor_class}
           placeholder="Armor Class"
         />
-        <BuilderTextField
+        <BuilderInput
           label="Armor Description"
-          text={armor_desc}
+          value={armor_desc}
           placeholder="Armor Description"
         />
       </div>
       <div>
-        <BuilderTextField
+        <BuilderInput
           label="Hit Points"
-          text={hit_points}
+          value={hit_points}
           placeholder="Hit Points"
         />
-        <BuilderTextField
+        <BuilderInput
           label="Hit Dice"
-          text={hit_dice}
+          value={hit_dice}
           placeholder="Hit Dice"
         />
       </div>
       <div>
         <div>Speed</div>
         <div className="flex flex-wrap gap-x-2">
-          <BuilderTextField
+          <BuilderInput
             label="Walking"
-            text={speed.walk}
+            value={speed.walk}
             placeholder="Walking"
           />
-          <BuilderTextField
+          <BuilderInput
             label="Swimming"
-            text={speed.swim}
+            value={speed.swim}
             placeholder="Swimming"
           />
-          <BuilderTextField
-            label="Flying"
-            text={speed.fly}
-            placeholder="Flying"
-          />
+          <BuilderInput label="Flying" value={speed.fly} placeholder="Flying" />
         </div>
       </div>
     </div>

@@ -1,39 +1,39 @@
 import React from "react";
-import { BuilderTextField } from "../../BuilderComponents/BuilderTextField/BuilderTextField";
+import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
 
 export const BuilderEntityHeader = (props) => {
   const { name, size, type, subtype, alignment, customCss } = props;
   return (
     <div className={`ae-border ${customCss}`}>
-      <BuilderTextField
+      <BuilderInput
         inputClasses="font-semibold bg-transparent text-red-600 text-3xl font-mono"
         label={"Name"}
-        text={name}
+        value={name}
         placeholder="name"
       />
       <div className="flex flex-wrap gap-x-1">
-        <BuilderTextField
+        <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Size"}
-          text={size}
+          value={size}
           placeholder="Size"
         />
-        <BuilderTextField
+        <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Type"}
-          text={type}
+          value={type}
           placeholder="Type"
         />
-        <BuilderTextField
+        <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Subtype"}
-          text={subtype}
+          value={subtype}
           placeholder="Subtype"
         />
-        <BuilderTextField
+        <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Alignment"}
-          text={alignment}
+          value={alignment}
           placeholder="Alignment"
         />
       </div>

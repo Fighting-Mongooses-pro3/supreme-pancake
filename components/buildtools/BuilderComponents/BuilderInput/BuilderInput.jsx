@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 
-export const BuilderTextField = (props) => {
+export const BuilderInput = (props) => {
   const {
+    onChange,
     inputClasses,
     labelClasses,
     containerClasses,
-    text = "",
-    id = label ? label.toLowerCase() : Math.random() * 10000,
+    value,
     label,
+    id = label ? label.toLowerCase() : Math.random() * 10000,
     placeholder,
   } = props;
-  const [value, setValue] = useState(text);
+  // const [value, setValue] = useState(text);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
+  // const handleChange = (e) => {
+  //   setValue(e.target.value);
 
-    // Modify context
-  };
+  //   // Modify context
+  //   if (passedInFunction) callFunction(e.target.value)
+  // };
 
   return (
     <div className={containerClasses}>
@@ -31,7 +33,7 @@ export const BuilderTextField = (props) => {
         className={inputClasses}
         value={value}
         placeholder={placeholder ?? "Placeholder Text..."}
-        onChange={handleChange}
+        onChange={(e) => onChange(e.target.value)}
         required
       />
     </div>

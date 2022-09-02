@@ -1,14 +1,16 @@
 import React from "react";
-import { BuilderTextField } from "../../BuilderComponents/BuilderTextField/BuilderTextField";
+import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
 
-export const BuilderDerivedValueTextField = (props) => {
+export const BuilderDerivedValueInput = (props) => {
   const {
     inputClasses,
     labelClasses,
     containerClasses,
-    text = "",
+    value = "",
     label,
     placeholder,
+    valueCalculationFunction,
+    onChange,
   } = props;
 
   return (
@@ -16,13 +18,16 @@ export const BuilderDerivedValueTextField = (props) => {
       <label className={labelClasses} htmlFor={label}>
         {label}
       </label>
-      <div>
-        <BuilderTextField
+      <div className="inline">
+        <BuilderInput
           id={label}
-          text={text}
+          value={value}
           placeholder={placeholder}
           inputClasses={inputClasses}
+          containerClasses="inline"
+          onChange={onChange}
         />
+        <span>{`(${valueCalculationFunction(+value)})`}</span>
       </div>
     </div>
   );
