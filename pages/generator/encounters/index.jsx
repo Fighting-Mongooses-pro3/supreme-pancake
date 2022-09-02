@@ -9,14 +9,14 @@ export const Encounters = () => {
         <Body>
           <div>
             <p>
-              Welcome to the '' Custom Encounter Balancer! Dungeon Masters will
-              be able to utilize this tool to calculate the XP threshold of a
-              set difficulty of encounter for their party's level composition
-              and compare that threshold to the combined XP drop of the
-              creatures involved in the encounter. A large discrepancy in these
-              two numbers will determine whether you should increase or decrease
-              the challenge level in order to more closely match your goal
-              difficulty.
+              Welcome to the 'Supreme Pancake' Custom Encounter Balancer!
+              Dungeon Masters will be able to utilize this tool to calculate the
+              XP threshold of a set difficulty of encounter for their party's
+              level composition and compare that threshold to the combined XP
+              drop of the creatures involved in the encounter. A large
+              discrepancy in these two numbers will determine whether you should
+              increase or decrease the challenge level in order to more closely
+              match your encounter's goal difficulty.
             </p>
             <p>
               Below you will find a table showing the XP thresholds of different
