@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef  } from 'react'
 import Draggable from 'react-draggable';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+
 
 export default function buildTest() {
   let page;
@@ -26,7 +27,8 @@ export default function buildTest() {
   }
 
  
-  const printRef = React.useRef();
+  const printRef = useRef();
+
   const downloadPDF = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
@@ -47,6 +49,7 @@ export default function buildTest() {
       <button className='border' onClick={()=>addCard()}>add</button><br />
       <button className='border' onClick={()=>downloadPDF()}>save pdf</button>
       </div>
+
     <div id='page'  ref={printRef} className=' w-1/4 h-2/3  overflow-hidden relative   border '>
 
     {componentEl}
