@@ -4,10 +4,12 @@ import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
 export default function buildTest() {
+  let page;
    let gridX;
    let cardX;
    let card1;
   if(typeof window !== "undefined"){
+    page = document.getElementById("page")
     gridX = (document.getElementById("page").clientWidth)
     cardX = Math.round(gridX*.40)
     card1 = document.getElementById("card1")
@@ -25,7 +27,6 @@ export default function buildTest() {
 
  
   const printRef = React.useRef();
-  
   const downloadPDF = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
@@ -34,8 +35,7 @@ export default function buildTest() {
     const pdf = new jsPDF();
     const imgProperties = pdf.getImageProperties(data);
     const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight =
-      (imgProperties.height * pdfWidth) / imgProperties.width;
+    const pdfHeight = pdf.internal.pageSize.getHeight();
 
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save('print.pdf');
