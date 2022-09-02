@@ -5,16 +5,16 @@ import { BuilderDerivedValueInput } from "./BuilderDerivedValueInput";
 export const BuilderEntityAbilityScoreRow = (props) => {
   const {
     strength,
-    dexterity,
-    constitution,
-    intelligence,
-    wisdom,
-    charisma,
     setStrength,
+    dexterity,
     setDexterity,
+    constitution,
     setConstitution,
+    intelligence,
     setIntelligence,
+    wisdom,
     setWisdom,
+    charisma,
     setCharisma,
   } = useBuilderContext();
 

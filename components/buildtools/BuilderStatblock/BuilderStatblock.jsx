@@ -46,6 +46,7 @@ type props = {
     legendary_desc: [string]
     legendary_actions: [action]
     special_abilities: [action]
+    spell_list: [action]
 }
 
 type action = {

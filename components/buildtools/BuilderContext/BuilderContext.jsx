@@ -94,65 +94,6 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
         setLanguages,
         challenge,
         setChallenge,
-        // setName: (value) => {
-        //   console.log("Name:", name);
-        //   console.log("Value:", value);
-        //   name = value;
-        // },
-        // setSize: (value) => {
-        //   size = value;
-        // },
-        // setType: (value) => {
-        //   type = value;
-        // },
-        // setAlignment: (value) => {
-        //   alignment = value;
-        // },
-        // setArmor_class: (value) => {
-        //   armor_class = value;
-        // },
-        // setArmor_description: (value) => {
-        //   armor_description = value;
-        // },
-        // setHit_points: (value) => {
-        //   hit_points = value;
-        // },
-        // setHit_dice: (value) => {
-        //   hit_dice = value;
-        // },
-        // setSpeed: (value) => {
-        //   speed = value;
-        // },
-
-        // setStrength: (value) => {
-        //   strength = value;
-        // },
-        // setDexterity: (value) => {
-        //   dexterity = value;
-        // },
-        // setConstitution: (value) => {
-        //   constitution = value;
-        // },
-        // setIntelligence: (value) => {
-        //   intelligence = value;
-        // },
-        // setWisdom: (value) => {
-        //   wisdom = value;
-        // },
-        // setCharisma: (value) => {
-        //   charisma = value;
-        // },
-
-        // setSenses: (value) => {
-        //   senses = value;
-        // },
-        // setLanguages: (value) => {
-        //   languages = value;
-        // },
-
-        // setChallenge: (value) => {
-        //   challenge = value;
-        // },
 
         clearContext: () => {},
         loadEntity: () => {},

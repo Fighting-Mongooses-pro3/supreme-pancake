@@ -23,24 +23,6 @@ const builder = () => {
           lang="----"
           challenge="1/4"
         />
-
-        {/* <Statblock
-      customCss=""
-      name={monster.name}
-      sizes={monster.size}
-      ac={monster.ac}
-      hp={monster.hp}
-      speed={monster.speed}
-      str={monster.str}
-      dex={monster.dex}
-      con={monster.con}
-      int={monster.int}
-      wis={monster.wis}
-      cha={monster.cha}
-      senses={monster.senses}
-      lang={monster.lang}
-      challenge={monster.challenge}
-    /> */}
       </div>
     </Page>
   );
