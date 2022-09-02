@@ -223,19 +223,6 @@ export const BuilderStatblock = (props) => {
         </section>
       ) : null}
 
-      {props.legendary_desc ? (
-        <section className="mt-2 ml-2">
-          {props.legendary_desc.map((legendary_desc, index) => {
-            return (
-              <article className="inline-flex mb-2" key={index}>
-                <h1>{legendary_desc}</h1>
-                <br />
-              </article>
-            );
-          })}
-        </section>
-      ) : null}
-
       {props.legendary_actions ? (
         <section className="mt-2 ml-2">
           {props.legendary_actions.map((legendary_actions, index) => {
@@ -244,22 +231,6 @@ export const BuilderStatblock = (props) => {
                 <h1>{legendary_actions.name}</h1>&nbsp;
                 <p className="cursor-cell" contentEditable>
                   {legendary_actions.desc}
-                </p>
-                <br />
-              </article>
-            );
-          })}
-        </section>
-      ) : null}
-
-      {props.special_abilities ? (
-        <section className="mt-2 ml-2">
-          {props.special_abilities.map((special_abilities, index) => {
-            return (
-              <article className="inline-flex mb-2" key={index}>
-                <h1>{special_abilities.name}</h1>&nbsp;
-                <p className="cursor-cell" contentEditable>
-                  {special_abilities.desc}
                 </p>
                 <br />
               </article>

@@ -18,9 +18,22 @@ const BuilderContext = createContext({
   // intelligence: "",
   // wisdom: "",
   // charisma: "",
-  // senses: [],
-  // languages: [],
-  // challenge: "",
+  //
+  // Not implemented in the builder stat block
+  // senses: "" (split on ', ')
+  // languages: "" (split on ', ')
+  // challenge_rating: "",
+  // skills: {}
+  // damage_vulnerabilities: "" (split on ', ')
+  // damage_resistances: "" (split on ', ')
+  // damage_immunities: "" (split on ', ')
+  // condition_immunities: "" (split on ', ')
+  // actions: [{}]
+  // reactions: [{}]
+  // legendary_desc: ""
+  // legendary_actions: [{}]
+  // special_abilities: [{}]
+  // spell_list: []
 });
 
 export const useBuilderContext = () => useContext(BuilderContext);
@@ -51,7 +64,9 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   const [charisma, setCharisma] = useState(existingEntity.charisma || 0);
   const [senses, setSenses] = useState(existingEntity.senses || []);
   const [languages, setLanguages] = useState(existingEntity.languages || []);
-  const [challenge, setChallenge] = useState(existingEntity.challenge || "");
+  const [challenge, setChallenge] = useState(
+    existingEntity.challenge_rating || ""
+  );
 
   return (
     <BuilderContext.Provider
