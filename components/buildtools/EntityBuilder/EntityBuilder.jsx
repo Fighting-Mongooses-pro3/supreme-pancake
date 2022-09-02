@@ -6,9 +6,12 @@ export const EntityBuilder = () => {
     <div>
       <BuilderStatblock
         name="Monster"
-        sizes="Medium humanoid, any alignment"
+        size="Medium"
+        type="humanoid"
+        alignment="true neutral"
         ac="10"
-        hp="22, (5d8)"
+        hp="22"
+        hit_dice="5d8"
         speed="30 ft."
         strength="1"
         dex="17 (+0)"

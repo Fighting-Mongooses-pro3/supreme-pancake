@@ -1,5 +1,7 @@
 import React from "react";
 import { Line } from "../../utils/reuse/line";
+import { BuilderEntityAbilityScoreRow } from "./BuilderEntityAbilityScoreRow/BuilderEntityAbilityScoreRow";
+import { BuilderEntityAttributes } from "./BuilderEntityAttributes/BuilderEntityAttributes";
 import { BuilderEntityHeader } from "./BuilderEntityHeader/BuilderEntityHeader";
 
 // add dynamic data from api call
@@ -115,32 +117,24 @@ export const BuilderStatblock = (props) => {
 
       <Line />
 
-      <article className="inline-flex ml-2">
-        <h1 className="text-red-600 font-mono">Armor Class</h1>
-        &nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
-          {props.ac} {props.armor_desc ? "," + props.armor_desc : null}
-        </p>
-      </article>
-      <br />
-
-      <article className="inline-flex ml-2">
-        <h1 className="text-red-600 font-mono">Hit Points</h1>&nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
-          {props.hp} ({props.hit_dice})
-        </p>
-      </article>
-      <br />
-
-      <article className="inline-flex ml-2">
-        <h1 className="text-red-600 font-mono">Speed</h1>&nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
-          {props.speed}
-        </p>
-      </article>
-      <br />
+      <BuilderEntityAttributes
+        armor_class={ac}
+        armor_desc={armor_desc}
+        hit_points={hp}
+        hit_dice={hit_dice}
+        speed={speed}
+      />
 
       <Line />
+
+      <BuilderEntityAbilityScoreRow
+        strength={strength}
+        dexterity={dexterity}
+        constitution={constitution}
+        intelligence={intelligence}
+        wisdom={wisdom}
+        charisma={charisma}
+      />
 
       <article className="">
         <table className="">
