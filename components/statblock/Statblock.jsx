@@ -8,14 +8,14 @@ import { Line } from "../";
 /*
 type props = {
     customCss: string
-    name: string
+    monName: string
     size:  string
     type: string
     subtype?: string
     alignment: string
     ac: string
     armor_desc: string
-    hp: string
+    hit_points: string
     hit_dice: string
     speed: string
     strength: string
@@ -32,7 +32,7 @@ type props = {
     charisma_save: string
     perception?: string
     senses: string
-    lang: string
+    languages: string
     challenge: string
 }
 */
@@ -56,7 +56,7 @@ export const Statblock = (props) => {
           className="text-red-600 font-mono text-3xl cursor-cell ml-2"
           contentEditable
         >
-          {props.name}
+          {props.monName}
         </h1>
         <p
           className="text-black font-serif text-sm cursor-cell ml-2"
@@ -73,7 +73,7 @@ export const Statblock = (props) => {
         <h1 className="text-red-600 font-mono">Armor Class</h1>
         &nbsp;
         <p className="font-serif cursor-cell" contentEditable>
-          {props.ac} {props.armor_desc ? "," + props.armor_desc : null}
+          {props.armor_class} {props.armor_desc ? "," + props.armor_desc : null}
         </p>
       </article>
       <br />
@@ -81,7 +81,7 @@ export const Statblock = (props) => {
       <article className="inline-flex ml-2">
         <h1 className="text-red-600 font-mono">Hit Points</h1>&nbsp;
         <p className="font-serif cursor-cell" contentEditable>
-          {props.hp} ({props.hit_dice})
+          {props.hit_points} ({props.hit_dice})
         </p>
       </article>
       <br />
@@ -111,46 +111,43 @@ export const Statblock = (props) => {
           <tbody>
             <tr className="">
               <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell pl-4"
+                className="text-black text-lg border-r-8 border-transparent cursor-cell"
                 contentEditable
               >
                 {props.strength}(
                 {"+" + Math.ceil((props.strength - 1) / 2 + -5)})
               </td>
               <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell pl-4"
+                className="text-black text-lg border-r-8 border-transparent cursor-cell"
                 contentEditable
               >
-                {props.dex}({Math.ceil((props.dex - 1) / 2 + -5)} )
-                {props.dexterity_save ? strength_save : "+0"}
+                {props.dexterity}({Math.ceil((props.dexterity - 1) / 2 + -5)})
               </td>
               <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell pl-4"
+                className="text-black text-lg border-r-8 border-transparent cursor-cell"
                 contentEditable
               >
-                {props.con}({Math.ceil((props.con - 1) / 2 + -5)} )
-                {props.constitution_save ? strength_save : "+0"}
+                {props.constitution}(
+                {Math.ceil((props.constitution - 1) / 2 + -5)})
               </td>
               <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell pl-4"
+                className="text-black text-lg border-r-8 border-transparent cursor-cell"
                 contentEditable
               >
-                {props.int}({Math.ceil((props.int - 1) / 2 + -5)} )
-                {props.intelligence_save ? strength_save : "+0"}
+                {props.intelligence}(
+                {Math.ceil((props.intelligence - 1) / 2 + -5)})
               </td>
               <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell pl-4"
+                className="text-black text-lg border-r-8 border-transparent cursor-cell"
                 contentEditable
               >
-                {props.wis}({Math.ceil((props.wis - 1) / 2 + -5)} )
-                {props.wisdom_save ? strength_save : "+0"}
+                {props.wisdom}({Math.ceil((props.wisdom - 1) / 2 + -5)})
               </td>
               <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell pl-4"
+                className="text-black text-lg border-r-8 border-transparent cursor-cell"
                 contentEditable
               >
-                {props.cha}({Math.ceil((props.cha - 1) / 2 + -5)} )
-                {props.charisma_save ? strength_save : "+0"}
+                {props.charisma}({Math.ceil((props.charisma - 1) / 2 + -5)})
               </td>
             </tr>
           </tbody>
@@ -171,7 +168,7 @@ export const Statblock = (props) => {
         <article className="inline-flex mb-2">
           <h1>Languages </h1>&nbsp;
           <p className="cursor-cell" contentEditable>
-            {props.lang}
+            {props.languages}
           </p>
         </article>
         <br />
