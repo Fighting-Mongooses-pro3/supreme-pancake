@@ -4,4 +4,10 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+module.exports = {
+  nextConfig,
+  images: {
+    domains: ['assets.vercel.com', 'lh3.googleusercontent.com'],
+    formats: ['image/avif', 'image/webp'],
+  },
+}
