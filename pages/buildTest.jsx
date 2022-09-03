@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { useReactToPrint } from 'react-to-print';
+import { Statblock } from "../components";
 
 export default function buildTest() {
   const [componentEl, setComponents] = useState("");
@@ -22,9 +23,11 @@ export default function buildTest() {
     let cardEls = cardInfo.map((e,i)=>{
       let side = e.location ==="l"?"left-[5%]":"right-[5%]";
      return <Draggable   onStop={handleStop}  axis="y" grid={[20, 20]} scale={1}>
-          <div style={{top:((e.previousY+e.y) + "%")}} id={`card${i}`} className={`bg-red-300 absolute text-3xl ${side} w-2/5 h-1/4 border`}>
-            {e.text}
+          <div style={{top:((e.previousY+e.y) + "%")}} id={`card${i}`} className={` absolute  ${side} w-2/5 h-1/4 border bg-red-400  `}>
+          {e.text}
+            
           </div>
+          
         </Draggable>
     });
 
@@ -66,7 +69,7 @@ export default function buildTest() {
     let cardEls = cardInfo.map((e,i)=>{
       let side = e.location ==="l"?"left-[5%]":"right-[5%]";
      return <Draggable   onStop={handleStop}  axis="y" grid={[20, 20]} scale={1}>
-          <div style={{top:(e.previousY + "%")}} id={`card${i}`} className={`bg-red-300 absolute text-3xl ${side} w-2/5 h-1/4 border`}>
+          <div style={{top:((e.previousY+e.y) + "%")}} id={`card${i}`} className={` absolute  ${side} w-2/5 h-1/4 border bg-red-400  `}>
             {e.text}
           </div>
         </Draggable>
@@ -96,11 +99,13 @@ export default function buildTest() {
     >
       <div ref={componentRef} className='h-auto w-auto' >
         {componentEl}
+        
         </div>
         
     </div>
     </div>
   </div>
+  
     </>
   );
 }
