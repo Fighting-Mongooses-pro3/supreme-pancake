@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
 
 module.exports = {
-  nextConfig,
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
-    domains: ['assets.vercel.com', 'lh3.googleusercontent.com'],
-    formats: ['image/avif', 'image/webp'],
+    domains: ["assets.vercel.com", "lh3.googleusercontent.com"],
+    formats: ["image/avif", "image/webp"],
   },
-}
+};
