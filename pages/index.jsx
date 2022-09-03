@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Page, Container, BuildTools, DisplayBuild } from "../components";
 
 export default function Home() {
+  console.log('TEST')
+  
   return (
     <>
       <Page currentPage="Home">
