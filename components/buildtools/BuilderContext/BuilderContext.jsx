@@ -312,8 +312,8 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
         },
 
         skills,
-        setSkill: (updatedSkill) => {
-          setSkill((curSkills) => ({ ...curSkills, ...updatedSkill }));
+        updateSkill: (updatedSkill) => {
+          setSkills((curSkills) => ({ ...curSkills, ...updatedSkill }));
         },
         removeSkill: (skillName) => {
           setSkills((curSkills) => delete curSkills[skillName]);
