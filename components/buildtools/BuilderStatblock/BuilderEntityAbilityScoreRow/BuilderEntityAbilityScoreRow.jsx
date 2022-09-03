@@ -3,6 +3,7 @@ import { abilityModifierCalculation } from "../../../utils/DnDMath";
 import { useBuilderContext } from "../../BuilderContext/BuilderContext";
 import { BuilderDerivedValueInput } from "../../BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
 import { BuilderCheckbox } from "../../BuilderComponents/BuilderCheckbox/BuilderCheckbox";
+import { useEffect } from "react";
 
 export const BuilderEntityAbilityScoreRow = () => {
   const {

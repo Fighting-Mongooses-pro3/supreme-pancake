@@ -101,37 +101,6 @@ export const BuilderStatblock = (props) => {
       <BuilderEntityAbilities />
 
       <section className="mt-2 ml-2">
-        <article className="inline-flex mb-2">
-          <h1>Senses</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.senses}
-          </p>
-        </article>
-        <br />
-
-        <article className="inline-flex mb-2">
-          <h1>Languages </h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.lang}
-          </p>
-        </article>
-        <br />
-
-        <article className="inline-flex mb-2">
-          <h1>Challenge</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.challenge}
-          </p>
-        </article>
-        <br />
-        <article className="inline-flex mb-2">
-          <h1>Proficenicy Bonus</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {proficiencyBonus()}
-          </p>
-        </article>
-        <br />
-
         {props.damage_vulnerabilities ? (
           <>
             <article className="inline-flex mb-2">

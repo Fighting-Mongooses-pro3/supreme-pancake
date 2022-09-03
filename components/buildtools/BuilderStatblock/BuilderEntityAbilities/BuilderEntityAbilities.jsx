@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import {
   challengeProficiencyBonus,
   challengeRatingXpTable,
@@ -57,18 +58,25 @@ export const BuilderEntityAbilities = () => {
   return (
     <div>
       {strengthSave ||
+      strengthSave === 0 ||
       dexteritySave ||
+      dexteritySave === 0 ||
       constitutionSave ||
+      constitutionSave === 0 ||
       intelligenceSave ||
+      intelligenceSave === 0 ||
       wisdomSave ||
-      charismaSave ? (
+      wisdomSave === 0 ||
+      charismaSave ||
+      charismaSave === 0 ? (
         <div>
           <span>Saving Throws</span>
           <span>
+            {console.log("Saving throws", savingThrows)}
             {savingThrows
-              .filter((e) => e.modifier)
+              .filter((e) => e.modifier || e.modifier === 0)
               .map(
-                (e) => e.stat + " " + (e.modifier > 0 ? "+" : "") + e.modifier
+                (e) => e.stat + " " + (e.modifier >= 0 ? "+" : "") + e.modifier
               )
               .join(", ")}
           </span>

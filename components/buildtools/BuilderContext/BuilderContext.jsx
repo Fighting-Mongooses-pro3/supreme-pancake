@@ -1,4 +1,5 @@
 import React, { createContext } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import {
@@ -22,18 +23,18 @@ const BuilderContext = createContext({
   // intelligence: "",
   // wisdom: "",
   // charisma: "",
-  //
-  // Not implemented in the builder stat block
   // strength_save: "",
   // dexterity_save: "",
   // constitution_save: "",
   // intelligence_save: "",
   // wisdom_save: "",
   // charisma_save: "",
+  // challenge_rating: "",
+  //
+  // Not implemented in the builder stat block
   // perception: "",
   // senses: "" (split on ', ')
   // languages: "" (split on ', ')
-  // challenge_rating: "",
   // skills: {}
   // damage_vulnerabilities: "" (split on ', ')
   // damage_resistances: "" (split on ', ')
@@ -64,35 +65,36 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
     existingEntity.speed || { walk: 0, swim: 0, fly: 0 }
   );
   const [strength, setStrength] = useState(existingEntity.strength || 0);
-  const [strengthSave, setStrengthSave] = useState(
-    existingEntity.strength_save || 0
-  );
   const [dexterity, setDexterity] = useState(existingEntity.dexterity || 0);
-  const [dexteritySave, setDexteritySave] = useState(
-    existingEntity.dexterity_save || 0
-  );
   const [constitution, setConstitution] = useState(
     existingEntity.constitution || 0
-  );
-  const [constitutionSave, setConstitutionSave] = useState(
-    existingEntity.constitution_save || 0
   );
   const [intelligence, setIntelligence] = useState(
     existingEntity.intelligence || 0
   );
-  const [intelligenceSave, setIntelligenceSave] = useState(
-    existingEntity.intelligence_save || 0
-  );
   const [wisdom, setWisdom] = useState(existingEntity.wisdom || 0);
-  const [wisdomSave, setWisdomSave] = useState(existingEntity.wisdom_save || 0);
   const [charisma, setCharisma] = useState(existingEntity.charisma || 0);
-  const [charismaSave, setCharismaSave] = useState(
-    existingEntity.charisma_save || 0
-  );
   const [senses, setSenses] = useState(existingEntity.senses || []);
   const [languages, setLanguages] = useState(existingEntity.languages || []);
   const [challengeRating, setChallengeRating] = useState(
     existingEntity.challenge_rating || ""
+  );
+
+  const [strengthSave, setStrengthSave] = useState(
+    existingEntity.strength_save || 0
+  );
+  const [dexteritySave, setDexteritySave] = useState(
+    existingEntity.dexterity_save || 0
+  );
+  const [constitutionSave, setConstitutionSave] = useState(
+    existingEntity.constitution_save || 0
+  );
+  const [intelligenceSave, setIntelligenceSave] = useState(
+    existingEntity.intelligence_save || 0
+  );
+  const [wisdomSave, setWisdomSave] = useState(existingEntity.wisdom_save || 0);
+  const [charismaSave, setCharismaSave] = useState(
+    existingEntity.charisma_save || 0
   );
 
   const [strengthProficiency, setStrengthProficiency] = useState(
@@ -101,7 +103,6 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   const [dexterityProficiency, setDexterityProficiency] = useState(
     existingEntity.dexterity_save ? true : false
   );
-
   const [constitutionProficiency, setConstitutionProficiency] = useState(
     existingEntity.constitution_save ? true : false
   );
@@ -111,10 +112,77 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   const [wisdomProficiency, setWisdomProficiency] = useState(
     existingEntity.wisdom_save ? true : false
   );
-
   const [charismaProficiency, setCharismaProficiency] = useState(
     existingEntity.charisma_save ? true : false
   );
+
+  // GROUP ABILITY SCORES, SAVES, AND PROFICIENCIES TO STREAMLINE CODE
+  // Update the strengthSave
+  useEffect(() => {
+    setStrengthSave(
+      strengthProficiency
+        ? challengeRating && strength
+          ? challengeProficiencyBonus(challengeRating) +
+            abilityModifierCalculation(strength)
+          : null
+        : null
+    );
+  }, [challengeRating, strength, strengthProficiency]);
+
+  useEffect(() => {
+    setDexteritySave(
+      dexterityProficiency
+        ? challengeRating && dexterity
+          ? challengeProficiencyBonus(challengeRating) +
+            abilityModifierCalculation(dexterity)
+          : null
+        : null
+    );
+  }, [challengeRating, dexterity, dexterityProficiency]);
+
+  useEffect(() => {
+    setConstitutionSave(
+      constitutionProficiency
+        ? challengeRating && constitution
+          ? challengeProficiencyBonus(challengeRating) +
+            abilityModifierCalculation(constitution)
+          : null
+        : null
+    );
+  }, [challengeRating, constitution, constitutionProficiency]);
+
+  useEffect(() => {
+    setIntelligenceSave(
+      intelligenceProficiency
+        ? challengeRating && intelligence
+          ? challengeProficiencyBonus(challengeRating) +
+            abilityModifierCalculation(intelligence)
+          : null
+        : null
+    );
+  }, [challengeRating, intelligence, intelligenceProficiency]);
+
+  useEffect(() => {
+    setWisdomSave(
+      wisdomProficiency
+        ? challengeRating && wisdom
+          ? challengeProficiencyBonus(challengeRating) +
+            abilityModifierCalculation(wisdom)
+          : null
+        : null
+    );
+  }, [challengeRating, wisdom, wisdomProficiency]);
+
+  useEffect(() => {
+    setCharismaSave(
+      charismaProficiency
+        ? challengeRating && charisma
+          ? challengeProficiencyBonus(challengeRating) +
+            abilityModifierCalculation(charisma)
+          : null
+        : null
+    );
+  }, [challengeRating, charisma, charismaProficiency]);
 
   return (
     <BuilderContext.Provider
@@ -217,64 +285,38 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
         },
 
         strengthProficiency,
-        // updateStrengthProficiency: (value) => {
-        //   setStrengthProficiency(value);
-        //   setStrengthSave(
-        //     value
-        //       ? challengeRating && strength
-        //         ? challengeProficiencyBonus(challengeRating) +
-        //           abilityModifierCalculation(strength)
-        //         : null
-        //       : null
-        //   );
-        // },
 
         updateProficiency: (stat, proficiency) => {
-          let setProficiencyFn = () => {};
-          let setSaveFn = () => {};
-          let statValue = 0;
           switch (stat) {
             case "strength":
-              setProficiencyFn = setStrengthProficiency;
-              setSaveFn = setStrengthSave;
-              statValue = strength;
+              setStrengthProficiency(proficiency);
               break;
             case "dexterity":
-              setProficiencyFn = setDexterityProficiency;
-              setSaveFn = setDexteritySave;
-              statValue = dexterity;
+              setDexterityProficiency(proficiency);
               break;
             case "constitution":
-              setProficiencyFn = setConstitutionProficiency;
-              setSaveFn = setConstitutionSave;
-              statValue = constitution;
+              setConstitutionProficiency(proficiency);
               break;
             case "intelligence":
-              setProficiencyFn = setIntelligenceProficiency;
-              setSaveFn = setIntelligenceSave;
-              statValue = intelligence;
+              setIntelligenceProficiency(proficiency);
               break;
             case "wisdom":
-              setProficiencyFn = setWisdomProficiency;
-              setSaveFn = setWisdomSave;
-              statValue = wisdom;
+              setWisdomProficiency(proficiency);
               break;
             case "charisma":
-              setProficiencyFn = setCharismaProficiency;
-              setSaveFn = setCharismaSave;
-              statValue = charisma;
+              setCharismaProficiency(proficiency);
               break;
           }
 
-          setProficiencyFn(proficiency);
-          setSaveFn(
-            proficiency
-              ? challengeRating && statValue
-                ? challengeProficiencyBonus(challengeRating) +
-                  abilityModifierCalculation(statValue)
-                : null
-              : null
-          );
+          // setProficiencyFn(proficiency);
+          // setSaveFn(
+          //   proficiency
+          //     ? challengeRating && statValue
+          //       ? challengeProficiencyBonus(challengeRating) +
+          //         abilityModifierCalculation(statValue)
+          //       : null
+          //     : null
+          // );
         },
 
         clearContext: () => {},
