@@ -5,19 +5,29 @@ import { useReactToPrint } from 'react-to-print';
 export default function buildTest() {
   const [componentEl, setComponents] = useState("");
   const [cardInfo, setCardInfo] = useState([]);
-  
-  
-  function addCard(loc){
-    cardInfo.push({id:`card${cardInfo.length}`, text: "new card", location:loc,y:null });
 
+
+
+  function clearCards(){
+    setComponents("");
+  }
+  
+  //add a new card
+  async function addCard(loc){
+    // clears out the current cards
+    await clearCards()
+    // adds a new card to our arrays
+    cardInfo.push({id:`card${cardInfo.length}`, text: "new card", location:loc,y:0, previousY:0 });
+    //turning the card data to elements
     let cardEls = cardInfo.map((e,i)=>{
       let side = e.location ==="l"?"left-[5%]":"right-[5%]";
      return <Draggable   onStop={handleStop}  axis="y" grid={[20, 20]} scale={1}>
-          <div id={`card${i}`} className={`bg-red-300 absolute text-3xl ${side} w-2/5 h-1/4 border`}>
+          <div style={{top:((e.previousY+e.y) + "%")}} id={`card${i}`} className={`bg-red-300 absolute text-3xl ${side} w-2/5 h-1/4 border`}>
             {e.text}
           </div>
         </Draggable>
     });
+
     console.log(cardInfo)
     setComponents(cardEls);
   }
@@ -26,10 +36,9 @@ export default function buildTest() {
     let currentEl = document.getElementById(dragElement.node.id)
     cardInfo.forEach((e,i)=>{
       if(e.id == dragElement.node.id){
-        console.log("page y :", document.getElementById('page').clientHeight)
-        console.log("distance y :",dragElement.y)
-        e.y = (dragElement.y / document.getElementById('page').clientHeight * 100) + '%'
-        console.log(e)
+        console.log("drag element y :", dragElement.y)
+        e.y = (dragElement.y / document.getElementById('page').clientHeight * 100)
+        console.log(e.y)
       }
     })
   };
@@ -37,15 +46,33 @@ export default function buildTest() {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
   async function print(){
+    // push each element to top
     await cardInfo.forEach((e,i)=>{
       document.getElementById(e.id).style.transform = "translate(0,0)"
     })
+    // put the 
     await cardInfo.forEach((e,i)=>{
-      document.getElementById(e.id).style.top = e.y
+      document.getElementById(e.id).style.top =  (e.previousY + e.y) + "%"
+      e.previousY = e.previousY + e.y
+      e.y = 0
+      
     })
     
     handlePrint()
+    await clearCards()
+    //turning the card data to elements
+    let cardEls = cardInfo.map((e,i)=>{
+      let side = e.location ==="l"?"left-[5%]":"right-[5%]";
+     return <Draggable   onStop={handleStop}  axis="y" grid={[20, 20]} scale={1}>
+          <div style={{top:(e.previousY + "%")}} id={`card${i}`} className={`bg-red-300 absolute text-3xl ${side} w-2/5 h-1/4 border`}>
+            {e.text}
+          </div>
+        </Draggable>
+    });
+    setComponents(cardEls);
+
   }
 
   const componentRef = useRef();
@@ -60,6 +87,7 @@ export default function buildTest() {
         <br />
         <button className="border" onClick={() => addCard("l")}>add left </button>
         <button onClick={()=> print()}>print</button>
+        <button onClick={()=>clearEl()}>clear</button>
       </div>
     <div
       id="page"
@@ -73,8 +101,6 @@ export default function buildTest() {
     </div>
     </div>
   </div>
-    
-
     </>
   );
 }
