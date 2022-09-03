@@ -116,6 +116,8 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
     existingEntity.charisma_save ? true : false
   );
 
+  const [skills, setSkills] = useState({ ...existingEntity.skills } || {});
+
   // GROUP ABILITY SCORES, SAVES, AND PROFICIENCIES TO STREAMLINE CODE
   // Update the strengthSave
   useEffect(() => {
@@ -307,16 +309,14 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
               setCharismaProficiency(proficiency);
               break;
           }
+        },
 
-          // setProficiencyFn(proficiency);
-          // setSaveFn(
-          //   proficiency
-          //     ? challengeRating && statValue
-          //       ? challengeProficiencyBonus(challengeRating) +
-          //         abilityModifierCalculation(statValue)
-          //       : null
-          //     : null
-          // );
+        skills,
+        setSkill: (updatedSkill) => {
+          setSkill((curSkills) => ({ ...curSkills, ...updatedSkill }));
+        },
+        removeSkill: (skillName) => {
+          setSkills((curSkills) => delete curSkills[skillName]);
         },
 
         clearContext: () => {},

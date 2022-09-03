@@ -3,12 +3,20 @@ import { useEffect } from "react";
 import {
   challengeProficiencyBonus,
   challengeRatingXpTable,
+  abilityModifierCalculation,
 } from "../../../utils/DnDMath";
 import { BuilderDerivedValueInput } from "../../BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
 import { useBuilderContext } from "../../BuilderContext/BuilderContext";
+import { capitalizeString } from "../../../utils/Strings";
 
 export const BuilderEntityAbilities = () => {
   const {
+    strength,
+    dexterity,
+    intelligence,
+    wisdom,
+    charisma,
+
     strengthSave,
     dexteritySave,
     constitutionSave,
@@ -33,24 +41,24 @@ export const BuilderEntityAbilities = () => {
   ];
 
   const skillsList = {
-    acrobatics: "dexterity",
-    animal_handling: "wisdom",
-    arcana: "intelligence",
-    athletics: "strength",
-    deception: "charisma",
-    history: "intelligence",
-    insight: "wisdom",
-    intimidation: "charisma",
-    investigation: "intelligence",
-    medicine: "wisdom",
-    nature: "intelligence",
-    perception: "wisdom",
-    performance: "charisma",
-    persuasion: "charisma",
-    religion: "intelligence",
-    sleight_of_hand: "dexterity",
-    stealth: "dexterity",
-    survival: "wisdom",
+    acrobatics: dexterity,
+    animal_handling: wisdom,
+    arcana: intelligence,
+    athletics: strength,
+    deception: charisma,
+    history: intelligence,
+    insight: wisdom,
+    intimidation: charisma,
+    investigation: intelligence,
+    medicine: wisdom,
+    nature: intelligence,
+    perception: wisdom,
+    performance: charisma,
+    persuasion: charisma,
+    religion: intelligence,
+    sleight_of_hand: dexterity,
+    stealth: dexterity,
+    survival: wisdom,
   };
 
   const sensesList = ["blindsight", "darkvision", "tremoresense", "truesight"];
@@ -82,6 +90,24 @@ export const BuilderEntityAbilities = () => {
           </span>
         </div>
       ) : null}
+      <div>
+        <span>Skills</span>
+        <span>
+          {Object.entries(skills)
+            ?.map(([k, v]) => {
+              const skillVal =
+                challengeProficiencyBonus(challengeRating) +
+                abilityModifierCalculation(skillsList[k]);
+              return (
+                capitalizeString(k) +
+                " " +
+                (skillVal >= 0 ? "+" : "") +
+                skillVal
+              );
+            })
+            .join(", ")}
+        </span>
+      </div>
       <div>
         <span>Senses</span>
       </div>
