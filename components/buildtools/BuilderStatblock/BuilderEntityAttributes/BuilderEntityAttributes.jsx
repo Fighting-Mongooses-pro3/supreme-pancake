@@ -9,11 +9,11 @@ export const BuilderEntityAttributes = (props) => {
     hitPoints,
     hitDice,
     speed,
-    setArmorClass,
-    setArmorDesc,
-    setHitPoints,
-    setHitDice,
-    setSpeedComponent,
+    updateArmorClass,
+    updateArmorDesc,
+    updateHitPoints,
+    updateHitDice,
+    updateSpeedComponent,
   } = useBuilderContext();
 
   return (
@@ -23,13 +23,13 @@ export const BuilderEntityAttributes = (props) => {
           label="Armor Class"
           value={armorClass}
           placeholder="Armor Class"
-          onChange={setArmorClass}
+          onChange={updateArmorClass}
         />
         <BuilderInput
           label="Armor Description"
           value={armorDesc}
           placeholder="Armor Description"
-          onChange={setArmorDesc}
+          onChange={updateArmorDesc}
         />
       </div>
       <div>
@@ -37,13 +37,13 @@ export const BuilderEntityAttributes = (props) => {
           label="Hit Points"
           value={hitPoints}
           placeholder="Hit Points"
-          onChange={setHitPoints}
+          onChange={updateHitPoints}
         />
         <BuilderInput
           label="Hit Dice"
           value={hitDice}
           placeholder="Hit Dice"
-          onChange={setHitDice}
+          onChange={updateHitDice}
         />
       </div>
       <div>
@@ -53,19 +53,19 @@ export const BuilderEntityAttributes = (props) => {
             label="Walking"
             value={speed.walk}
             placeholder="Walking"
-            onChange={(value) => setSpeedComponent({ walk: value })}
+            onChange={(value) => updateSpeedComponent({ walk: value })}
           />
           <BuilderInput
             label="Swimming"
             value={speed.swim}
             placeholder="Swimming"
-            onChange={(value) => setSpeedComponent({ swim: value })}
+            onChange={(value) => updateSpeedComponent({ swim: value })}
           />
           <BuilderInput
             label="Flying"
             value={speed.fly}
             placeholder="Flying"
-            onChange={(value) => setSpeedComponent({ fly: value })}
+            onChange={(value) => updateSpeedComponent({ fly: value })}
           />
         </div>
       </div>

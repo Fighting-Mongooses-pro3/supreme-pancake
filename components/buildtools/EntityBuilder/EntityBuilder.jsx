@@ -15,6 +15,7 @@ export const EntityBuilder = () => {
         hit_dice="5d8"
         speed={{ walk: 30 }}
         strength="1"
+        strength_save="4"
         dexterity="17"
         constitution="13"
         intelligence="11"
@@ -22,7 +23,7 @@ export const EntityBuilder = () => {
         charisma="17"
         senses="passive Perception 10"
         lang="----"
-        challenge="1/4"
+        challenge_rating="12"
       >
         <BuilderStatblock
           senses="passive Perception 10"

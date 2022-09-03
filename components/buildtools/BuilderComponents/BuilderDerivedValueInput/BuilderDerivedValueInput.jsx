@@ -1,5 +1,5 @@
 import React from "react";
-import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
+import { BuilderInput } from "../BuilderInput/BuilderInput";
 
 export const BuilderDerivedValueInput = (props) => {
   const {
@@ -27,7 +27,7 @@ export const BuilderDerivedValueInput = (props) => {
           containerClasses="inline"
           onChange={onChange}
         />
-        <span>{`(${valueCalculationFunction(+value)})`}</span>
+        <span>{`(${valueCalculationFunction(value)})`}</span>
       </div>
     </div>
   );

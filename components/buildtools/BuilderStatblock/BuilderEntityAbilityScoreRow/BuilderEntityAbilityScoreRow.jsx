@@ -1,26 +1,23 @@
 import React from "react";
+import { abilityModifierCalculation } from "../../../utils/DnDMath";
 import { useBuilderContext } from "../../BuilderContext/BuilderContext";
-import { BuilderDerivedValueInput } from "./BuilderDerivedValueInput";
+import { BuilderDerivedValueInput } from "../../BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
 
-export const BuilderEntityAbilityScoreRow = (props) => {
+export const BuilderEntityAbilityScoreRow = () => {
   const {
     strength,
-    setStrength,
+    updateStrength,
     dexterity,
-    setDexterity,
+    updateDexterity,
     constitution,
-    setConstitution,
+    updateConstitution,
     intelligence,
-    setIntelligence,
+    updateIntelligence,
     wisdom,
-    setWisdom,
+    updateWisdom,
     charisma,
-    setCharisma,
+    updateCharisma,
   } = useBuilderContext();
-
-  const abilityModifierCalculation = (abilityScore) => {
-    return Math.ceil((abilityScore - 1) / 2 - 5);
-  };
 
   return (
     <div className="flex flex-wrap justify-around">
@@ -32,7 +29,7 @@ export const BuilderEntityAbilityScoreRow = (props) => {
         inputClasses="w-full"
         labelClasses="font-bold"
         valueCalculationFunction={abilityModifierCalculation}
-        onChange={setStrength}
+        onChange={updateStrength}
       />
       <BuilderDerivedValueInput
         label="DEX"
@@ -42,7 +39,7 @@ export const BuilderEntityAbilityScoreRow = (props) => {
         inputClasses="w-full"
         labelClasses="font-bold"
         valueCalculationFunction={abilityModifierCalculation}
-        onChange={setDexterity}
+        onChange={updateDexterity}
       />
       <BuilderDerivedValueInput
         label="CON"
@@ -52,7 +49,7 @@ export const BuilderEntityAbilityScoreRow = (props) => {
         inputClasses="w-full"
         labelClasses="font-bold"
         valueCalculationFunction={abilityModifierCalculation}
-        onChange={setConstitution}
+        onChange={updateConstitution}
       />
       <BuilderDerivedValueInput
         label="INT"
@@ -62,7 +59,7 @@ export const BuilderEntityAbilityScoreRow = (props) => {
         inputClasses="w-full"
         labelClasses="font-bold"
         valueCalculationFunction={abilityModifierCalculation}
-        onChange={setIntelligence}
+        onChange={updateIntelligence}
       />
       <BuilderDerivedValueInput
         label="WIS"
@@ -72,7 +69,7 @@ export const BuilderEntityAbilityScoreRow = (props) => {
         inputClasses="w-full"
         labelClasses="font-bold"
         valueCalculationFunction={abilityModifierCalculation}
-        onChange={setWisdom}
+        onChange={updateWisdom}
       />
       <BuilderDerivedValueInput
         label="CHA"
@@ -82,7 +79,7 @@ export const BuilderEntityAbilityScoreRow = (props) => {
         inputClasses="w-full"
         labelClasses="font-bold"
         valueCalculationFunction={abilityModifierCalculation}
-        onChange={setCharisma}
+        onChange={updateCharisma}
       />
     </div>
   );

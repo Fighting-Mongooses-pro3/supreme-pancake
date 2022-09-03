@@ -6,15 +6,15 @@ export const BuilderEntityHeader = (props) => {
   const { customCss } = props;
   const {
     name,
-    setName,
+    updateName,
     size,
-    setSize,
+    updateSize,
     type,
-    setType,
+    updateType,
     subtype,
-    setSubtype,
+    updateSubtype,
     alignment,
-    setAlignment,
+    updateAlignment,
   } = useBuilderContext();
   return (
     <div className={`ae-border ${customCss}`}>
@@ -23,7 +23,7 @@ export const BuilderEntityHeader = (props) => {
         label={"Name"}
         value={name}
         placeholder="name"
-        onChange={setName}
+        onChange={updateName}
       />
       <div className="flex flex-wrap gap-x-1">
         <BuilderInput
@@ -31,28 +31,28 @@ export const BuilderEntityHeader = (props) => {
           label={"Size"}
           value={size}
           placeholder="Size"
-          onChange={setSize}
+          onChange={updateSize}
         />
         <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Type"}
           value={type}
           placeholder="Type"
-          onChange={setType}
+          onChange={updateType}
         />
         <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Subtype"}
           value={subtype}
           placeholder="Subtype"
-          onChange={setSubtype}
+          onChange={updateSubtype}
         />
         <BuilderInput
           inputClasses="text-black text-sm font-serif"
           label={"Alignment"}
           value={alignment}
           placeholder="Alignment"
-          onChange={setAlignment}
+          onChange={updateAlignment}
         />
       </div>
     </div>

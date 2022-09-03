@@ -1,5 +1,6 @@
 import React from "react";
 import { Line } from "../../utils/reuse/line";
+import { BuilderEntityAbilities } from "./BuilderEntityAbilities/BuilderEntityAbilities";
 import { BuilderEntityAbilityScoreRow } from "./BuilderEntityAbilityScoreRow/BuilderEntityAbilityScoreRow";
 import { BuilderEntityAttributes } from "./BuilderEntityAttributes/BuilderEntityAttributes";
 import { BuilderEntityHeader } from "./BuilderEntityHeader/BuilderEntityHeader";
@@ -96,6 +97,8 @@ export const BuilderStatblock = (props) => {
       <BuilderEntityAbilityScoreRow />
 
       <Line />
+
+      <BuilderEntityAbilities />
 
       <section className="mt-2 ml-2">
         <article className="inline-flex mb-2">

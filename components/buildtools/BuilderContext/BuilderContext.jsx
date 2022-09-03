@@ -20,6 +20,13 @@ const BuilderContext = createContext({
   // charisma: "",
   //
   // Not implemented in the builder stat block
+  // strength_save: "",
+  // dexterity_save: "",
+  // constitution_save: "",
+  // intelligence_save: "",
+  // wisdom_save: "",
+  // charisma_save: "",
+  // perception: "",
   // senses: "" (split on ', ')
   // languages: "" (split on ', ')
   // challenge_rating: "",
@@ -53,18 +60,34 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
     existingEntity.speed || { walk: 0, swim: 0, fly: 0 }
   );
   const [strength, setStrength] = useState(existingEntity.strength || 0);
-  const [dexterity, setSexterity] = useState(existingEntity.dexterity || 0);
+  const [strengthSave, setStrengthSave] = useState(
+    existingEntity.strength_save || 0
+  );
+  const [dexterity, setDexterity] = useState(existingEntity.dexterity || 0);
+  const [dexteritySave, setDexteritySave] = useState(
+    existingEntity.dexterity_save || 0
+  );
   const [constitution, setConstitution] = useState(
     existingEntity.constitution || 0
+  );
+  const [constitutionSave, setConstitutionSave] = useState(
+    existingEntity.constitution_save || 0
   );
   const [intelligence, setIntelligence] = useState(
     existingEntity.intelligence || 0
   );
+  const [intelligenceSave, setIntelligenceSave] = useState(
+    existingEntity.intelligence_save || 0
+  );
   const [wisdom, setWisdom] = useState(existingEntity.wisdom || 0);
+  const [wisdomSave, setWisdomSave] = useState(existingEntity.wisdom_save || 0);
   const [charisma, setCharisma] = useState(existingEntity.charisma || 0);
+  const [charismaSave, setCharismaSave] = useState(
+    existingEntity.charisma_save || 0
+  );
   const [senses, setSenses] = useState(existingEntity.senses || []);
   const [languages, setLanguages] = useState(existingEntity.languages || []);
-  const [challenge, setChallenge] = useState(
+  const [challengeRating, setChallengeRating] = useState(
     existingEntity.challenge_rating || ""
   );
 
@@ -72,43 +95,101 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
     <BuilderContext.Provider
       value={{
         name,
-        setName,
+        updateName: (value) => {
+          setName(value);
+        },
         size,
-        setSize,
+        updateSize: (value) => {
+          setSize(value);
+        },
         type,
-        setType,
+        updateType: (value) => {
+          setType(value);
+        },
         alignment,
-        setAlignment,
+        updateAlignment: (value) => {
+          setAlignment(value);
+        },
         armorClass,
-        setArmorClass,
+        updateArmorClass: (value) => {
+          setArmorClass(value);
+        },
         armorDescription,
-        setArmorDescription,
+        updateArmorDescription: (value) => {
+          setArmorDescription(value);
+        },
         hitPoints,
-        setHitPoints,
+        updateHitPoints: (value) => {
+          setHitPoints(value);
+        },
         hitDice,
-        setHitDice,
+        updateHitDice: (value) => {
+          setHitDice(value);
+        },
         speed,
-        setSpeedComponent: (updatedField) => {
+        updateSpeedComponent: (updatedField) => {
           setSpeed((speed) => ({ ...speed, ...updatedField }));
         },
         strength,
-        setStrength,
+        updateStrength: (value) => {
+          setStrength(value);
+        },
+        strengthSave,
+        updateStrengthSave: (value) => {
+          setStrengthSave(value);
+        },
         dexterity,
-        setSexterity,
+        updateDexterity: (value) => {
+          setDexterity(value);
+        },
+        dexteritySave,
+        updateDexteritySave: (value) => {
+          setDexteritySave(value);
+        },
         constitution,
-        setConstitution,
+        updateConstitution: (value) => {
+          setConstitution(value);
+        },
+        constitutionSave,
+        updateConstitutionSave: (value) => {
+          setConstitutionSave(value);
+        },
         intelligence,
-        setIntelligence,
+        updateIntelligence: (value) => {
+          setIntelligence(value);
+        },
+        intelligenceSave,
+        updateIntelligenceSave: (value) => {
+          setIntelligenceSave(value);
+        },
         wisdom,
-        setWisdom,
+        updateWisdom: (value) => {
+          setWisdom(value);
+        },
+        wisdomSave,
+        updateWisdomSave: (value) => {
+          setWisdomSave(value);
+        },
         charisma,
-        setCharisma,
+        updateCharisma: (value) => {
+          setCharisma(value);
+        },
+        charismaSave,
+        updateCharismaSave: (value) => {
+          setCharismaSave(value);
+        },
         senses,
-        setSenses,
+        updateSenses: (value) => {
+          setSenses(value);
+        },
         languages,
-        setLanguages,
-        challenge,
-        setChallenge,
+        updateLanguages: (value) => {
+          setLanguages(value);
+        },
+        challengeRating,
+        updateChallengeRating: (value) => {
+          setChallengeRating(value);
+        },
 
         clearContext: () => {},
         loadEntity: () => {},
