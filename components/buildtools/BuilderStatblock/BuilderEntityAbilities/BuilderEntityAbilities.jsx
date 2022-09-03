@@ -67,7 +67,9 @@ export const BuilderEntityAbilities = () => {
           <span>
             {savingThrows
               .filter((e) => e.modifier)
-              .map((e) => `${e.stat} +${e.modifier}`)
+              .map(
+                (e) => e.stat + " " + (e.modifier > 0 ? "+" : "") + e.modifier
+              )
               .join(", ")}
           </span>
         </div>

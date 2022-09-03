@@ -1,6 +1,10 @@
 import React, { createContext } from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import {
+  abilityModifierCalculation,
+  challengeProficiencyBonus,
+} from "../../utils/DnDMath";
 
 const BuilderContext = createContext({
   // name: "",
@@ -89,6 +93,27 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   const [languages, setLanguages] = useState(existingEntity.languages || []);
   const [challengeRating, setChallengeRating] = useState(
     existingEntity.challenge_rating || ""
+  );
+
+  const [strengthProficiency, setStrengthProficiency] = useState(
+    existingEntity.strength_save ? true : false
+  );
+  const [dexterityProficiency, setDexterityProficiency] = useState(
+    existingEntity.dexterity_save ? true : false
+  );
+
+  const [constitutionProficiency, setConstitutionProficiency] = useState(
+    existingEntity.constitution_save ? true : false
+  );
+  const [intelligenceProficiency, setIntelligenceProficiency] = useState(
+    existingEntity.intelligence_save ? true : false
+  );
+  const [wisdomProficiency, setWisdomProficiency] = useState(
+    existingEntity.wisdom_save ? true : false
+  );
+
+  const [charismaProficiency, setCharismaProficiency] = useState(
+    existingEntity.charisma_save ? true : false
   );
 
   return (
@@ -189,6 +214,67 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
         challengeRating,
         updateChallengeRating: (value) => {
           setChallengeRating(value);
+        },
+
+        strengthProficiency,
+        // updateStrengthProficiency: (value) => {
+        //   setStrengthProficiency(value);
+        //   setStrengthSave(
+        //     value
+        //       ? challengeRating && strength
+        //         ? challengeProficiencyBonus(challengeRating) +
+        //           abilityModifierCalculation(strength)
+        //         : null
+        //       : null
+        //   );
+        // },
+
+        updateProficiency: (stat, proficiency) => {
+          let setProficiencyFn = () => {};
+          let setSaveFn = () => {};
+          let statValue = 0;
+          switch (stat) {
+            case "strength":
+              setProficiencyFn = setStrengthProficiency;
+              setSaveFn = setStrengthSave;
+              statValue = strength;
+              break;
+            case "dexterity":
+              setProficiencyFn = setDexterityProficiency;
+              setSaveFn = setDexteritySave;
+              statValue = dexterity;
+              break;
+            case "constitution":
+              setProficiencyFn = setConstitutionProficiency;
+              setSaveFn = setConstitutionSave;
+              statValue = constitution;
+              break;
+            case "intelligence":
+              setProficiencyFn = setIntelligenceProficiency;
+              setSaveFn = setIntelligenceSave;
+              statValue = intelligence;
+              break;
+            case "wisdom":
+              setProficiencyFn = setWisdomProficiency;
+              setSaveFn = setWisdomSave;
+              statValue = wisdom;
+              break;
+            case "charisma":
+              setProficiencyFn = setCharismaProficiency;
+              setSaveFn = setCharismaSave;
+              statValue = charisma;
+              break;
+          }
+
+          setProficiencyFn(proficiency);
+          setSaveFn(
+            proficiency
+              ? challengeRating && statValue
+                ? challengeProficiencyBonus(challengeRating) +
+                  abilityModifierCalculation(statValue)
+                : null
+              : null
+          );
         },
 
         clearContext: () => {},

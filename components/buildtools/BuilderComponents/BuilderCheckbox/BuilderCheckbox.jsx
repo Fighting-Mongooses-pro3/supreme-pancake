@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 
-export const BuilderInput = (props) => {
+export const BuilderCheckbox = (props) => {
   const {
     onChange,
     inputClasses,
     labelClasses,
     containerClasses,
-    value,
+    checked,
     label,
     id = label
       ? label.toLowerCase() + Math.random() * 10000
       : Math.random() * 10000,
-    placeholder,
   } = props;
 
   return (
@@ -22,12 +21,11 @@ export const BuilderInput = (props) => {
         </label>
       )}
       <input
-        type="text"
+        type="checkbox"
         id={id}
+        checked={checked}
         className={inputClasses}
-        value={value}
-        placeholder={placeholder ?? "Placeholder Text..."}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.checked)}
         required
       />
     </div>
