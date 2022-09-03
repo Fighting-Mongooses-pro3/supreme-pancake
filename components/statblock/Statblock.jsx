@@ -53,7 +53,7 @@ export const Statblock = (props) => {
 
       <section className={`ae-border ${props.customCss}`}>
         <h1
-          className="text-red-600 font-mono text-3xl cursor-cell ml-2"
+          className="text-red-600 font-mono text-lg md:text-3xl cursor-cell ml-2"
           contentEditable
         >
           {props.monName}
