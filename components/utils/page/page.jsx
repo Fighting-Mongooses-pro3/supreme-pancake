@@ -22,7 +22,7 @@ export const Page = (props, { children }) => {
       <main>
         <nav className="fixed top-0 right-0 left-0 h-16 inline-flex drop-shadow-lg items-center justify-between bg-transparent ae-nav z-50">
           <div className="hidden md:inline-flex w-full items-center justify-between">
-            <Navbar />
+            <Navbar currentPage={`${pageTitle}`} />
           </div>
           {/* <div className="inline-flex justify-between md:hidden w-full items-center">
             <MobileMenu currentPage={currentPage} />
