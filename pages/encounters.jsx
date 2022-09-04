@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Page, Container, Header } from "../components";
+import { encounterXpTable } from "../components/utils/DnDMath";
 
 const Encounters = () => {
   const [mounted, setMounted] = useState(false);
@@ -15,9 +16,8 @@ const Encounters = () => {
       oldThresholds.map((t, i) =>
         index === i
           ? {
-              threshold: value,
+              level: t.level,
               numChars: t.numChars,
-              totalXp: value * t.numChars,
             }
           : t
       )
@@ -28,13 +28,43 @@ const Encounters = () => {
       oldThresholds.map((t, i) =>
         index === i
           ? {
-              threshold: t.threshold,
+              level: t.level,
               numChars: value,
-              totalXp: t.threshold * value,
             }
           : t
       )
     );
+  };
+  const updateThresholdLevel = (value, index) => {
+    setXpThresholds((oldThresholds) =>
+      oldThresholds.map((t, i) =>
+        index === i
+          ? {
+              level: value,
+              numChars: t.numChars,
+            }
+          : t
+      )
+    );
+  };
+
+  const calculateXpTotal = (thresholds, key) => {
+    return thresholds.reduce(
+      (acc, threshold) =>
+        threshold.level <= 0
+          ? acc
+          : acc +
+            encounterXpTable[threshold.level - 1][key] * threshold.numChars,
+      0
+    );
+    // const totals = { easy: 0, medium: 0, hard: 0, deadly: 0 };
+    // xpThresholds.reduce((acc, threshold) => {
+    //   acc.keys().forEach((key) => {
+    //     acc.key +=
+    //       encounterXpTable[threshold.level - 1].key * threshold.numChars;
+    //   });
+    //   return acc;
+    // }, totals);
   };
 
   return (
@@ -232,7 +262,7 @@ const Encounters = () => {
                     // Add an empty object to the thresholds array
                     setXpThresholds([
                       ...xpThresholds,
-                      { threshold: 0, numChars: 0, totalXp: 0 },
+                      { level: 0, numChars: 0 },
                     ]);
                   }}
                 >
@@ -249,17 +279,18 @@ const Encounters = () => {
                 <div>
                   {xpThresholds.map((threshold, i) => (
                     <div key={"threshold" + i}>
-                      <label htmlFor={"threshold-input-" + i}>
-                        XP Threshold:
+                      <label htmlFor={"character-level-input-" + i}>
+                        Character Level:
                       </label>
                       <input
-                        id={"threshold-input-" + i}
-                        value={threshold.threshold}
+                        id={"character-level-input-" + i}
+                        value={threshold.level}
                         type="number"
                         onChange={(e) =>
-                          updateThresholdXp(e.currentTarget.value, i)
+                          updateThresholdLevel(e.currentTarget.value, i)
                         }
                       ></input>
+
                       <label htmlFor={"character-input-" + i}>
                         Number of Characters at associated level:
                       </label>
@@ -271,17 +302,26 @@ const Encounters = () => {
                           updateNumChars(e.currentTarget.value, i)
                         }
                       ></input>
-                      <label htmlFor={"xpDisplay-" + i}>
-                        Total XP Threshold for associated level:
-                        <span
-                          id={"xpDisplay-" + i}
-                          className="text-black text-3xl"
-                        >
-                          {threshold.totalXp}
-                        </span>
-                      </label>
                     </div>
                   ))}
+                  <div>
+                    <div>
+                      <span>Easy</span>
+                      <span>{calculateXpTotal(xpThresholds, "easy")}</span>
+                    </div>
+                    <div>
+                      <span>Medium</span>
+                      <span>{calculateXpTotal(xpThresholds, "medium")}</span>
+                    </div>
+                    <div>
+                      <span>Hard</span>
+                      <span>{calculateXpTotal(xpThresholds, "hard")}</span>
+                    </div>
+                    <div>
+                      <span>Deadly</span>
+                      <span>{calculateXpTotal(xpThresholds, "deadly")}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
