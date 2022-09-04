@@ -1,9 +1,14 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Page, Container, Header } from "../components";
 
 const Encounters = () => {
+  const [mounted, setMounted] = useState(false);
   const [xpThresholds, setXpThresholds] = useState([]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const updateThresholdXp = (value, index) => {
     setXpThresholds((oldThresholds) =>
@@ -36,7 +41,7 @@ const Encounters = () => {
     <Page currentPage="Encounters" desc="Custom Encounter Balancer">
       <Container>
         <Header title="Custom Encounter Balancer"></Header>
-        {
+        {mounted ? (
           <div>
             <div>
               <p>
@@ -270,10 +275,6 @@ const Encounters = () => {
                       </label>
                     </div>
                   ))}
-                  <div>
-                    Total XP:{" "}
-                    {xpThresholds.reduce((acc, curr) => acc + curr.totalXp, 0)}
-                  </div>
                 </div>
               </div>
             </div>
@@ -281,7 +282,7 @@ const Encounters = () => {
               <p></p>
             </div>
           </div>
-        }
+        ) : null}
       </Container>
     </Page>
   );
