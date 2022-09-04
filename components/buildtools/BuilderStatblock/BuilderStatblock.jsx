@@ -1,5 +1,9 @@
 import React from "react";
-import { Line } from "../";
+import { Line } from "../../utils/reuse/line";
+import { BuilderEntityAbilities } from "./BuilderEntityAbilities/BuilderEntityAbilities";
+import { BuilderEntityAbilityScoreRow } from "./BuilderEntityAbilityScoreRow/BuilderEntityAbilityScoreRow";
+import { BuilderEntityAttributes } from "./BuilderEntityAttributes/BuilderEntityAttributes";
+import { BuilderEntityHeader } from "./BuilderEntityHeader/BuilderEntityHeader";
 
 // add dynamic data from api call
 // finish styling shit
@@ -8,14 +12,14 @@ import { Line } from "../";
 /*
 type props = {
     customCss: string
-    monName: string
+    name: string
     size:  string
     type: string
     subtype?: string
     alignment: string
     ac: string
     armor_desc: string
-    hit_points: string
+    hp: string
     hit_dice: string
     speed: string
     strength: string
@@ -32,162 +36,71 @@ type props = {
     charisma_save: string
     perception?: string
     senses: string
-    languages: string
+    lang: string
     challenge: string
+    damage_vulnerabilities
+    damage_resistances
+    damage_immunities
+    condition_immunities
+    actions: [action]
+    reactions: [action]
+    legendary_desc: [string]
+    legendary_actions: [action]
+    special_abilities: [action]
+    spell_list: [action]
+}
+
+type action = {
+  name: string
+  desc: string
 }
 */
-export const Statblock = (props) => {
+export const BuilderStatblock = (props) => {
+  const {
+    customCss,
+    perception,
+    senses,
+    lang,
+    challenge,
+    damage_vulnerabilitie,
+    damage_resistance,
+    damage_immunitie,
+    condition_immunitie,
+    actions,
+    reactions,
+    legendary_desc,
+    special_abilities,
+    legendary_actions,
+  } = props;
   const proficiencyBonus = () => {
     let cr = props.challenge;
     if (cr === NaN) {
-      return 2;
+      console.log(cr);
+      return "+ 2";
     } else {
       return Math.max(0, Math.ceil((cr - 4) / 4)) + 2;
     }
   };
 
   return (
-    <div className="inline-block ae-stat-block self-center -z-50">
+    <div className="inline-block ae-stat-block self-center">
       <section className="ae-stat-border"></section>
 
-      <section className={`ae-border ${props.customCss}`}>
-        <h1
-          className="text-red-600 font-mono text-lg md:text-3xl cursor-cell ml-2"
-          contentEditable
-        >
-          {props.monName}
-        </h1>
-        <p
-          className="text-black font-serif text-sm cursor-cell ml-2"
-          contentEditable
-        >
-          {props.size} , {props.type}
-          {props.subtype ? "," + props.subtype : null} {props.alignment}
-        </p>
-      </section>
+      <BuilderEntityHeader customCss={customCss} />
 
       <Line />
 
-      <article className="inline-flex ml-2">
-        <h1 className="text-red-600 font-mono">Armor Class</h1>
-        &nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
-          {props.armor_class} {props.armor_desc ? "," + props.armor_desc : null}
-        </p>
-      </article>
-      <br />
-
-      <article className="inline-flex ml-2">
-        <h1 className="text-red-600 font-mono">Hit Points</h1>&nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
-          {props.hit_points} ({props.hit_dice})
-        </p>
-      </article>
-      <br />
-
-      <article className="inline-flex ml-2">
-        <h1 className="text-red-600 font-mono">Speed</h1>&nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
-          {props.speed}
-        </p>
-      </article>
-      <br />
+      <BuilderEntityAttributes />
 
       <Line />
 
-      <article className="">
-        <table className="">
-          <thead>
-            <tr className="">
-              <th className="text-black text-xl">STR</th>
-              <th className="text-black text-xl">DEX</th>
-              <th className="text-black text-xl">CON</th>
-              <th className="text-black text-xl">INT</th>
-              <th className="text-black text-xl">WIS</th>
-              <th className="text-black text-xl">CHA</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="">
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
-                {props.strength}(
-                {"+" + Math.ceil((props.strength - 1) / 2 + -5)})
-              </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
-                {props.dexterity}({Math.ceil((props.dexterity - 1) / 2 + -5)})
-              </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
-                {props.constitution}(
-                {Math.ceil((props.constitution - 1) / 2 + -5)})
-              </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
-                {props.intelligence}(
-                {Math.ceil((props.intelligence - 1) / 2 + -5)})
-              </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
-                {props.wisdom}({Math.ceil((props.wisdom - 1) / 2 + -5)})
-              </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
-                {props.charisma}({Math.ceil((props.charisma - 1) / 2 + -5)})
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </article>
+      <BuilderEntityAbilityScoreRow />
 
       <Line />
+
+      <BuilderEntityAbilities />
 
       <section className="mt-2 ml-2">
-        <article className="inline-flex mb-2">
-          <h1>Senses</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.senses}
-          </p>
-        </article>
-        <br />
-
-        <article className="inline-flex mb-2">
-          <h1>Languages </h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.languages}
-          </p>
-        </article>
-        <br />
-
-        <article className="inline-flex mb-2">
-          <h1>Challenge</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.challenge}
-          </p>
-        </article>
-        <br />
-
-        <article className="inline-flex mb-2">
-          <h1>Proficenicy Bonus</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {proficiencyBonus()}
-          </p>
-        </article>
-        <br />
-
         {props.damage_vulnerabilities ? (
           <>
             <article className="inline-flex mb-2">
