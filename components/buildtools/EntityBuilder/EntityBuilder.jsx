@@ -21,7 +21,7 @@ export const EntityBuilder = () => {
         intelligence="11"
         wisdom="13"
         charisma="17"
-        senses="passive Perception 10"
+        senses="blindsight 120 ft., passive Perception 10"
         lang="----"
         challenge_rating="12"
         skills={{ history: 12 }}

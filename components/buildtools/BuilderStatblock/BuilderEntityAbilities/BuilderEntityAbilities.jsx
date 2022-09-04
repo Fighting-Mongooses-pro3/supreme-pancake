@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {
+  abilityModifierCalculation,
   challengeProficiencyBonus,
   challengeRatingXpTable,
   skillModifierCalculation,
@@ -8,6 +9,7 @@ import {
 import { BuilderDerivedValueInput } from "../../BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
 import { useBuilderContext } from "../../BuilderContext/BuilderContext";
 import { capitalizeString } from "../../../utils/Strings";
+import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
 
 // const
 
@@ -27,7 +29,11 @@ export const BuilderEntityAbilities = () => {
     charismaSave,
     perception,
     senses,
+    updateSense,
+    removeSense,
     languages,
+    updateLanguage,
+    removeLanguage,
     challengeRating,
     updateChallengeRating,
     skills,
@@ -65,12 +71,11 @@ export const BuilderEntityAbilities = () => {
     survival: wisdom,
   };
 
-  const sensesList = ["blindsight", "darkvision", "tremoresense", "truesight"];
-
-  const [selectedSkill, setSelectedSkill] = useState("");
+  const [selectedSkill, setSelectedSkill] = useState([""]);
 
   return (
     <div>
+      {/* Saving Throws Block */}
       {strengthSave ||
       strengthSave === 0 ||
       dexteritySave ||
@@ -86,7 +91,6 @@ export const BuilderEntityAbilities = () => {
         <div>
           <span>Saving Throws</span>
           <span>
-            {console.log("Saving throws", savingThrows)}
             {savingThrows
               .filter((e) => e.modifier || e.modifier === 0)
               .map(
@@ -96,6 +100,8 @@ export const BuilderEntityAbilities = () => {
           </span>
         </div>
       ) : null}
+
+      {/* Skills Block */}
       <div>
         <span>Skills</span>
         <div>
@@ -151,12 +157,69 @@ export const BuilderEntityAbilities = () => {
           </div>
         ))}
       </div>
+
+      {/* Senses Block */}
       <div>
         <span>Senses</span>
+        <div>
+          <button onClick={() => updateSense("", senses.length)}>
+            Add Sense
+          </button>
+          {/* Passive perception */}
+          <div>
+            passive Perception{" "}
+            {10 +
+              (skills?.perception
+                ? skillModifierCalculation(challengeRating, wisdom)
+                : abilityModifierCalculation(wisdom))}
+          </div>
+          {senses.map((sense, index) => (
+            <div key={"sense-" + index} className="flex">
+              <BuilderInput
+                value={sense}
+                data-set-index={index}
+                onChange={(value) => {
+                  updateSense(value, index);
+                }}
+              />
+              <button
+                data-index={index}
+                onClick={(e) => removeSense(e.target.dataset.index)}
+              >
+                X
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Languages Block */}
       <div>
         <span>Languages</span>
+        <div>
+          <button onClick={() => updateLanguage("", languages.length)}>
+            Add Language
+          </button>
+          {languages.map((languages, index) => (
+            <div key={"languages-" + index} className="flex">
+              <BuilderInput
+                value={languages}
+                data-set-index={index}
+                onChange={(value) => {
+                  updateLanguage(value, index);
+                }}
+              />
+              <button
+                data-index={index}
+                onClick={(e) => removeLanguage(e.target.dataset.index)}
+              >
+                X
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
+
       <BuilderDerivedValueInput
         label="Challenge"
         value={challengeRating}

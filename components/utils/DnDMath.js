@@ -2,22 +2,17 @@ export const abilityModifierCalculation = (abilityScore) => {
   return Math.ceil((+abilityScore - 1) / 2 - 5);
 };
 export const challengeProficiencyBonus = (challengeRating) => {
-  console.log("Challenge Rating:", challengeRating);
   if (parseInt(challengeRating) === NaN) {
     return 2;
   } else {
-    console.log("Calculating");
     return Math.max(0, Math.ceil((challengeRating - 4) / 4)) + 2;
   }
 };
 
 export const skillModifierCalculation = (challengeRating, abilityNumber) => {
-  console.log("challenge rating:", challengeRating);
-  console.log("ability number:", abilityNumber);
   const result =
     challengeProficiencyBonus(challengeRating) +
     abilityModifierCalculation(abilityNumber);
-  console.log("Skill modifier calc", result);
   return result;
 };
 

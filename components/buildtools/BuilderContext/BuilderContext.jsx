@@ -30,12 +30,12 @@ const BuilderContext = createContext({
   // wisdom_save: "",
   // charisma_save: "",
   // challenge_rating: "",
+  // skills: {}
+  // senses: "" (split on ', ')
+  // languages: "" (split on ', ')
   //
   // Not implemented in the builder stat block
   // perception: "",
-  // senses: "" (split on ', ')
-  // languages: "" (split on ', ')
-  // skills: {}
   // damage_vulnerabilities: "" (split on ', ')
   // damage_resistances: "" (split on ', ')
   // damage_immunities: "" (split on ', ')
@@ -74,8 +74,7 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   );
   const [wisdom, setWisdom] = useState(existingEntity.wisdom || 0);
   const [charisma, setCharisma] = useState(existingEntity.charisma || 0);
-  const [senses, setSenses] = useState(existingEntity.senses || []);
-  const [languages, setLanguages] = useState(existingEntity.languages || []);
+
   const [challengeRating, setChallengeRating] = useState(
     existingEntity.challenge_rating || ""
   );
@@ -117,6 +116,14 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   );
 
   const [skills, setSkills] = useState({ ...existingEntity.skills } || {});
+
+  const [senses, setSenses] = useState(
+    existingEntity.senses?.split(", ").slice(0, -1) || []
+  );
+
+  const [languages, setLanguages] = useState(
+    existingEntity.languages?.split(", ") || []
+  );
 
   // GROUP ABILITY SCORES, SAVES, AND PROFICIENCIES TO STREAMLINE CODE
   // Update the strengthSave
@@ -287,7 +294,6 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
         },
 
         strengthProficiency,
-
         updateProficiency: (stat, proficiency) => {
           switch (stat) {
             case "strength":
@@ -320,6 +326,50 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
             delete curSkills[skillName];
             return { ...curSkills };
           });
+        },
+
+        senses,
+        updateSense: (updatedSense, index) => {
+          if (senses.length === 0) {
+            setSenses([updatedSense]);
+          } else if (index === 0) {
+            senses.shift();
+            senses.unshift(updatedSense);
+            setSenses([...senses]);
+          } else {
+            setSenses([
+              ...senses.slice(0, index),
+              updatedSense,
+              ...senses.slice(index + 1),
+            ]);
+          }
+        },
+        removeSense: (index) => {
+          console.log("removing index", index);
+          setSenses([...senses.slice(0, index), ...senses.slice(index + 1)]);
+        },
+
+        languages,
+        updateLanguage: (updatedLanguage, index) => {
+          if (languages.length === 0) {
+            setLanguages([updatedLanguage]);
+          } else if (index === 0) {
+            languages.shift();
+            languages.unshift(updatedLanguage);
+            setLanguages([...languages]);
+          } else {
+            setLanguages([
+              ...languages.slice(0, index),
+              updatedLanguage,
+              ...languages.slice(index + 1),
+            ]);
+          }
+        },
+        removeLanguage: (index) => {
+          setLanguages([
+            ...languages.slice(0, index),
+            ...languages.slice(index + 1),
+          ]);
         },
 
         clearContext: () => {},
