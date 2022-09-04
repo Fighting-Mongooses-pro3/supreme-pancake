@@ -1,33 +1,43 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Page, Container, Header } from "../components";
-import $ from "jquery";
 
 const Encounters = () => {
-  const [mounted, setMounted] = useState(false);
-  const [initVal, setInitVal] = useState();
-  const [charVal, setCharVal] = useState();
-  const [xpThresh, setXpThresh] = useState();
+  const [xpThresholds, setXpThresholds] = useState([]);
 
-  useEffect(() => {
-    setMounted(true);
-    setXpThresh($("#xpDisplay1").val());
-    console.log(xpThresh);
-  }, []);
-
-  const handleKeyUp = (e, initVal, charVal) => {
-    e.preventDefault();
-    const answer = initVal * charVal;
-    setXpThresh(answer);
-    console.log(xpThresh);
+  const updateThresholdXp = (value, index) => {
+    setXpThresholds((oldThresholds) =>
+      oldThresholds.map((t, i) =>
+        index === i
+          ? {
+              threshold: value,
+              numChars: t.numChars,
+              totalXp: value * t.numChars,
+            }
+          : t
+      )
+    );
+  };
+  const updateNumChars = (value, index) => {
+    setXpThresholds((oldThresholds) =>
+      oldThresholds.map((t, i) =>
+        index === i
+          ? {
+              threshold: t.threshold,
+              numChars: value,
+              totalXp: t.threshold * value,
+            }
+          : t
+      )
+    );
   };
 
   return (
     <Page currentPage="Encounters" desc="Custom Encounter Balancer">
       <Container>
         <Header title="Custom Encounter Balancer"></Header>
-        {mounted ? (
-          <>
+        {
+          <div>
             <div>
               <p>
                 Welcome to the &apos;Supreme Pancake&apos; Custom Encounter
@@ -211,90 +221,67 @@ const Encounters = () => {
                 totals by party level will be combined and shown in the Total XP
                 Threshold field at the bottom.
               </p>
-              <form>
-                <label htmlFor="init1">XP Threshold:</label>
-                <input
-                  type="number"
-                  id="init1"
-                  name="init1"
-                  onChange={(e) => {
-                    setInitVal(e.currentTarget.value);
+              <div>
+                <button
+                  onClick={() => {
+                    // Add an empty object to the thresholds array
+                    setXpThresholds([
+                      ...xpThresholds,
+                      { threshold: 0, numChars: 0, totalXp: 0 },
+                    ]);
                   }}
-                  onKeyUp={(e) => {
-                    handleKeyUp(e, initVal, charVal);
+                >
+                  Add New Character Level
+                </button>
+                <button
+                  onClick={() => {
+                    // Remove an object from the thresholds array
+                    setXpThresholds([...xpThresholds.slice(0, -1)]);
                   }}
-                ></input>
-                <label htmlFor="chars1">
-                  Number of Characters at associated level:
-                </label>
-                <input
-                  type="number"
-                  id="chars1"
-                  name="chars1"
-                  onChange={(e) => {
-                    setCharVal(e.currentTarget.value);
-                  }}
-                  onKeyUp={(e) => {
-                    handleKeyUp(e, initVal, charVal);
-                  }}
-                ></input>
-                <label htmlFor="xpDisplay1">
-                  Total XP Threshold for associated level:
-                  <span id="xpDisplay1" className="text-black text-3xl">
-                    {xpThresh}
-                  </span>
-                </label>
-
-                <br></br>
-                <label htmlFor="init2">XP Threshold:</label>
-                <input type="number" id="init2" name="init2"></input>
-                <label htmlFor="chars2">
-                  Number of Characters at associated level:
-                </label>
-                <input type="number" id="chars2" name="chars2"></input>
-                <br></br>
-                <label htmlFor="init3">XP Threshold:</label>
-                <input type="number" id="init3" name="init3"></input>
-                <label htmlFor="chars3">
-                  Number of Characters at associated level:
-                </label>
-                <input type="number" id="chars3" name="chars3"></input>
-                <br></br>
-                <label htmlFor="init4">XP Threshold:</label>
-                <input type="number" id="init4" name="init4"></input>
-                <label htmlFor="chars4">
-                  Number of Characters at associated level:
-                </label>
-                <input type="number" id="chars4" name="chars4"></input>
-                <br></br>
-                <label htmlFor="init5">XP Threshold:</label>
-                <input type="number" id="init5" name="init5"></input>
-                <label htmlFor="chars5">
-                  Number of Characters at associated level:
-                </label>
-                <input type="number" id="chars5" name="chars5"></input>
-                <br></br>
-                <label htmlFor="init6">XP Threshold:</label>
-                <input type="number" id="init6" name="init6"></input>
-                <label htmlFor="chars6">
-                  Number of Characters at associated level:
-                </label>
-                <input type="number" id="chars6" name="chars6"></input>
-                <br></br>
-                <label htmlFor="init7">XP Threshold:</label>
-                <input type="number" id="init7" name="init7"></input>
-                <label htmlFor="chars7">
-                  Number of Characters at associated level:
-                </label>
-                <input type="number" id="chars7" name="chars7"></input>
-                <br></br>
-              </form>
+                >
+                  Remove Character Level
+                </button>
+                <div>
+                  {xpThresholds.map((threshold, i) => (
+                    <div key={"threshold" + i}>
+                      <label htmlFor="init1">XP Threshold:</label>
+                      <input
+                        value={threshold.threshold}
+                        type="number"
+                        onChange={(e) =>
+                          updateThresholdXp(e.currentTarget.value, i)
+                        }
+                      ></input>
+                      <label htmlFor="init1">
+                        Number of Characters at associated level:
+                      </label>
+                      <input
+                        value={threshold.numChars}
+                        type="number"
+                        onChange={(e) =>
+                          updateNumChars(e.currentTarget.value, i)
+                        }
+                      ></input>
+                      <label htmlFor="xpDisplay1">
+                        Total XP Threshold for associated level:
+                        <span id="xpDisplay1" className="text-black text-3xl">
+                          {threshold.totalXp}
+                        </span>
+                      </label>
+                    </div>
+                  ))}
+                  <div>
+                    Total XP:{" "}
+                    {xpThresholds.reduce((acc, curr) => acc + curr.totalXp, 0)}
+                  </div>
+                </div>
+              </div>
             </div>
             <div>
               <p></p>
             </div>
-          </>
-        ) : null}
+          </div>
+        }
       </Container>
     </Page>
   );
