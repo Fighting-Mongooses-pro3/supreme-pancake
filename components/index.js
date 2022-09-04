@@ -15,5 +15,4 @@ export { Sidebar} from "./sidebar/Sidebar"
 export { Generator } from "./generator/Generator"
 export { Page__editor } from "./page__editor/Page__editor"
 export { Login } from "./login/Login"
-export { SlowAndFast } from './landing/parralaxTop'
 

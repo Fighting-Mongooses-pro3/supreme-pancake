@@ -1,14 +1,15 @@
 import React from "react";
+import './login.module.sass'
 
 export const Login = () => {
   return (
-    <div className="container">
-      <input id="input" className="input" type="checkbox" />
-      <label htmlFor="input" className="toggle">
+    <div className="log-container">
+      <input id="log-input" className="log-input" type="checkbox" />
+      <label htmlFor="log-input" className="log-toggle">
         <span className="text sign-text">Sign Up</span>
-        <span className="icon">
+        <span className="log-icon">
           <svg
-            className="arrow"
+            className="log-arrow"
             stroke="currentColor"
             fill="currentColor"
             strokeWidth="0"
