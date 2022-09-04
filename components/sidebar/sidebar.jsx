@@ -27,7 +27,7 @@ export const Sidebar = () => {
               icon={< GiMonsterGrasp />}
               /></li>
           <li><button 
-              id='add--spell'
+              id='add__spell'
               text='Spell'
               icon={< GiScrollUnfurled />} 
               /></li>
