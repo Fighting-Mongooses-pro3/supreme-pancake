@@ -249,27 +249,34 @@ const Encounters = () => {
                 <div>
                   {xpThresholds.map((threshold, i) => (
                     <div key={"threshold" + i}>
-                      <label htmlFor="init1">XP Threshold:</label>
+                      <label htmlFor={"threshold-input-" + i}>
+                        XP Threshold:
+                      </label>
                       <input
+                        id={"threshold-input-" + i}
                         value={threshold.threshold}
                         type="number"
                         onChange={(e) =>
                           updateThresholdXp(e.currentTarget.value, i)
                         }
                       ></input>
-                      <label htmlFor="init1">
+                      <label htmlFor={"character-input-" + i}>
                         Number of Characters at associated level:
                       </label>
                       <input
+                        id={"character-input-" + i}
                         value={threshold.numChars}
                         type="number"
                         onChange={(e) =>
                           updateNumChars(e.currentTarget.value, i)
                         }
                       ></input>
-                      <label htmlFor="xpDisplay1">
+                      <label htmlFor={"xpDisplay-" + i}>
                         Total XP Threshold for associated level:
-                        <span id="xpDisplay1" className="text-black text-3xl">
+                        <span
+                          id={"xpDisplay-" + i}
+                          className="text-black text-3xl"
+                        >
                           {threshold.totalXp}
                         </span>
                       </label>
