@@ -4,29 +4,29 @@ import { useParallax } from 'react-scroll-parallax';
 // import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 const PlxTest= () => {
+    const target = useRef(null);
     
-    const mage = useParallax({
-        scale: [0.5, 1, 'easeInQuad'],
-      });
     
       const frog = useParallax({
-        scaleX: [1, 0, 'easeInQuad'],
+        scaleX: [0, 2, 'easeInQuad'],
+        targetElement: target.current,
       });
     
-      const moon = useParallax({
-        scale: [1.5, 1, 'easeInQuad'],
-      });
+      
       return (
-        <div className="spinner">
-          <div className="mage" ref={mage.ref}>
-            🧙🏻‍♂️
-          </div>
-          <div className="frog" ref={frog.ref}>
-            🐸
-          </div>
-          <div className="moon" ref={moon.ref}>
-            🌚
-          </div>
+        <div ref={target} style={{
+            backgroundImage: "url('https://unsplash.it/1800/1200?image=883')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            width: '100vw'}}>
+                 <div id="change" ref={frog.ref} style={{
+                     width: '100vw',
+                 }}>
+	            <img src="https://unsplash.it/1800/1200?image=883"/>
+            </div>
+            <div id="bg">
+	            {/* <img src="https://unsplash.it/1800/1200?image=883"/> */}
+            </div>
         </div>
       );
     };
