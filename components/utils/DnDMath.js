@@ -11,6 +11,16 @@ export const challengeProficiencyBonus = (challengeRating) => {
   }
 };
 
+export const skillModifierCalculation = (challengeRating, abilityNumber) => {
+  console.log("challenge rating:", challengeRating);
+  console.log("ability number:", abilityNumber);
+  const result =
+    challengeProficiencyBonus(challengeRating) +
+    abilityModifierCalculation(abilityNumber);
+  console.log("Skill modifier calc", result);
+  return result;
+};
+
 export const challengeRatingXpTable = {
   0: "0 or 10",
   "1/8": 25,

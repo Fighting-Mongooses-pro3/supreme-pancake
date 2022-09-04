@@ -1,9 +1,9 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   challengeProficiencyBonus,
   challengeRatingXpTable,
-  abilityModifierCalculation,
+  skillModifierCalculation,
 } from "../../../utils/DnDMath";
 import { BuilderDerivedValueInput } from "../../BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
 import { useBuilderContext } from "../../BuilderContext/BuilderContext";
@@ -99,29 +99,48 @@ export const BuilderEntityAbilities = () => {
       <div>
         <span>Skills</span>
         <div>
-          <select onChange={(e) => setSelectedSkill(e.value)}>
+          <select onChange={(e) => setSelectedSkill(e.target.value)}>
+            <option value="" selected>
+              Select a skill
+            </option>
             {Object.entries(skillsList)
               .filter(([k, v]) => !skills.hasOwnProperty(k))
               .map(([k, v]) => (
                 <option key={"skill-select-" + k} value={k}>
-                  {capitalizeString(k)}
+                  {k
+                    .split("_")
+                    .map((str) => capitalizeString(str))
+                    .join(" ")}
                 </option>
               ))}
           </select>
-          {/* <button onClick={() => updateSkill({}[selectedSkill] = )}>Add Skill</button> */}
+          <button
+            onClick={() => {
+              if (selectedSkill === "") return;
+              updateSkill({
+                [selectedSkill]: skillModifierCalculation(
+                  challengeRating,
+                  skillsList[selectedSkill]
+                ),
+              });
+              setSelectedSkill("");
+            }}
+          >
+            Add Skill
+          </button>
         </div>
-        {Object.entries(skills)?.map(([k, v]) => (
+        {Object.entries(skills).map(([k, v]) => (
           <div key={k}>
             <span>
-              {capitalizeString(k) +
+              {k
+                .split("_")
+                .map((str) => capitalizeString(str))
+                .join(" ") +
                 " " +
-                (challengeProficiencyBonus(challengeRating) +
-                  abilityModifierCalculation(skillsList[k]) >=
-                0
+                (skillModifierCalculation(challengeRating, skillsList[k]) >= 0
                   ? "+"
                   : "") +
-                (challengeProficiencyBonus(challengeRating) +
-                  abilityModifierCalculation(skillsList[k]))}
+                skillModifierCalculation(challengeRating, skillsList[k])}
             </span>
             <button
               onClick={(e) => removeSkill(e.target.dataset.skillName)}
