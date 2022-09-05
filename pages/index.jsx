@@ -18,7 +18,7 @@ export default function Home() {
           <>
             <Page currentPage="Home">
             <Parallax pages={4} >
-
+              
             </Parallax>
             </Page>
           </>
