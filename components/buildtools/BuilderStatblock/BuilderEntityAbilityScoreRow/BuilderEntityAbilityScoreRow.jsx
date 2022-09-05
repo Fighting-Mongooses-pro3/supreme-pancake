@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { abilityModifierCalculation } from "../../../utils/DnDMath";
-import { useBuilderContext } from "../../BuilderContext/BuilderContext";
-import { BuilderDerivedValueInput } from "../../BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
-import { BuilderCheckbox } from "../../BuilderComponents/BuilderCheckbox/BuilderCheckbox";
-import { useEffect } from "react";
+import {
+  useBuilderContext,
+  BuilderDerivedValueInput,
+  BuilderCheckbox,
+} from "../../";
 
 export const BuilderEntityAbilityScoreRow = () => {
   const {

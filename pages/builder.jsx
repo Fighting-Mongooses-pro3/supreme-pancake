@@ -1,6 +1,5 @@
 import React from "react";
-import { Page, Statblock } from "../components";
-import { EntityBuilder } from "../components/buildtools/EntityBuilder/EntityBuilder";
+import { Page, Statblock, EntityBuilder } from "../components";
 
 const builder = () => {
   return (

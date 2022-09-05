@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Page, Container } from "../components";
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -16,9 +17,9 @@ export default function Home() {
         return (
           <>
             <Page currentPage="Home">
-              <Container customCss="flex justify-center bg-transparent drop-shadow-md min-h-min mr-1 overflow-hidden min-w-min h-screen">
-                
-              </Container>
+            <Parallax pages={4} >
+              
+            </Parallax>
             </Page>
           </>
         );

@@ -1,5 +1,5 @@
 import React from "react";
-import { BuilderInput } from "../BuilderInput/BuilderInput";
+import { BuilderInput } from "../../";
 
 export const BuilderDerivedValueInput = (props) => {
   const {

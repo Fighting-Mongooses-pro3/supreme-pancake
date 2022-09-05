@@ -1,9 +1,11 @@
 import React from "react";
-import { Line } from "../../utils/reuse/line";
-import { BuilderEntityAbilities } from "./BuilderEntityAbilities/BuilderEntityAbilities";
-import { BuilderEntityAbilityScoreRow } from "./BuilderEntityAbilityScoreRow/BuilderEntityAbilityScoreRow";
-import { BuilderEntityAttributes } from "./BuilderEntityAttributes/BuilderEntityAttributes";
-import { BuilderEntityHeader } from "./BuilderEntityHeader/BuilderEntityHeader";
+import { Line } from "../../";
+import {
+  BuilderEntityAbilities,
+  BuilderEntityAbilityScoreRow,
+  BuilderEntityAttributes,
+  BuilderEntityHeader,
+} from "../";
 
 // add dynamic data from api call
 // finish styling shit
