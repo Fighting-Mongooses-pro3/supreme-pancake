@@ -3,36 +3,41 @@ import { useParallax } from "react-scroll-parallax";
 // import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 
-const PlxTest = () => {
-  const target = useRef(null);
-
-  const frog = useParallax({
-    scaleX: [0, 2, "easeInQuad"],
-    targetElement: target.current,
-  });
-
-  return (
-    <div className="w-100 min-h-screen">
-      <div
-        ref={target}
-        style={{
-          backgroundImage: "url('https://unsplash.it/1800/1200?image=883')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          width: "100vw",
-        }}
-      >
-        <div
-          id="change"
-          ref={frog.ref}
-          style={{
-            width: "100vw",
-          }}
-        >
-          <img src="https://unsplash.it/1800/1200?image=883" />
+const PlxTest= () => {
+    const target = useRef(null);
+    
+    
+      const frog = useParallax({
+        scaleX: [1.1, 0, 'easeInQuad'],
+        targetElement: target.current,
+      });
+    
+      const pig = useParallax({
+          scaleX: [1.3, .5, ],
+          targetElement: target.current,
+      });
+      
+      return (
+        <div ref= {target} style={{
+            height:"3000px",
+        }}>
+            <div ref={pig.ref} style={{
+                
+                backgroundImage: "url('https://unsplash.it/1800/1200?image=883')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                minWidth: '100vw',
+                minHeight:"100%"}}>
+            <div id="change"  style={{
+                width: '100%',
+            }}>
+            <img src="https://unsplash.it/1800/1200?image=883" ref={frog.ref}/>
         </div>
-        <div id="bg">
-          {/* <img src="https://unsplash.it/1800/1200?image=883"/> */}
+        public/landing__images/book-gaa6361739_1920.jpg
+                {/* <div id="bg">
+                    <img src="https://unsplash.it/1800/1200?image=883"/>
+                </div> */}
+            </div>
         </div>
       </div>
     </div>
