@@ -1,12 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
 import { Page, ProjectCards } from "../../components";
-import Image from "next/image";
+import axios from "axios";
 
 const Dashboard = (props) => {
   const { user } = useUser();
-
+  const [projects, setProjects] = useState([]);
   console.log(user);
+
+  // useEffect(() => {
+  //   axios.get(`/api/project/get/${user.name}`).then((res) => {
+  //     setProjects([res.data]);
+  //   });
+  // }, []);
+
+  const renderCards = () => {
+    projects.map((proj, i) => {
+      return <ProjectCards key={i} title={proj.title} />;
+    });
+  };
 
   return (
     <Page currentPage="Dashboard">
@@ -18,13 +30,14 @@ const Dashboard = (props) => {
 
           <section className="h-full w-1/12 flex spacer"></section>
 
-          <section className="border-black border w-9/12 flex flex-wrap">
-            
-            <ProjectCards title="Project 1" />
+          <section className="border-black border w-9/12 flex flex-wrap rounded-3xl bg-slate-700">
+            {/* {renderCards} */}
 
             <ProjectCards title="Project 1" />
 
-            <ProjectCards title="Project 1" />
+            <ProjectCards title="Project 2" />
+
+            <ProjectCards title="Project 3" />
           </section>
         </div>
       ) : null}

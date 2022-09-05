@@ -24,6 +24,13 @@ const projectSchema = new Schema({
     default: Date.now,
   },
   userEmail: String,
+  monsters: [
+    {
+      name: String,
+      body: String,
+      stats: String,
+    },
+  ],
 });
 
 const Project = mongoose.models.Project || model("Project", projectSchema);
