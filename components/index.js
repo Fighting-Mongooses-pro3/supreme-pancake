@@ -8,8 +8,6 @@ export { UpperCase } from "./utils/customHooks/upperCase";
 export { Body } from "./page/body";
 export { Aside } from "./page/aside";
 export { Line } from "./sidebar/line";
-export { BuildTools } from "./buildtools/BuildTools";
-export { DisplayBuild } from "./displaybuild/DisplayBuild";
 export { Statblock } from "./statblock/Statblock";
 export { Sidebar } from "./sidebar/Sidebar";
 export { Generator } from "./generator/Generator";
