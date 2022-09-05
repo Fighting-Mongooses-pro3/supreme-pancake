@@ -136,6 +136,15 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   );
 
   const [actions, setActions] = useState([...(existingEntity.actions ?? [])]);
+  const [reactions, setReactions] = useState([
+    ...(existingEntity.reactions ?? []),
+  ]);
+  const [legendaryActions, setLegendaryActions] = useState([
+    ...(existingEntity.legendary_actions ?? []),
+  ]);
+  const [specialAbilities, setSpecialAbilities] = useState([
+    ...(existingEntity.special_abilities ?? []),
+  ]);
 
   // GROUP ABILITY SCORES, SAVES, AND PROFICIENCIES TO STREAMLINE CODE
   // Update the strengthSave
@@ -421,6 +430,45 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
           setActions((curActions) => [
             ...curActions.slice(0, index),
             ...curActions.slice(index + 1),
+          ]),
+
+        reactions,
+        updateReaction: (reaction, index) =>
+          setReactions((curReactions) => [
+            ...curReactions.slice(0, index),
+            reaction,
+            ...curReactions.slice(index + 1),
+          ]),
+        removeReaction: (index) =>
+          setReactions((curReactions) => [
+            ...curReactions.slice(0, index),
+            ...curReactions.slice(index + 1),
+          ]),
+
+        legendaryActions,
+        updateLegendaryAction: (legendaryAction, index) =>
+          setLegendaryActions((curLegendaryActions) => [
+            ...curLegendaryActions.slice(0, index),
+            legendaryAction,
+            ...curLegendaryActions.slice(index + 1),
+          ]),
+        removeLegendaryAction: (index) =>
+          setLegendaryActions((curLegendaryActions) => [
+            ...curLegendaryActions.slice(0, index),
+            ...curLegendaryActions.slice(index + 1),
+          ]),
+
+        specialAbilities,
+        updateSpecialAbility: (specialAbilities, index) =>
+          setSpecialAbilities((curSpecialAbilities) => [
+            ...curSpecialAbilities.slice(0, index),
+            specialAbilities,
+            ...curSpecialAbilities.slice(index + 1),
+          ]),
+        removeSpecialAbility: (index) =>
+          setSpecialAbilities((curSpecialAbilities) => [
+            ...curSpecialAbilities.slice(0, index),
+            ...curSpecialAbilities.slice(index + 1),
           ]),
 
         clearContext: () => {},
