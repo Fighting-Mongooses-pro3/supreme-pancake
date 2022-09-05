@@ -39,8 +39,7 @@ const PlxTest= () => {
                 </div> */}
             </div>
         </div>
-      </div>
-    </div>
+  
   );
 };
 

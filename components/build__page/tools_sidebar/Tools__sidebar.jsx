@@ -6,9 +6,9 @@ import {BsCardImage} from 'react-icons/bs'
 import {GiMagicAxe} from 'react-icons/gi'
 import { FaUsers} from "react-icons/fa";
 import {AiFillFolderOpen} from "react-icons/ai";
-export const Sidebar = () => {
+export const Tools__sidebar = () => {
   return (
-    <sidebar>
+    <Tools__sidebar>
         <ul className="toolbar">
           <li>
             <button 
@@ -48,6 +48,6 @@ export const Sidebar = () => {
               /></li>
       </ul>
      
-    </sidebar>
+    </Tools__sidebar>
   )
 }
