@@ -8,7 +8,7 @@ import { FaUsers} from "react-icons/fa";
 import {AiFillFolderOpen} from "react-icons/ai";
 
 
-export const Sidebar = () => {
+export const tools__sidebar = () => {
 
 
   return (
@@ -55,3 +55,5 @@ export const Sidebar = () => {
     </sidebar>
   )
 }
+
+export default tools__sidebar
