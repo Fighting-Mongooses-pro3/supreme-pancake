@@ -1,6 +1,5 @@
 import React from "react";
-import { BuilderContextProvider } from "../BuilderContext/BuilderContext";
-import { BuilderStatblock } from "../BuilderStatblock/BuilderStatblock";
+import { BuilderContextProvider, BuilderStatblock } from "../";
 
 export const EntityBuilder = () => {
   return (
