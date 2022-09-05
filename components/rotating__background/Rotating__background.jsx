@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import {}
+
 export default function Rotating__background() {
   const img1 = "../../public/landing__images/background-3390802_1920.jpg";
   const img2 = "../../public/landing__images/book-gaa6361739_1920.jpg";
@@ -32,10 +32,10 @@ export default function Rotating__background() {
     height: "200px",
     width: "400px",
     display: "block",
-    backgroundImage: `url(${list[lsNum]})`, // index change
+    backgroundImage: `url(${list[lsNum]})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
-    border: "1px solid red"
+    border: "1px solid red",
   };
 
   return (

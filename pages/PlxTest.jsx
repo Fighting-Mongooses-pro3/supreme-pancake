@@ -1,7 +1,7 @@
-import React, { useRef } from 'react'
-import { useParallax } from 'react-scroll-parallax';
-
+import React, { useRef } from "react";
+import { useParallax } from "react-scroll-parallax";
 // import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+
 
 const PlxTest= () => {
     const target = useRef(null);
@@ -39,7 +39,9 @@ const PlxTest= () => {
                 </div> */}
             </div>
         </div>
-      );
-    };
+      </div>
+    </div>
+  );
+};
 
-export default PlxTest
+export default PlxTest;
