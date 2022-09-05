@@ -7,7 +7,7 @@ export { Header } from "./page/header";
 export { UpperCase } from "./utils/customHooks/upperCase";
 export { Body } from "./page/body";
 export { Aside } from "./page/aside";
-export { Line } from "./sidebar/line";
+export { Line } from "./global/line";
 export { Statblock } from "./statblock/Statblock";
 export { Sidebar } from "./sidebar/Sidebar";
 export { Generator } from "./generator/Generator";
