@@ -2,11 +2,14 @@
 import "../styles/globals.sass";
 import { UserProvider } from "@auth0/nextjs-auth0";
 import "../styles/globals.sass";
+import { ParallaxProvider} from 'react-scroll-parallax'
 
 function MyApp({ Component, pageProps }) {
   return (
     <UserProvider>
-      <Component {...pageProps} />
+      <ParallaxProvider>
+        <Component {...pageProps} />
+      </ParallaxProvider>
     </UserProvider>
   );
 }
