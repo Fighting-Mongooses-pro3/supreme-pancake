@@ -1,6 +1,5 @@
 import React from "react";
-import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
-import { useBuilderContext } from "../../BuilderContext/BuilderContext";
+import { BuilderInput, useBuilderContext } from "../../";
 
 export const BuilderEntityHeader = (props) => {
   const { customCss } = props;

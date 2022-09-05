@@ -6,10 +6,12 @@ import {
   challengeRatingXpTable,
   skillModifierCalculation,
 } from "../../../utils/DnDMath";
-import { BuilderDerivedValueInput } from "../../BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
-import { useBuilderContext } from "../../BuilderContext/BuilderContext";
-import { capitalizeString } from "../../../utils/Strings";
-import { BuilderInput } from "../../BuilderComponents/BuilderInput/BuilderInput";
+import {
+  BuilderDerivedValueInput,
+  useBuilderContext,
+  capitalizeString,
+  BuilderInput,
+} from "../../";
 
 // const
 
