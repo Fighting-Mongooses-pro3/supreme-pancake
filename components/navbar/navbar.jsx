@@ -67,7 +67,7 @@ export const Navbar = (currentPage) => {
             </div>
             <ul className="py-1" aria-labelledby="user-menu-button">
               <li>
-                <Link href="/">
+                <Link href="/dashboard">
                   <a className="block py-2 px-4 text-sm text-lime-500 hover:bg-lime-500 hover:text-black">
                     Dashboard
                   </a>

@@ -6,7 +6,11 @@ import {BsCardImage} from 'react-icons/bs'
 import {GiMagicAxe} from 'react-icons/gi'
 import { FaUsers} from "react-icons/fa";
 import {AiFillFolderOpen} from "react-icons/ai";
+
+
 export const Sidebar = () => {
+
+
   return (
     <sidebar>
         <ul className="toolbar">
