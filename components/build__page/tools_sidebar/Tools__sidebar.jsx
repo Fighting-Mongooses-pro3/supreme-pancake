@@ -6,7 +6,15 @@ import {BsCardImage} from 'react-icons/bs'
 import {GiMagicAxe} from 'react-icons/gi'
 import { FaUsers} from "react-icons/fa";
 import {AiFillFolderOpen} from "react-icons/ai";
+<<<<<<< HEAD:components/build__page/tools_sidebar/Tools__sidebar.jsx
 export const Tools__sidebar = () => {
+=======
+
+
+export const Sidebar = () => {
+
+
+>>>>>>> a1c1e982eff7d7e88f4e93c814520132f60e9235:components/sidebar/sidebar.jsx
   return (
     <Tools__sidebar>
         <ul className="toolbar">
