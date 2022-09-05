@@ -8,3 +8,4 @@ export { Line } from "./global/line";
 export { Statblock } from "./statblock/Statblock";
 export { Sidebar } from "./sidebar/Sidebar";
 export { BuilderInput } from "./buildtools/BuilderComponents/BuilderInput/BuilderInput";
+export { ProjectCards } from "./dashboard/projectCards";
