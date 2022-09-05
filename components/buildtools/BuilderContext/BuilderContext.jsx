@@ -27,19 +27,19 @@ const BuilderContext = createContext({
   // skills: {}
   // senses: "" (split on ', ')
   // languages: "" (split on ', ')
-  //
-  // Not implemented in the builder stat block
-  // perception: "",
   // damage_vulnerabilities: "" (split on ', ')
   // damage_resistances: "" (split on ', ')
   // damage_immunities: "" (split on ', ')
   // condition_immunities: "" (split on ', ')
+  //
+  // Not implemented in the builder stat block
   // actions: [{}]
   // reactions: [{}]
-  // legendary_desc: ""
   // legendary_actions: [{}]
   // special_abilities: [{}]
   // spell_list: []
+  // perception: "",
+  // legendary_desc: ""
 });
 
 export const useBuilderContext = () => useContext(BuilderContext);
@@ -118,6 +118,24 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   const [languages, setLanguages] = useState(
     existingEntity.languages?.split(", ") || []
   );
+
+  const [damageVulnerabilities, setDamageVulnerabilities] = useState(
+    existingEntity.damage_vulnerabilities || ""
+  );
+  const [damageResistances, setDamageResistances] = useState(
+    existingEntity.damage_resistances || ""
+  );
+  const [damageImmunities, setDamageImmunities] = useState(
+    existingEntity.damage_immunities || ""
+  );
+
+  const [conditionImmunities, setConditionsImmunities] = useState(
+    existingEntity.condition_immunities
+      ?.split(", ")
+      .reduce((obj, con_immunity) => (obj[con_immunity] = true), {}) || {}
+  );
+
+  const [actions, setActions] = useState([...(existingEntity.actions ?? [])]);
 
   // GROUP ABILITY SCORES, SAVES, AND PROFICIENCIES TO STREAMLINE CODE
   // Update the strengthSave
@@ -365,6 +383,45 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
             ...languages.slice(index + 1),
           ]);
         },
+
+        damageVulnerabilities,
+        updateDamageVulnerabilities: (value) => {
+          setDamageVulnerabilities(value);
+        },
+        damageResistances,
+        updateDamageResistances: (value) => {
+          setDamageResistances(value);
+        },
+        damageImmunities,
+        updateDamageImmunities: (value) => {
+          setDamageImmunities(value);
+        },
+
+        conditionImmunities,
+        addConditionImmunity: (condition) => {
+          setConditionsImmunities((curConditions) => ({
+            ...curConditions,
+            [condition]: true,
+          }));
+        },
+        removeConditionImmunity: (condition) =>
+          setConditionsImmunities((curConditions) => {
+            delete curConditions[condition];
+            return { ...curConditions };
+          }),
+
+        actions,
+        updateAction: (action, index) =>
+          setActions((curActions) => [
+            ...curActions.slice(0, index),
+            action,
+            ...curActions.slice(index + 1),
+          ]),
+        removeAction: (index) =>
+          setActions((curActions) => [
+            ...curActions.slice(0, index),
+            ...curActions.slice(index + 1),
+          ]),
 
         clearContext: () => {},
         loadEntity: () => {},

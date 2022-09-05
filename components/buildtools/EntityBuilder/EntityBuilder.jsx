@@ -23,7 +23,7 @@ export const EntityBuilder = () => {
         senses="blindsight 120 ft., passive Perception 10"
         lang="----"
         challenge_rating="12"
-        skills={{ history: 12 }}
+        // skills={{ history: 12 }}
       >
         <BuilderStatblock
           senses="passive Perception 10"

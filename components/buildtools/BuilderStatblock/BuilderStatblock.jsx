@@ -7,6 +7,9 @@ import {
   BuilderEntityHeader,
 } from "../";
 
+import { useBuilderContext } from "../BuilderContext/BuilderContext";
+import { BuilderEntityActionsBlock } from "./BuilderEntityActionsBlock/BuilderEntityActionsBlock";
+
 // add dynamic data from api call
 // finish styling shit
 // &nbsp; for line break??
@@ -57,32 +60,10 @@ type action = {
   desc: string
 }
 */
+
 export const BuilderStatblock = (props) => {
-  const {
-    customCss,
-    perception,
-    senses,
-    lang,
-    challenge,
-    damage_vulnerabilitie,
-    damage_resistance,
-    damage_immunitie,
-    condition_immunitie,
-    actions,
-    reactions,
-    legendary_desc,
-    special_abilities,
-    legendary_actions,
-  } = props;
-  const proficiencyBonus = () => {
-    let cr = props.challenge;
-    if (cr === NaN) {
-      console.log(cr);
-      return "+ 2";
-    } else {
-      return Math.max(0, Math.ceil((cr - 4) / 4)) + 2;
-    }
-  };
+  const { customCss } = props;
+  const { actions, updateAction, removeAction } = useBuilderContext();
 
   return (
     <div className="inline-block ae-stat-block self-center">
@@ -102,52 +83,15 @@ export const BuilderStatblock = (props) => {
 
       <BuilderEntityAbilities />
 
-      <section className="mt-2 ml-2">
-        {props.damage_vulnerabilities ? (
-          <>
-            <article className="inline-flex mb-2">
-              <h1>Damage Immunities</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.damage_vulnerabilities}
-              </p>
-            </article>
-            <br />
-          </>
-        ) : null}
-        {props.damage_resistances ? (
-          <>
-            <article className="inline-flex mb-2">
-              <h1>Damage Resistances</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.damage_resistances}
-              </p>
-            </article>
-            <br />
-          </>
-        ) : null}
-        {props.damage_immunities ? (
-          <>
-            <article className="inline-flex mb-2">
-              <h1>Damage Immunities</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.damage_immunities}
-              </p>
-            </article>
-            <br />
-          </>
-        ) : null}
-        {props.condition_immunities ? (
-          <>
-            <article className="inline-flex mb-2">
-              <h1>Condition Immunities</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.condition_immunities}
-              </p>
-            </article>
-            <br />
-          </>
-        ) : null}
-      </section>
+      <BuilderEntityActionsBlock
+        blockName="Actions"
+        buttonText="Add an action"
+        actions={actions}
+        updateAction={updateAction}
+        removeAction={removeAction}
+      />
+
+      {/* <BuilderEntityActionsBlock blockName="Actions" /> */}
 
       {props.actions ? (
         <>
