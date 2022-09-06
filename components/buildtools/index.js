@@ -1,6 +1,7 @@
 export { BuilderCheckbox } from "./BuilderComponents/BuilderCheckbox/BuilderCheckbox";
 export { BuilderDerivedValueInput } from "./BuilderComponents/BuilderDerivedValueInput/BuilderDerivedValueInput";
 export { BuilderInput } from "./BuilderComponents/BuilderInput/BuilderInput";
+export { BuilderTextArea } from "./BuilderComponents/BuilderTextArea/BuilderTextArea";
 export {
   BuilderContextProvider,
   useBuilderContext,
@@ -13,3 +14,4 @@ export { BuilderEntityAbilities } from "./BuilderStatblock/BuilderEntityAbilitie
 export { BuilderEntitySkills } from "./BuilderStatblock/BuilderEntitySkills/BuilderEntitySkills";
 export { BuilderEntityActionsBlock } from "./BuilderStatblock/BuilderEntityActionsBlock/BuilderEntityActionsBlock";
 export { EntityBuilder } from "./EntityBuilder/EntityBuilder";
+export { TextEditor } from "./TextEditor/TextEditor";
