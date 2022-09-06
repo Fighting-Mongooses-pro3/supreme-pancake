@@ -6,14 +6,13 @@ import { BsCardImage } from "react-icons/bs";
 import { GiMagicAxe } from "react-icons/gi";
 import { FaUsers } from "react-icons/fa";
 import { AiFillFolderOpen } from "react-icons/ai";
-import { Button } from "./button";
 
-export const Sidebar = () => {
+export const ToolsSidebar = () => {
   return (
-    <sidebar>
-      <ul className="toolbar">
+    <div className="min-h-screen w-2/12 text-black border border-black">
+      <ul className="toolbar w-full h-full text-black">
         <li>
-          <Button id="add-text" text="Text" customCss="border rounded-full" icon={<BsTextParagraph className="h-10 w-10 text-lime-500" />} />
+          <button className='border border-black text-black' >NPC {<GiMonsterGrasp />}</button>
         </li>
         <li>
           <button id="add__NPC" text="NPC" icon={<FaUsers />} />
@@ -38,6 +37,6 @@ export const Sidebar = () => {
           />
         </li>
       </ul>
-    </sidebar>
+    </div>
   );
 };
