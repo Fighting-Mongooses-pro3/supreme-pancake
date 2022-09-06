@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { routes } from "../../data/global";
 import { useUser } from "@auth0/nextjs-auth0";
 import Image from "next/image";
+import Logo from "../logo/logo";
 
 // show log in button if user is on blog page
 
@@ -18,7 +19,11 @@ export const Navbar = (currentPage) => {
 
   return (
     <>
-    <div>Logo Here</div>
+      <Link href="/">
+        <a className="transition-transform duration-100 hover:translate-y-1 bg-transparent hover:scale-105">
+          <Logo />
+        </a>
+      </Link>
       <ul className="nav-menu inline-flex mr-4 flex-wrap ae-nav-links text-lg lg:text-xl 2xl:text-2xl ae-text-outline-small-dark">
         {routes.map((item, index) => {
           return (
