@@ -61,7 +61,7 @@ export default function Home() {
             src="/landing-images/4.jpg"
             alt="Stuff"
             layout="fill"
-            customCss="ae-from-left p-3 w-11/12 ml-10 animate__bounceInLeft ae-min-h"
+            customCss="ae-from-left p-3 w-11/12 ml-10 ae-min-h"
             title="Do qui enim magna amet voluptate consectetur dolor amet minim officia sunt laboris minim eu."
             body="Dolor occaecat ea tempor aliqua enim sint laborum deserunt voluptate Lorem Lorem exercitation. Irure anim ullamco mollit sunt duis. Sunt sunt esse dolore adipisicing reprehenderit magna enim nulla do sunt aute. Eiusmod consequat ut commodo do. Nostrud qui ullamco pariatur labore reprehenderit proident officia deserunt. Velit reprehenderit quis id sint. Sit esse esse adipisicing Lorem exercitation aliquip proident voluptate. Tempor esse reprehenderit ullamco ipsum aliquip elit consectetur excepteur magna sit consectetur in non. Aliquip Lorem fugiat in elit ullamco id reprehenderit incididunt pariatur eiusmod minim. Fugiat commodo fugiat ex exercitation pariatur quis esse voluptate reprehenderit."
           />
