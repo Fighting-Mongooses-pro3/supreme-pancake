@@ -65,7 +65,19 @@ export const MonsterXP = () => {
         <li>Alter the AC of some or all of the creatures</li>
         <li>Give multi-attack to any units with only one attack</li>
         <li>Add to or take away from damage resistances/immunities</li>
-        <li></li>
+        <li>Add or subtract from the amount of damage dice per attack</li>
+        <li>Raise or lower the damage die, e.g., D6 to D8</li>
+        <li>Give the strongest creature Legendary Actions or add to them</li>
+        <li>
+          Create Lair Actions set off by creatures or by the general environment
+        </li>
+        <li>
+          Raise or lower ability scores that might affect attacks and
+          spellcasting
+        </li>
+        <li>
+          If the creature has a spell list, add to or take away from that list
+        </li>
       </ul>
 
       <div>

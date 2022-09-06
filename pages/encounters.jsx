@@ -49,22 +49,19 @@ const Encounters = () => {
   return (
     <Page currentPage="Encounters" desc="Custom Encounter Balancer">
       <p>
-        Welcome to the &apos;Supreme Pancake&apos; Custom Encounter Balancer!
-        Dungeon Masters will be able to utilize this tool to calculate the XP
-        threshold of a set difficulty of encounter for their party&apos;s level
-        composition and compare that threshold to the combined XP drop of the
-        creatures involved in the encounter. A large discrepancy in these two
-        numbers will determine whether you should increase or decrease the
-        challenge level in order to more closely match your encounter&apos;s
-        goal difficulty.
+        Welcome to the House Ruled Custom Encounter Balancer! Dungeon Masters
+        will be able to utilize this tool to calculate the XP thresholds of
+        Easy, Medium, Hard, and Deadly encounters for their party, and compare
+        that amount to the total XP of the creatures in your encounter to see
+        into what difficulty range that number falls. From here, Dungeon Masters
+        can then increase or decrease the difficulty by altering the amount of
+        creatures within the encounter, by changing which creatures are
+        involved, or by utilizing one of the tips we have given to amend aspects
+        of creatures or the environment.
         <br></br>
-        Below you will find a table showing the XP thresholds of different
-        difficulty ratings of encounters for a single player character at a
-        given level. We have provided rows below the table that will allow you
-        to input an XP threshold from this table and multiply that number by the
-        number of players at the associated level. All of these XP Threshold
-        totals will be combined to figure out the total XP Threshold number for
-        the entirety of the party.
+        Once a Dungeon Master has found the sweet spot for their desired
+        difficulty level, they are ready to implement the encounter in their
+        game! Happy Adventuring!
       </p>
       <Container>
         <Header title="Custom Encounter Balancer"></Header>
@@ -72,16 +69,22 @@ const Encounters = () => {
           <div>
             <div>
               <p>
-                Below you&apos;ll find a field to input an XP Threshold pulled
-                from the table above, and a second field to input the number of
-                players equal to that XP Threshold&apos;s corresponding player
-                level. These two numbers multiplied together will show the total
-                XP Threshold for the party.
+                Below you will find two buttons that can add or remove rows to
+                this piece of the Encounter Balancer. Each row will have two
+                input fields: one for the level of the characters in your party,
+                and another for how many characters are at that level currently.
+                You can then add more rows for each unique level of characters
+                that comprise the party.
                 <br></br>
-                We have supplied multiple rows in order to allow for a variety
-                of possible party level compositions. All of the XP Threshold
-                totals by party level will be combined and shown in the Total XP
-                Threshold field at the bottom.
+                For example, we will take a party of five characters, three of
+                which are level 8, and two of which are level 9. There are two
+                different levels represented here so you would need two rows.
+                One row would have the character level field set to 8, and the
+                number of characters field set to 3. The second row would have
+                the character level field set to 9, and the number of characters
+                field set to 2. Once these fields have been input, you will see
+                that the difficulty level fields below will auto-populate with
+                the total XP thresholds for the entirety of the party.
               </p>
               <div>
                 <button
