@@ -1,8 +1,5 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
-import {
-  abilityModifierCalculation,
-  challengeProficiencyBonus,
-} from "../../utils/DnDMath";
+import { abilityModifierCalculation, challengeProficiencyBonus } from "../../";
 
 const BuilderContext = createContext({
   // name: "",

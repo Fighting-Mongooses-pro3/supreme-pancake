@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Page, Container, Header } from "../components";
-import { encounterXpTable } from "../components/utils/DnDMath";
+import { encounterXpTable } from "../components/utils/customHooks/DnDMath";
 
 const Encounters = () => {
   const [mounted, setMounted] = useState(false);
