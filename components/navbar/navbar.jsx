@@ -19,7 +19,7 @@ export const Navbar = (currentPage) => {
 
   return (
     <>
-      <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-full overflow-hidden h-16 w-16 drop-shadow-sm animate-waving-hand">
+      <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-full overflow-hidden h-16 w-16 drop-shadow-sm">
         <Link href="/">
           <a>
             <Logo customCss="" />
