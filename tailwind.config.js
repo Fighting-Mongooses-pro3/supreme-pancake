@@ -12,6 +12,9 @@ module.exports = {
         "spin-fast-once": "spin 0.3s linear",
         "waving-hand": "wave 7s linear infinite",
       },
+      backgroundImage: {
+        papyr: "url('/public/images/papyr.jpg')",
+      },
       keyframes: {
         wiggle: {
           "0%, 100%": { transform: "rotate(-3deg)" },
@@ -33,7 +36,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-],
+  plugins: [require("tailwindcss-animate")],
 };
