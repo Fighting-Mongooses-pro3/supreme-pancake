@@ -50,8 +50,24 @@ export const MonsterXP = () => {
         and compare this value to the difficulty thresholds shown in the
         left-hand column. From there you can decide whether to add or subtract
         creatures from the encounter to get closer to your wanted difficulty
-        level.
+        level, or you can utilize some of our other tips below to customize the
+        creatures and other resources to your needs.
       </p>
+      <br></br>
+      <h2>Tips For Altering The Difficulty Of Your Encounter</h2>
+      <p>
+        If you would like to still make an encounter more or less difficult for
+        your players but don&apos;t want to alter the amount of creatures
+        present, try one of these methods instead:
+      </p>
+      <ul>
+        <li>Alter the HP of some or all of the creatures</li>
+        <li>Alter the AC of some or all of the creatures</li>
+        <li>Give multi-attack to any units with only one attack</li>
+        <li>Add to or take away from damage resistances/immunities</li>
+        <li></li>
+      </ul>
+
       <div>
         <button
           onClick={() => {
@@ -80,9 +96,7 @@ export const MonsterXP = () => {
                 onChange={(e) => updateMonRating(e.currentTarget.value, i)}
               ></input>
 
-              <label htmlFor={"character-input-" + i}>
-                Number of this Monster:
-              </label>
+              <label htmlFor={"character-input-" + i}>Monster Quantity:</label>
               <input
                 id={"character-input-" + i}
                 value={xp.numMons}
