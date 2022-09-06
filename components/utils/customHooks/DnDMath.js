@@ -1,6 +1,7 @@
 export const abilityModifierCalculation = (abilityScore) => {
   return Math.ceil((+abilityScore - 1) / 2 - 5);
 };
+
 export const challengeProficiencyBonus = (challengeRating) => {
   if (parseInt(challengeRating) === NaN) {
     return 2;

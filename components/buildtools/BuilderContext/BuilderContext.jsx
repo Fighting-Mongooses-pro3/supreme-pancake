@@ -31,12 +31,12 @@ const BuilderContext = createContext({
   // damage_resistances: "" (split on ', ')
   // damage_immunities: "" (split on ', ')
   // condition_immunities: "" (split on ', ')
-  //
-  // Not implemented in the builder stat block
   // actions: [{}]
   // reactions: [{}]
   // legendary_actions: [{}]
   // special_abilities: [{}]
+  //
+  // Not implemented in the builder stat block
   // spell_list: []
   // perception: "",
   // legendary_desc: ""
@@ -472,7 +472,92 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
           ]),
 
         clearContext: () => {},
-        loadEntity: () => {},
+
+        loadEntity: (entity) => {
+          setName(entity.name || "");
+          setSize(entity.size || "");
+          setType(entity.type || "");
+          setAlignment(entity.alignment || "");
+          setArmorClass(entity.armor_class || 0);
+          setArmorDescription(entity.armor_description || "");
+          setHitPoints(entity.hit_points || 0);
+          setHitDice(entity.hit_dice || "");
+          setSpeed(entity.speed || { walk: 0, swim: 0, fly: 0 });
+          setStrength(entity.strength || 0);
+          setDexterity(entity.dexterity || 0);
+          setConstitution(entity.constitution || 0);
+          setIntelligence(entity.intelligence || 0);
+          setWisdom(entity.wisdom || 0);
+          setCharisma(entity.charisma || 0);
+          setChallengeRating(entity.challenge_rating || "");
+          setStrengthSave(entity.strength_save || 0);
+          setDexteritySave(entity.dexterity_save || 0);
+          setConstitutionSave(entity.constitution_save || 0);
+          setIntelligenceSave(entity.intelligence_save || 0);
+          setWisdomSave(entity.wisdom_save || 0);
+          setCharismaSave(entity.charisma_save || 0);
+          setStrengthProficiency(entity.strength_save ? true : false);
+          setDexterityProficiency(entity.dexterity_save ? true : false);
+          setConstitutionProficiency(entity.constitution_save ? true : false);
+          setIntelligenceProficiency(entity.intelligence_save ? true : false);
+          setWisdomProficiency(entity.wisdom_save ? true : false);
+          setCharismaProficiency(entity.charisma_save ? true : false);
+          setSkills({ ...existingEntity.skills } || {});
+          setSenses(entity.senses?.split(", ").slice(0, -1) || []);
+          setLanguages(entity.languages?.split(", ") || []);
+          setDamageVulnerabilities(entity.damage_vulnerabilities || "");
+          setDamageResistances(entity.damage_resistances || "");
+          setDamageImmunities(entity.damage_immunities || "");
+          setConditionsImmunities(
+            entity.condition_immunities
+              ?.split(", ")
+              .reduce((obj, con_immunity) => (obj[con_immunity] = true), {}) ||
+              {}
+          );
+          setActions([...(entity.actions ?? [])]);
+          setReactions([...(entity.reactions ?? [])]);
+          setLegendaryActions([...(entity.legendary_actions ?? [])]);
+          setSpecialAbilities([...(entity.special_abilities ?? [])]);
+        },
+
+        entityObject: () => {
+          const entity = {
+            name,
+            size,
+            type,
+            alignment,
+            armor_class: armorClass,
+            armor_description: armorDescription,
+            hit_points: hitPoints,
+            hit_dice: hitDice,
+            speed,
+            strength,
+            dexterity,
+            constitution,
+            intelligence,
+            wisdom,
+            charisma,
+            challenge_rating: challengeRating,
+            strength_save: strengthSave,
+            dexterity_save: dexteritySave,
+            constitution_save: constitutionSave,
+            intelligence_save: intelligenceSave,
+            wisdom_save: wisdomSave,
+            charisma_save: charismaSave,
+            skills,
+            senses: senses.join(", ") + "passive Perception " + -9999,
+            languages,
+            damage_vulnerabilities: damageVulnerabilities,
+            damage_resistances: damageResistances,
+            damage_immunities: damageImmunities,
+            condition_immunities: {},
+            actions,
+            reactions,
+            legendary_actions: legendaryActions,
+            special_abilities: specialAbilities,
+          };
+          return entity;
+        },
       }}
     >
       {children}

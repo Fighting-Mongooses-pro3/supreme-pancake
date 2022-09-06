@@ -22,7 +22,6 @@ export const BuilderSelect = (props) => {
         <option value="" selected>
           {promptText}
         </option>
-        {console.log("itemslist", itemsList)}
         {itemsList.map((item) => (
           <option key={"select-" + item} value={item}>
             {displayFunction(item)}
