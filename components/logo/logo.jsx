@@ -1,10 +1,15 @@
-import React from 'react'
-import { logo } from '../../public/images/houseruled-final.png'
+import Image from "next/image";
+import React from "react";
 
-export default function logo() {
+export default function Logo() {
   return (
-    <div >
-    <img src={logo} alt='logo' />
-  </div>
-  )
+    <div className={`$customCss`}>
+      <Image
+        src="/images/houseruled-final.png"
+        alt="logo"
+        layout="fill"
+        priority
+      />
+    </div>
+  );
 }

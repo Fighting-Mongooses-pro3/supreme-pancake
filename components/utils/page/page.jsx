@@ -20,7 +20,7 @@ export const Page = (props, { children }) => {
       </Head>
 
       <main>
-        <nav className="fixed top-0 right-0 left-0 h-16 inline-flex drop-shadow-lg items-center justify-between bg-transparent ae-nav z-50">
+        <nav className="fixed top-0 right-0 left-0 h-20 inline-flex drop-shadow-lg items-center justify-between bg-white ae-nav z-50">
           <div className="hidden md:inline-flex w-full items-center justify-between">
             <Navbar currentPage={`${pageTitle}`} />
           </div>
@@ -32,7 +32,7 @@ export const Page = (props, { children }) => {
         {props.children}
           </div>
       </main>
-      <Footer />
+      <Footer footerCss={`${props.footerCss}`} />
     </div>
   );
 };

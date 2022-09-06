@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { abilityModifierCalculation } from "../../../utils/DnDMath";
+import { abilityModifierCalculation } from "../../../";
 import {
   useBuilderContext,
   BuilderDerivedValueInput,

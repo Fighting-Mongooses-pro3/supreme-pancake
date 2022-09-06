@@ -1,17 +1,17 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   abilityModifierCalculation,
   challengeProficiencyBonus,
   challengeRatingXpTable,
   skillModifierCalculation,
-} from "../../../utils/DnDMath";
+  capitalizeString,
+} from "../../../";
 import {
   BuilderDerivedValueInput,
   useBuilderContext,
-  capitalizeString,
   BuilderInput,
 } from "../../";
+import { BuilderSelect } from "../../BuilderComponents/BuilderSelect/BuilderSelect";
 
 // const
 
@@ -29,18 +29,34 @@ export const BuilderEntityAbilities = () => {
     intelligenceSave,
     wisdomSave,
     charismaSave,
+
     perception,
+
     senses,
     updateSense,
     removeSense,
+
     languages,
     updateLanguage,
     removeLanguage,
+
     challengeRating,
     updateChallengeRating,
+
     skills,
     updateSkill,
     removeSkill,
+
+    damageVulnerabilities,
+    updateDamageVulnerabilities,
+    damageResistances,
+    updateDamageResistances,
+    damageImmunities,
+    updateDamageImmunities,
+
+    conditionImmunities,
+    addConditionImmunity,
+    removeConditionImmunity,
   } = useBuilderContext();
 
   const savingThrows = [
@@ -73,7 +89,23 @@ export const BuilderEntityAbilities = () => {
     survival: wisdom,
   };
 
-  const [selectedSkill, setSelectedSkill] = useState([""]);
+  const conditionsList = [
+    "blinded",
+    "charmed",
+    "deafened",
+    "frightened",
+    "grappled",
+    "incapacitated",
+    "invisible",
+    "paralyzed",
+    "petrified",
+    "poisoned",
+    "prone",
+    "restrained",
+    "stunned",
+    "unconscious",
+    "exhaustion",
+  ];
 
   return (
     <div>
@@ -106,37 +138,28 @@ export const BuilderEntityAbilities = () => {
       {/* Skills Block */}
       <div>
         <span>Skills</span>
-        <div>
-          <select onChange={(e) => setSelectedSkill(e.target.value)}>
-            <option value="" selected>
-              Select a skill
-            </option>
-            {Object.entries(skillsList)
-              .filter(([k, v]) => !skills.hasOwnProperty(k))
-              .map(([k, v]) => (
-                <option key={"skill-select-" + k} value={k}>
-                  {k
-                    .split("_")
-                    .map((str) => capitalizeString(str))
-                    .join(" ")}
-                </option>
-              ))}
-          </select>
-          <button
-            onClick={() => {
-              if (selectedSkill === "") return;
-              updateSkill({
-                [selectedSkill]: skillModifierCalculation(
-                  challengeRating,
-                  skillsList[selectedSkill]
-                ),
-              });
-              setSelectedSkill("");
-            }}
-          >
-            Add Skill
-          </button>
-        </div>
+        <BuilderSelect
+          promptText="Select a skill"
+          itemsList={Object.keys(skillsList).filter(
+            (k) => !skills.hasOwnProperty(k)
+          )}
+          displayFunction={(skill) =>
+            skill
+              .split("_")
+              .map((str) => capitalizeString(str))
+              .join(" ")
+          }
+          addButtonText="Add skill"
+          onButtonClick={(skill) => {
+            updateSkill({
+              [skill]: skillModifierCalculation(
+                challengeRating,
+                skillsList[skill]
+              ),
+            });
+          }}
+        />
+
         {Object.entries(skills).map(([k, v]) => (
           <div key={k}>
             <span>
@@ -158,6 +181,52 @@ export const BuilderEntityAbilities = () => {
             </button>
           </div>
         ))}
+      </div>
+
+      {/* Resistances and Immunities */}
+      <BuilderInput
+        label="Damage Vulnerabilities"
+        value={damageVulnerabilities}
+        onChange={(value) => updateDamageVulnerabilities(value)}
+      />
+      <BuilderInput
+        label="Damage Resistances"
+        value={damageResistances}
+        onChange={(value) => updateDamageResistances(value)}
+      />
+      <BuilderInput
+        label="Damage Immunities"
+        value={damageImmunities}
+        onChange={(value) => updateDamageImmunities(value)}
+      />
+
+      <div>
+        <BuilderSelect
+          promptText="Select a condition"
+          itemsList={conditionsList.filter(
+            (k) => !conditionImmunities.hasOwnProperty(k)
+          )}
+          displayFunction={(condition) => capitalizeString(condition)}
+          addButtonText="Add Condition"
+          onButtonClick={(condition) => {
+            addConditionImmunity(condition);
+          }}
+        />
+        <div>
+          {Object.keys(conditionImmunities).map((condition) => (
+            <div key={condition}>
+              <span>{capitalizeString(condition)}</span>
+              <button
+                onClick={(e) =>
+                  removeConditionImmunity(e.target.dataset.conditionName)
+                }
+                data-condition-name={condition}
+              >
+                x
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Senses Block */}
@@ -202,10 +271,10 @@ export const BuilderEntityAbilities = () => {
           <button onClick={() => updateLanguage("", languages.length)}>
             Add Language
           </button>
-          {languages.map((languages, index) => (
-            <div key={"languages-" + index} className="flex">
+          {languages.map((language, index) => (
+            <div key={"language-" + index} className="flex">
               <BuilderInput
-                value={languages}
+                value={language}
                 data-set-index={index}
                 onChange={(value) => {
                   updateLanguage(value, index);
