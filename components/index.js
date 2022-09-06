@@ -11,3 +11,7 @@ export { BuilderInput } from "./buildtools/BuilderComponents/BuilderInput/Builde
 export { ProjectCards } from "./dashboard/projectCards";
 export { Jumbotron } from "./jumbotron/Jumbotron";
 export { EntityBuilder } from "./buildtools/EntityBuilder/EntityBuilder";
+export { HeroL } from "./hero/heroL";
+export { HeroR } from "./hero/heroR";
+export { HeroC } from "./hero/heroC";
+
