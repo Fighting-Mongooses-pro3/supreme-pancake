@@ -11,6 +11,5 @@ export { BuilderEntityAttributes } from "./BuilderStatblock/BuilderEntityAttribu
 export { BuilderEntityAbilityScoreRow } from "./BuilderStatblock/BuilderEntityAbilityScoreRow/BuilderEntityAbilityScoreRow";
 export { BuilderEntityAbilities } from "./BuilderStatblock/BuilderEntityAbilities/BuilderEntityAbilities";
 export { BuilderEntitySkills } from "./BuilderStatblock/BuilderEntitySkills/BuilderEntitySkills";
+export { BuilderEntityActionsBlock } from "./BuilderStatblock/BuilderEntityActionsBlock/BuilderEntityActionsBlock";
 export { EntityBuilder } from "./EntityBuilder/EntityBuilder";
-export { MonsterBuilder } from "./MonsterBuilder/MonsterBuilder";
-export { MonsterForm } from "./MonsterBuilder/MonsterForm/MonsterForm";
