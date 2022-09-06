@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export const MonsterXP = () => {
+export const MonsterXp = () => {
   const [mounted, setMounted] = useState(false);
   const [monXp, setMonXp] = useState([]);
 

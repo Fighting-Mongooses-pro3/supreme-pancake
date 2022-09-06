@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Page, Container, Header } from "../components";
+import { Page, Container, MonsterXp } from "../components";
 import { encounterXpTable } from "../components/utils/customHooks/DnDMath";
 
 const Encounters = () => {
@@ -64,10 +64,9 @@ const Encounters = () => {
         game! Happy Adventuring!
       </p>
       <Container>
-        <Header title="Custom Encounter Balancer"></Header>
         {mounted ? (
-          <div>
-            <div>
+          <div className="flex">
+            <div className="">
               <p>
                 Below you will find two buttons that can add or remove rows to
                 this piece of the Encounter Balancer. Each row will have two
@@ -156,11 +155,10 @@ const Encounters = () => {
               </div>
             </div>
             <div>
-              <p></p>
+              <MonsterXp />
             </div>
           </div>
-        ) : // <MonsterXP></MonsterXP>
-        null}
+        ) : null}
       </Container>
     </Page>
   );
