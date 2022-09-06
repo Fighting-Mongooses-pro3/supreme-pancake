@@ -9,12 +9,12 @@ const render = () => {
         <div className="w-8/12">
           <TextEditor
             appendFunction={(story) => {
-              let textSections = [];
+              let textSections = {};
               const storedValue = localStorage.getItem("texts");
               if (storedValue !== null) {
                 textSections = JSON.parse(storedValue);
               }
-              textSections.push(story);
+              textSections[story.id] = story;
               localStorage.setItem("texts", JSON.stringify(textSections));
             }}
           />

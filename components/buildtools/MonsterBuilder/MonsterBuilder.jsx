@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Page } from "../components";
 import { EntityBuilder } from "../components/buildtools/EntityBuilder/EntityBuilder";
 
-const MonsterBuilder = (props) => {
+export const MonsterBuilder = (props) => {
   const { monsterUrl } = props;
   const [monsters, setMonsters] = useState([]);
   useEffect(() => {
@@ -44,15 +43,3 @@ const MonsterBuilder = (props) => {
     </div>
   );
 };
-
-const builder = () => {
-  return (
-    <Page currentPage="Builder Test">
-      <div className="w-screen h-screen ae-paper bg-center bg-no-repeat bg-cover p-56">
-        <MonsterBuilder monsterUrl="https://api.open5e.com/monsters/?document__slug=wotc-srd&format=json" />
-      </div>
-    </Page>
-  );
-};
-
-export default builder;
