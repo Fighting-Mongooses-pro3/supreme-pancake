@@ -32,7 +32,7 @@ export const Page = (props, { children }) => {
         {props.children}
           </div>
       </main>
-      <Footer />
+      <Footer footerCss={`${props.footerCss}`} />
     </div>
   );
 };
