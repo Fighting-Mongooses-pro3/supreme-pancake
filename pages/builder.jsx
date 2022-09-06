@@ -1,7 +1,7 @@
 import React from "react";
 import { Page, Statblock, EntityBuilder } from "../components";
 
-const builder = () => {
+const Builder = () => {
   return (
     <Page currentPage="Builder Test">
       <div className="w-screen h-screen ae-paper bg-center bg-no-repeat bg-cover p-56">
@@ -27,4 +27,4 @@ const builder = () => {
   );
 };
 
-export default builder;
+export default Builder;

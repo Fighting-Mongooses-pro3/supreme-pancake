@@ -4,11 +4,11 @@ import {
   challengeProficiencyBonus,
   challengeRatingXpTable,
   skillModifierCalculation,
-} from "../../../utils/DnDMath";
+  capitalizeString,
+} from "../../../";
 import {
   BuilderDerivedValueInput,
   useBuilderContext,
-  capitalizeString,
   BuilderInput,
 } from "../../";
 

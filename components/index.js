@@ -15,3 +15,11 @@ export { HeroL } from "./hero/heroL";
 export { HeroR } from "./hero/heroR";
 export { HeroC } from "./hero/heroC";
 
+export {
+  abilityModifierCalculation,
+  challengeProficiencyBonus,
+  skillModifierCalculation,
+  challengeRatingXpTable,
+} from "./utils/customHooks/DnDMath";
+
+export { capitalizeString } from "./utils/customHooks/Strings";
