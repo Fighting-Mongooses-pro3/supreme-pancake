@@ -11,18 +11,6 @@ const Encounters = () => {
     setMounted(true);
   }, []);
 
-  const updateThresholdXp = (value, index) => {
-    setXpThresholds((oldThresholds) =>
-      oldThresholds.map((t, i) =>
-        index === i
-          ? {
-              level: t.level,
-              numChars: t.numChars,
-            }
-          : t
-      )
-    );
-  };
   const updateNumChars = (value, index) => {
     setXpThresholds((oldThresholds) =>
       oldThresholds.map((t, i) =>
@@ -47,7 +35,6 @@ const Encounters = () => {
       )
     );
   };
-
   const calculateXpTotal = (thresholds, key) => {
     return thresholds.reduce(
       (acc, threshold) =>
@@ -57,14 +44,6 @@ const Encounters = () => {
             encounterXpTable[threshold.level - 1][key] * threshold.numChars,
       0
     );
-    // const totals = { easy: 0, medium: 0, hard: 0, deadly: 0 };
-    // xpThresholds.reduce((acc, threshold) => {
-    //   acc.keys().forEach((key) => {
-    //     acc.key +=
-    //       encounterXpTable[threshold.level - 1].key * threshold.numChars;
-    //   });
-    //   return acc;
-    // }, totals);
   };
 
   return (
@@ -94,156 +73,6 @@ const Encounters = () => {
                 combined to figure out the total XP Threshold number for the
                 entirety of the party.
               </p>
-              <h2>XP Thresholds Table</h2>
-              <table>
-                <tr>
-                  <th>Character Level</th>
-                  <th>Easy</th>
-                  <th>Medium</th>
-                  <th>Hard</th>
-                  <th>Deadly</th>
-                </tr>
-                <tr>
-                  <td>1st</td>
-                  <td>25</td>
-                  <td>50</td>
-                  <td>75</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>2nd</td>
-                  <td>50</td>
-                  <td>100</td>
-                  <td>150</td>
-                  <td>200</td>
-                </tr>
-                <tr>
-                  <td>3rd</td>
-                  <td>75</td>
-                  <td>150</td>
-                  <td>225</td>
-                  <td>400</td>
-                </tr>
-                <tr>
-                  <td>4th</td>
-                  <td>125</td>
-                  <td>250</td>
-                  <td>375</td>
-                  <td>500</td>
-                </tr>
-                <tr>
-                  <td>5th</td>
-                  <td>250</td>
-                  <td>500</td>
-                  <td>750</td>
-                  <td>1100</td>
-                </tr>
-                <tr>
-                  <td>6th</td>
-                  <td>300</td>
-                  <td>600</td>
-                  <td>900</td>
-                  <td>1400</td>
-                </tr>
-                <tr>
-                  <td>7th</td>
-                  <td>25</td>
-                  <td>50</td>
-                  <td>75</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>8th</td>
-                  <td>450</td>
-                  <td>900</td>
-                  <td>1400</td>
-                  <td>2100</td>
-                </tr>
-                <tr>
-                  <td>9th</td>
-                  <td>550</td>
-                  <td>1100</td>
-                  <td>1600</td>
-                  <td>2400</td>
-                </tr>
-                <tr>
-                  <td>10th</td>
-                  <td>600</td>
-                  <td>1200</td>
-                  <td>1900</td>
-                  <td>2800</td>
-                </tr>
-                <tr>
-                  <td>11th</td>
-                  <td>800</td>
-                  <td>1600</td>
-                  <td>2400</td>
-                  <td>3600</td>
-                </tr>
-                <tr>
-                  <td>12th</td>
-                  <td>1000</td>
-                  <td>2000</td>
-                  <td>3000</td>
-                  <td>4500</td>
-                </tr>
-                <tr>
-                  <td>13th</td>
-                  <td>1100</td>
-                  <td>2200</td>
-                  <td>3400</td>
-                  <td>5100</td>
-                </tr>
-                <tr>
-                  <td>14th</td>
-                  <td>1250</td>
-                  <td>2500</td>
-                  <td>3800</td>
-                  <td>5700</td>
-                </tr>
-                <tr>
-                  <td>15th</td>
-                  <td>1400</td>
-                  <td>2800</td>
-                  <td>4300</td>
-                  <td>6400</td>
-                </tr>
-                <tr>
-                  <td>16th</td>
-                  <td>1600</td>
-                  <td>3200</td>
-                  <td>4800</td>
-                  <td>7200</td>
-                </tr>
-                <tr>
-                  <td>17th</td>
-                  <td>2000</td>
-                  <td>3900</td>
-                  <td>5900</td>
-                  <td>8800</td>
-                </tr>
-                <tr>
-                  <td>18th</td>
-                  <td>2100</td>
-                  <td>4200</td>
-                  <td>6300</td>
-                  <td>9500</td>
-                </tr>
-                <tr>
-                  <td>19th</td>
-                  <td>2400</td>
-                  <td>4900</td>
-                  <td>7300</td>
-                  <td>10900</td>
-                </tr>
-                <tr>
-                  <td>20th</td>
-                  <td>2800</td>
-                  <td>5700</td>
-                  <td>8500</td>
-                  <td>12700</td>
-                </tr>
-              </table>
               <p>
                 Below you&apos;ll find a field to input an XP Threshold pulled
                 from the table above, and a second field to input the number of
