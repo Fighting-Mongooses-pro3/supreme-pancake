@@ -3,12 +3,12 @@ import React from "react";
 
 export default function Logo() {
   return (
-    <div className="ml-3 mt-5">
+    <div className={`$customCss`}>
       <Image
         src="/images/houseruled-final.png"
         alt="logo"
-        height="64"
-        width="64"
+        layout="fill"
+        priority
       />
     </div>
   );

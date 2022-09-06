@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Page, Container, HeroL, HeroR } from "../components";
+import { Page, Container, HeroL, HeroR, HeroC } from "../components";
 import { BsChevronDoubleDown, BsChevronDoubleUp } from "react-icons/bs";
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
   const lastBg = useRef();
   const firstBg = useRef();
   const handleScroll = () => setOffsetY(window.pageYOffset);
+
   const scrollDown = () =>
     lastBg.current.scrollIntoView({
       behavior: "smooth",
@@ -17,12 +18,12 @@ export default function Home() {
       inline: "end",
     });
 
-  const scrollUp = () =>
-    firstBg.current.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "start",
-    });
+  // const scrollUp = () =>
+  //   firstBg.current.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "nearest",
+  //     inline: "start",
+  //   });
 
   useEffect(() => {
     setLoading(false);
@@ -56,27 +57,38 @@ export default function Home() {
           Scroll
         </button>
         <HeroL
-          src="/landing-images/book-gaa6361739_1920.jpg"
+          src="/landing-images/4.jpg"
           alt="Stuff"
-          height="382"
-          width="400"
-          customCss=""
+          layout="fill"
+          customCss="p-3 w-11/12 ml-10 ae-min-h"
           title="Do qui enim magna amet voluptate consectetur dolor amet minim officia sunt laboris minim eu."
+          body="Dolor occaecat ea tempor aliqua enim sint laborum deserunt voluptate Lorem Lorem exercitation. Irure anim ullamco mollit sunt duis. Sunt sunt esse dolore adipisicing reprehenderit magna enim nulla do sunt aute. Eiusmod consequat ut commodo do. Nostrud qui ullamco pariatur labore reprehenderit proident officia deserunt. Velit reprehenderit quis id sint. Sit esse esse adipisicing Lorem exercitation aliquip proident voluptate. Tempor esse reprehenderit ullamco ipsum aliquip elit consectetur excepteur magna sit consectetur in non. Aliquip Lorem fugiat in elit ullamco id reprehenderit incididunt pariatur eiusmod minim. Fugiat commodo fugiat ex exercitation pariatur quis esse voluptate reprehenderit."
+        />
+        <spacer className="h-96 backdrop-blur-sm w-full">
+          <div
+            className={`border border-black min-h-screen w-full ae-land-bg-2`}
+            style={{ transform: `translateY(${offsetY * 0.3}px)` }}
+            ref={lastBg}
+          />
+        </spacer>
+        <HeroR
+          src="/landing-images/4.jpg"
+          alt="Stuff"
+          layout="fill"
+          customCss="p-3 w-11/12 ml-10 ae-min-h z-10"
+          title="Do qui enim magna amet voluptate consectetur dolor amet minim officia sunt laboris minim eu."
+          body="Dolor occaecat ea tempor aliqua enim sint laborum deserunt voluptate Lorem Lorem exercitation. Irure anim ullamco mollit sunt duis. Sunt sunt esse dolore adipisicing reprehenderit magna enim nulla do sunt aute. Eiusmod consequat ut commodo do. Nostrud qui ullamco pariatur labore reprehenderit proident officia deserunt. Velit reprehenderit quis id sint. Sit esse esse adipisicing Lorem exercitation aliquip proident voluptate. Tempor esse reprehenderit ullamco ipsum aliquip elit consectetur excepteur magna sit consectetur in non. Aliquip Lorem fugiat in elit ullamco id reprehenderit incididunt pariatur eiusmod minim. Fugiat commodo fugiat ex exercitation pariatur quis esse voluptate reprehenderit."
         />
         <spacer className="h-96 backdrop-blur-sm w-full"></spacer>
-        <HeroR
-          src="/landing-images/book-gaa6361739_1920.jpg"
+        <HeroC
+          src="/landing-images/4.jpg"
           alt="Stuff"
-          height="382"
-          width="400"
-          customCss="h-screen -z-20"
+          layout="fill"
+          customCss="p-3 w-10/12 ml-10 ae-min-h z-10"
           title="Do qui enim magna amet voluptate consectetur dolor amet minim officia sunt laboris minim eu."
+          body="Dolor occaecat ea tempor aliqua enim sint laborum deserunt voluptate Lorem Lorem exercitation. Irure anim ullamco mollit sunt duis. Sunt sunt esse dolore adipisicing reprehenderit magna enim nulla do sunt aute. Eiusmod consequat ut commodo do. Nostrud qui ullamco pariatur labore reprehenderit proident officia deserunt. Velit reprehenderit quis id sint. Sit esse esse adipisicing Lorem exercitation aliquip proident voluptate. Tempor esse reprehenderit ullamco ipsum aliquip elit consectetur excepteur magna sit consectetur in non. Aliquip Lorem fugiat in elit ullamco id reprehenderit incididunt pariatur eiusmod minim. Fugiat commodo fugiat ex exercitation pariatur quis esse voluptate reprehenderit."
         />
-        <div
-          className={`border border-black min-h-screen w-full ae-land-bg-2`}
-          style={{ transform: `translateY(${offsetY * 0.3}px)` }}
-          ref={lastBg}
-        />
+
         {/* <button
           className="block text-white -z-10 justify-center animate-bounce text-center text-xl cursor-default"
           onClick={scrollUp}

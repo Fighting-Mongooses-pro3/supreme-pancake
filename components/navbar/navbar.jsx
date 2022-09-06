@@ -19,11 +19,13 @@ export const Navbar = (currentPage) => {
 
   return (
     <>
-      <Link href="/">
-        <a className="transition-transform duration-100 hover:translate-y-1 bg-transparent hover:scale-105">
-          <Logo />
-        </a>
-      </Link>
+      <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-full overflow-hidden h-16 w-16 drop-shadow-sm">
+        <Link href="/">
+          <a>
+            <Logo customCss="" />
+          </a>
+        </Link>
+      </logo>
       <ul className="nav-menu inline-flex mr-4 flex-wrap ae-nav-links text-lg lg:text-xl 2xl:text-2xl ae-text-outline-small-dark">
         {routes.map((item, index) => {
           return (
