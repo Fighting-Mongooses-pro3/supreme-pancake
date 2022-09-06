@@ -59,7 +59,7 @@ export const MonsterXP = () => {
             setMonXp([...monXp, { rating: 0, numMons: 0 }]);
           }}
         >
-          Add New Character Level
+          Add New Monster
         </button>
         <button
           onClick={() => {
@@ -67,23 +67,21 @@ export const MonsterXP = () => {
             setMonXp([...monXp.slice(0, -1)]);
           }}
         >
-          Remove Character Level
+          Remove Monster
         </button>
         <div>
           {monXp.map((xp, i) => (
             <div key={"xp" + i}>
-              <label htmlFor={"character-level-input-" + i}>
-                Character Level:
-              </label>
+              <label htmlFor={"character-level-input-" + i}>Monster:</label>
               <input
                 id={"character-level-input-" + i}
-                value={xp.level}
+                value={xp.rating}
                 type="number"
                 onChange={(e) => updateMonRating(e.currentTarget.value, i)}
               ></input>
 
               <label htmlFor={"character-input-" + i}>
-                Number of Characters at associated level:
+                Number of this Monster:
               </label>
               <input
                 id={"character-input-" + i}
@@ -95,8 +93,8 @@ export const MonsterXP = () => {
           ))}
           <div>
             <div>
-              <span>Total</span>
-              <span>{calculateXpTotal(monXp, "easy")}</span>
+              <span>Total: </span>
+              <span>{calculateXpTotal(monXp, {})}</span>
             </div>
           </div>
         </div>
