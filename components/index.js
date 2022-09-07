@@ -3,17 +3,25 @@ export { Page } from "./utils/page/page";
 export { Footer } from "./footer/footer";
 export { Navbar } from "./navbar/navbar";
 export { Container } from "./container/container";
-export { Header } from "./page/header";
 export { UpperCase } from "./utils/customHooks/upperCase";
-export { Body } from "./page/body";
-export { Aside } from "./page/aside";
-export { Line } from './utils/reuse/line'
-export { BuildTools } from "./buildtools/BuildTools";
-export { DisplayBuild } from "./displaybuild/DisplayBuild";
-export { Statblock } from './statblock/Statblock'
-// three column containers for build page
-export { Sidebar} from "./sidebar/Sidebar"
-export { Generator } from "./generator/Generator"
-export { Page__editor } from "./page__editor/Page__editor"
-//landing page
-export { Login } from "./login/Login"
+export { Line } from "./global/line";
+export { Statblock } from "./statblock/Statblock";
+export { tools__sidebar } from "./build__page/tools_sidebar/Tools__sidebar";
+export { BuilderInput } from "./buildtools/BuilderComponents/BuilderInput/BuilderInput";
+export { ProjectCards } from "./dashboard/projectCards";
+export { Jumbotron } from "./jumbotron/Jumbotron";
+export { EntityBuilder } from "./buildtools/EntityBuilder/EntityBuilder";
+export { HeroL } from "./hero/heroL";
+export { HeroR } from "./hero/heroR";
+export { HeroC } from "./hero/heroC";
+export { Layoutblock } from "./layoutblock/Layoutblock";
+export { Textblock } from "./textblock/Textblock";
+
+export {
+  abilityModifierCalculation,
+  challengeProficiencyBonus,
+  skillModifierCalculation,
+  challengeRatingXpTable,
+} from "./utils/customHooks/DnDMath";
+
+export { capitalizeString } from "./utils/customHooks/Strings";
