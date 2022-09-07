@@ -1,9 +1,7 @@
-export { Card } from "./card/Card";
 export { Page } from "./utils/page/page";
 export { Footer } from "./footer/footer";
 export { Navbar } from "./navbar/navbar";
 export { Container } from "./container/container";
-export { UpperCase } from "./utils/customHooks/upperCase";
 export { Line } from "./global/line";
 export { Statblock } from "./statblock/Statblock";
 export { tools__sidebar } from "./build__page/tools_sidebar/Tools__sidebar";

@@ -45,7 +45,7 @@ export default function Home() {
     <>
       <Page currentPage="Home" footerCss="hidden">
         <div
-          className={`border border-black min-h-screen w-full ae-land-bg-1`}
+          className={`min-h-screen w-full ae-land-bg-1`}
           style={{ transform: `translateY(${offsetY * 0.8}px)` }}
           ref={firstBg}
         />
@@ -56,7 +56,7 @@ export default function Home() {
           <BsChevronDoubleDown className="w-14 h-10 text-center" />
           Scroll
         </button>
-        <div className="h-96 backdrop-blur-sm w-full">
+        <div className="backdrop-blur-sm w-full">
           <HeroL
             src="/landing-images/4.jpg"
             alt="Stuff"
@@ -67,7 +67,7 @@ export default function Home() {
           />
         </div>
         <div className="h-96 backdrop-blur-sm w-full" />
-        <div className="h-96 backdrop-blur-sm w-full">
+        <div className="backdrop-blur-sm w-full">
           <HeroR
             src="/landing-images/4.jpg"
             alt="Stuff"
@@ -78,7 +78,7 @@ export default function Home() {
           />
         </div>
         <div className="h-96 backdrop-blur-sm w-full" />
-        <div className="h-96 backdrop-blur-sm w-full">
+        <div className="backdrop-blur-sm w-full">
           <HeroC
             src="/landing-images/4.jpg"
             alt="Stuff"
@@ -89,8 +89,8 @@ export default function Home() {
           />
         </div>
         <div
-          className={`border border-black min-h-screen w-full ae-land-bg-2`}
-          style={{ transform: `translateY(${offsetY * 0.5}px)` }}
+          className={`min-h-screen w-screen ae-land-bg-2`}
+          style={{ transform: `translateY(${offsetY * 0.1}px)` }}
           ref={lastBg}
         />
 

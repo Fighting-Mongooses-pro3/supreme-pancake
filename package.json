@@ -24,6 +24,7 @@
     "html2canvas": "^1.4.1",
     "jquery": "^3.6.1",
     "jspdf": "^2.5.1",
+    "marx-css": "^4.0.1",
     "mongoose": "^6.5.2",
     "next": "12.2.4",
     "next-auth": "^4.10.3",
