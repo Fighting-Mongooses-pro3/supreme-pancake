@@ -56,7 +56,7 @@ export const MonsterXp = () => {
       </p>
       <br></br>
       <br></br>
-      <h2 className="text-center font-bold">
+      <h2 className="text-center font-bold underline">
         Tips For Altering The Difficulty Of Your Encounter
       </h2>
       <br></br>
@@ -67,8 +67,7 @@ export const MonsterXp = () => {
       </p>
       <br></br>
       <ul>
-        <li>- Alter the HP of some or all of the creatures</li>
-        <li>- Alter the AC of some or all of the creatures</li>
+        <li>- Alter the HP/AC of some or all of the creatures</li>
         <li>- Give multi-attack to any units with only one attack</li>
         <li>- Add to or take away from damage resistances/immunities</li>
         <li>- Add or subtract from the amount of damage dice per attack</li>
@@ -88,51 +87,63 @@ export const MonsterXp = () => {
       </ul>
       <br></br>
       <br></br>
+      <h2 className="text-center font-bold underline">Creature Rows</h2>
       <div>
         <button
-          className="border-solid border-4 border-black p-2 m-2"
+          className="border rounded-3xl border-black p-2 m-2 hover:bg-white bg-green-300"
           onClick={() => {
             // Add an empty object to the thresholds array
             setMonXp([...monXp, { rating: 0, numMons: 0 }]);
           }}
         >
-          Add New Monster
+          Add New Creature
         </button>
         <button
-          className="border-solid border-4 border-black p-2"
+          className="border rounded-3xl border-black p-2 hover:bg-white bg-red-400"
           onClick={() => {
             // Remove an object from the thresholds array
             setMonXp([...monXp.slice(0, -1)]);
           }}
         >
-          Remove Monster
+          Remove Creature
         </button>
         <br></br>
         <br></br>
         <div>
           {monXp.map((xpRow, index) => (
-            <div key={"xp" + index}>
-              <label htmlFor={"character-level-input-" + index}>Monster:</label>
-              <input
-                id={"character-level-input-" + index}
-                value={xpRow.rating}
-                type="number"
-                onChange={(e) => updateMonRating(e.currentTarget.value, index)}
-              ></input>
-
-              <label htmlFor={"character-input-" + index}>
-                Monster Quantity:
-              </label>
-              <input
-                id={"character-input-" + index}
-                value={xpRow.numMons}
-                type="number"
-                onChange={(e) => updateNumMons(e.currentTarget.value, index)}
-              ></input>
+            <div key={"xp" + index} className="flex">
+              <div>
+                <label htmlFor={"character-level-input-" + index}>
+                  Creature:
+                </label>
+                <input
+                  className="max-w-[55px]"
+                  id={"character-level-input-" + index}
+                  value={xpRow.rating}
+                  type="number"
+                  onChange={(e) =>
+                    updateMonRating(e.currentTarget.value, index)
+                  }
+                ></input>
+              </div>
+              <div>
+                <label htmlFor={"character-input-" + index}>
+                  Creature Quantity:
+                </label>
+                <input
+                  className="max-w-[55px]"
+                  id={"character-input-" + index}
+                  value={xpRow.numMons}
+                  type="number"
+                  onChange={(e) => updateNumMons(e.currentTarget.value, index)}
+                ></input>
+              </div>
             </div>
           ))}
+          <br></br>
+          <br></br>
           <div>
-            <div>
+            <div className="text-blue-700 text-3xl">
               <span>Total: </span>
               <span>{calculateXpTotal(monXp)}</span>
             </div>

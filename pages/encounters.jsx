@@ -80,8 +80,6 @@ const Encounters = () => {
                   characters that comprise the party.
                   <br></br>
                   <br></br>
-                  <br></br>
-                  <br></br>
                   For example, we will take a party of five characters, three of
                   which are level 8, and two of which are level 9. There are two
                   different levels represented here so you would need two rows.
@@ -95,11 +93,9 @@ const Encounters = () => {
                 </p>
                 <br></br>
                 <br></br>
-                <br></br>
-                <br></br>
                 <div className=" ">
                   <button
-                    className="border-solid border-4 border-black p-2 m-2"
+                    className="border rounded-3xl border-black p-2 m-2 hover:bg-white bg-green-300"
                     onClick={() => {
                       // Add an empty object to the thresholds array
                       setXpThresholds([
@@ -111,7 +107,7 @@ const Encounters = () => {
                     Add New Character Level
                   </button>
                   <button
-                    className="border-solid border-4 border-black p-2"
+                    className="border rounded-3xl border-black p-2 hover:bg-white bg-red-400"
                     onClick={() => {
                       // Remove an object from the thresholds array
                       setXpThresholds([...xpThresholds.slice(0, -1)]);
@@ -119,6 +115,7 @@ const Encounters = () => {
                   >
                     Remove Character Level
                   </button>
+                  <br></br>
                   <div>
                     {xpThresholds.map((threshold, i) => (
                       <div key={"threshold" + i} className="flex">
@@ -154,9 +151,8 @@ const Encounters = () => {
                     ))}
                     <br></br>
                     <br></br>
-                    <br></br>
-                    <div className="text-center">
-                      <div className="text-green-500">
+                    <div className="text-center text-3xl">
+                      <div className="text-green-600">
                         <span>Easy: </span>
                         <span>{calculateXpTotal(xpThresholds, "easy")}</span>
                       </div>
