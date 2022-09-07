@@ -12,6 +12,10 @@ export { EntityBuilder } from "./buildtools/EntityBuilder/EntityBuilder";
 export { HeroL } from "./hero/heroL";
 export { HeroR } from "./hero/heroR";
 export { HeroC } from "./hero/heroC";
+export { MonsterXp } from "./encounters/MonsterXp";
+export { Layoutblock } from "./layoutblock/Layoutblock";
+export { Textblock } from "./textblock/Textblock";
+export { TabsContainer } from "./tabscontainer/TabsContainer";
 
 export {
   abilityModifierCalculation,

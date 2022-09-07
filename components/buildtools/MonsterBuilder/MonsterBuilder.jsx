@@ -1,35 +1,44 @@
-import { MonsterForm } from "./MonsterForm/MonsterForm";
+import React, { useEffect, useState } from "react";
+import { EntityBuilder } from "../";
 
 export const MonsterBuilder = (props) => {
-  const { monsters, addMonster, editMonster } = useContext(BuildContext);
-
-  const saveMonster = (monster) => {};
+  const { monsterUrl } = props;
+  const [monsters, setMonsters] = useState([]);
+  useEffect(() => {
+    if (monsterUrl) {
+      fetch(monsterUrl)
+        .then((response) => response.json())
+        .then((json) => {
+          setMonsters(json.results);
+        });
+    }
+  }, [monsterUrl]);
 
   return (
     <div>
-      {/* <h1>MonsterBuilder</h1>
-      <ul>
-        <h2 className="underline">Current monsters</h2>
-        {monsters.map((monster) => (
-          <li key={monster.id}>
-            <p>Name is {monster.name}</p>
-            <MonsterForm
-              monster={monster}
-              onFormSubmit={(updatedMonster) =>
-                editMonster({ ...updatedMonster, id: monster.id })
-              }
-            />
-          </li>
-        ))}
-      </ul> */}
-
-      <h2 className="underline">Add new monster</h2>
-      <label htmlFor="monster-select">Choose a monster:</label>
-      <select name="monster-select" id="monster-select"></select>
-
-      <MonsterForm
-        onSave={(monster) => saveMonster(monster)}
-        onAdd={(monster) => addMonster(monster)}
+      <EntityBuilder
+        entityList={monsters}
+        defaultListText="Select a monster"
+        appendFunction={(entity) => {
+          let adventureMonsters = {};
+          const storedValue = localStorage.getItem("monsters");
+          if (storedValue !== null) {
+            adventureMonsters = JSON.parse(storedValue);
+          }
+          adventureMonsters[entity.id] = entity;
+          localStorage.setItem("monsters", JSON.stringify(adventureMonsters));
+        }}
+        saveFunction={(entity) => {
+          fetch(URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(entity),
+          })
+            .then((res) => res.json())
+            .then();
+        }}
       />
     </div>
   );

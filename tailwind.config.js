@@ -12,6 +12,9 @@ module.exports = {
         "spin-fast-once": "spin 0.3s linear",
         "waving-hand": "wave 7s linear infinite",
       },
+      backgroundImage: {
+        papyr: "url('/images/papyr.jpg')",
+      },
       keyframes: {
         wiggle: {
           "0%, 100%": { transform: "rotate(-3deg)" },
@@ -31,9 +34,12 @@ module.exports = {
       gridTemplateColumns: {
         16: "repeat(16, minmax(0, 1fr))",
       },
+      backgroundImage: {
+        parchment: 'url("/images/statblockparch.jpg")',
+        paper: 'url("/images/paper.jpg")',
+        papyr: 'url("/images/papyr.jpg")',
+      },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-],
+  plugins: [require("tailwindcss-animate")],
 };
