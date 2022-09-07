@@ -13,7 +13,7 @@ module.exports = {
         "waving-hand": "wave 7s linear infinite",
       },
       backgroundImage: {
-        papyr: "url('/public/images/papyr.jpg')",
+        papyr: "url('/images/papyr.jpg')",
       },
       keyframes: {
         wiggle: {

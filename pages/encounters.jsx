@@ -48,17 +48,20 @@ const Encounters = () => {
 
   return (
     <Page currentPage="Encounters" desc="Custom Encounter Balancer">
-      <div className="bg-contain bg-center bg-papyr mx-auto">
-        <p>
-          Welcome to the House Ruled Custom Encounter Balancer! Dungeon Masters
-          will be able to utilize this tool to calculate the XP thresholds of
-          Easy, Medium, Hard, and Deadly encounters for their party, and compare
-          that amount to the total XP of the creatures in your encounter to see
-          into what difficulty range that number falls. From here, Dungeon
-          Masters can then increase or decrease the difficulty by altering the
-          amount of creatures within the encounter, by changing which creatures
-          are involved, or by utilizing one of the tips we have given to amend
-          aspects of creatures or the environment.
+      <div className="bg-cover bg-center bg-papyr mx-auto">
+        <p className="container mx-auto bg-yellow-600 font-bold text-xl text-center border-solid border-4 border-black">
+          Welcome to the House Ruled Custom Encounter Balancer!
+          <br></br>
+          <br></br>
+          Dungeon Masters will be able to utilize this tool to calculate the XP
+          thresholds of Easy, Medium, Hard, and Deadly encounters for their
+          party, and compare that amount to the total XP of the creatures in
+          your encounter to see into what difficulty range that number falls.
+          From here, Dungeon Masters can then increase or decrease the
+          difficulty by altering the amount of creatures within the encounter,
+          by changing which creatures are involved, or by utilizing one of the
+          tips we have given to amend aspects of creatures or the environment.
+          <br></br>
           <br></br>
           Once a Dungeon Master has found the sweet spot for their desired
           difficulty level, they are ready to implement the encounter in their
@@ -66,15 +69,18 @@ const Encounters = () => {
         </p>
         <Container>
           {mounted ? (
-            <div className="flex">
-              <div className="">
-                <p>
+            <div className="flex ">
+              <div className="container gap-4 px-6 text-xl font-medium ">
+                <p className="text-center border-solid border-4 border-black">
                   Below you will find two buttons that can add or remove rows to
                   this piece of the Encounter Balancer. Each row will have two
                   input fields: one for the level of the characters in your
                   party, and another for how many characters are at that level
                   currently. You can then add more rows for each unique level of
                   characters that comprise the party.
+                  <br></br>
+                  <br></br>
+                  <br></br>
                   <br></br>
                   For example, we will take a party of five characters, three of
                   which are level 8, and two of which are level 9. There are two
@@ -87,8 +93,14 @@ const Encounters = () => {
                   auto-populate with the total XP thresholds for the entirety of
                   the party.
                 </p>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <div>
                   <button
+                    className="pr-8"
                     onClick={() => {
                       // Add an empty object to the thresholds array
                       setXpThresholds([
@@ -135,28 +147,37 @@ const Encounters = () => {
                         ></input>
                       </div>
                     ))}
-                    <div>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <div className="text-center">
                       <div>
-                        <span>Easy</span>
+                        <span>Easy: </span>
                         <span>{calculateXpTotal(xpThresholds, "easy")}</span>
                       </div>
+                      <br></br>
+                      <br></br>
                       <div>
-                        <span>Medium</span>
+                        <span>Medium: </span>
                         <span>{calculateXpTotal(xpThresholds, "medium")}</span>
                       </div>
+                      <br></br>
+                      <br></br>
                       <div>
-                        <span>Hard</span>
+                        <span>Hard: </span>
                         <span>{calculateXpTotal(xpThresholds, "hard")}</span>
                       </div>
+                      <br></br>
+                      <br></br>
                       <div>
-                        <span>Deadly</span>
+                        <span>Deadly: </span>
                         <span>{calculateXpTotal(xpThresholds, "deadly")}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="container gap-4 px-6 text-xl font-medium">
                 <MonsterXp />
               </div>
             </div>
