@@ -38,7 +38,7 @@ export const MonsterXp = () => {
       (acc, xp) =>
         xp.rating <= 0
           ? acc
-          : acc + encounterXpTable[xp.rating - 1][key] * xp.numMons,
+          : acc + challengeRatingXpTable[xp.rating - 1][key] * xp.numMons,
       0
     );
   };
@@ -89,7 +89,7 @@ export const MonsterXp = () => {
       <br></br>
       <div>
         <button
-          className="pr-8"
+          className="border-solid border-4 border-black p-2 m-2"
           onClick={() => {
             // Add an empty object to the thresholds array
             setMonXp([...monXp, { rating: 0, numMons: 0 }]);
@@ -98,6 +98,7 @@ export const MonsterXp = () => {
           Add New Monster
         </button>
         <button
+          className="border-solid border-4 border-black p-2"
           onClick={() => {
             // Remove an object from the thresholds array
             setMonXp([...monXp.slice(0, -1)]);

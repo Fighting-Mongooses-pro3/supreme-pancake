@@ -70,8 +70,8 @@ const Encounters = () => {
         <Container>
           {mounted ? (
             <div className="flex ">
-              <div className="container gap-4 px-6 text-xl font-medium ">
-                <p className="text-center border-solid border-4 border-black">
+              <div className="container gap-4 px-8 text-xl font-medium ">
+                <p className="text-center ">
                   Below you will find two buttons that can add or remove rows to
                   this piece of the Encounter Balancer. Each row will have two
                   input fields: one for the level of the characters in your
@@ -97,10 +97,9 @@ const Encounters = () => {
                 <br></br>
                 <br></br>
                 <br></br>
-                <br></br>
-                <div>
+                <div className=" ">
                   <button
-                    className="pr-8"
+                    className="border-solid border-4 border-black p-2 m-2"
                     onClick={() => {
                       // Add an empty object to the thresholds array
                       setXpThresholds([
@@ -112,6 +111,7 @@ const Encounters = () => {
                     Add New Character Level
                   </button>
                   <button
+                    className="border-solid border-4 border-black p-2"
                     onClick={() => {
                       // Remove an object from the thresholds array
                       setXpThresholds([...xpThresholds.slice(0, -1)]);
@@ -121,55 +121,60 @@ const Encounters = () => {
                   </button>
                   <div>
                     {xpThresholds.map((threshold, i) => (
-                      <div key={"threshold" + i}>
-                        <label htmlFor={"character-level-input-" + i}>
-                          Character Level:
-                        </label>
-                        <input
-                          id={"character-level-input-" + i}
-                          value={threshold.level}
-                          type="number"
-                          onChange={(e) =>
-                            updateThresholdLevel(e.currentTarget.value, i)
-                          }
-                        ></input>
-
-                        <label htmlFor={"character-input-" + i}>
-                          Number of Characters at associated level:
-                        </label>
-                        <input
-                          id={"character-input-" + i}
-                          value={threshold.numChars}
-                          type="number"
-                          onChange={(e) =>
-                            updateNumChars(e.currentTarget.value, i)
-                          }
-                        ></input>
+                      <div key={"threshold" + i} className="flex">
+                        <div>
+                          <label htmlFor={"character-level-input-" + i}>
+                            Character Level:
+                          </label>
+                          <input
+                            className="max-w-[55px]"
+                            id={"character-level-input-" + i}
+                            value={threshold.level}
+                            type="number"
+                            onChange={(e) =>
+                              updateThresholdLevel(e.currentTarget.value, i)
+                            }
+                          ></input>
+                        </div>
+                        <div>
+                          <label htmlFor={"character-input-" + i}>
+                            Number of Characters at associated level:
+                          </label>
+                          <input
+                            className="max-w-[55px]"
+                            id={"character-input-" + i}
+                            value={threshold.numChars}
+                            type="number"
+                            onChange={(e) =>
+                              updateNumChars(e.currentTarget.value, i)
+                            }
+                          ></input>
+                        </div>
                       </div>
                     ))}
                     <br></br>
                     <br></br>
                     <br></br>
                     <div className="text-center">
-                      <div>
+                      <div className="text-green-500">
                         <span>Easy: </span>
                         <span>{calculateXpTotal(xpThresholds, "easy")}</span>
                       </div>
                       <br></br>
                       <br></br>
-                      <div>
+                      <div className="text-yellow-600">
                         <span>Medium: </span>
                         <span>{calculateXpTotal(xpThresholds, "medium")}</span>
                       </div>
                       <br></br>
                       <br></br>
-                      <div>
+                      <div className="text-red-600">
                         <span>Hard: </span>
                         <span>{calculateXpTotal(xpThresholds, "hard")}</span>
                       </div>
                       <br></br>
                       <br></br>
-                      <div>
+                      <div className="text-black">
                         <span>Deadly: </span>
                         <span>{calculateXpTotal(xpThresholds, "deadly")}</span>
                       </div>
@@ -177,7 +182,7 @@ const Encounters = () => {
                   </div>
                 </div>
               </div>
-              <div className="container gap-4 px-6 text-xl font-medium">
+              <div className="container gap-4 px-8 text-xl font-medium">
                 <MonsterXp />
               </div>
             </div>
