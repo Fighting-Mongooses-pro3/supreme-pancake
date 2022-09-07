@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { challengeRatingXpTable } from "../utils/customHooks/DnDMath";
 
 export const MonsterXp = () => {
   const [mounted, setMounted] = useState(false);
@@ -17,7 +18,7 @@ export const MonsterXp = () => {
               rating: x.rating,
               numMons: value,
             }
-          : t
+          : x
       )
     );
   };
@@ -29,16 +30,16 @@ export const MonsterXp = () => {
               rating: value,
               numMons: x.numMons,
             }
-          : t
+          : x
       )
     );
   };
-  const calculateXpTotal = (allXp, key) => {
+  const calculateXpTotal = (allXp) => {
     return allXp.reduce(
-      (acc, xp) =>
-        xp.rating <= 0
+      (acc, xpRow) =>
+        xpRow.rating <= 0
           ? acc
-          : acc + challengeRatingXpTable[xp.rating - 1][key] * xp.numMons,
+          : acc + challengeRatingXpTable[xpRow.rating] * xpRow.numMons,
       0
     );
   };
@@ -109,29 +110,31 @@ export const MonsterXp = () => {
         <br></br>
         <br></br>
         <div>
-          {monXp.map((xp, i) => (
-            <div key={"xp" + i}>
-              <label htmlFor={"character-level-input-" + i}>Monster:</label>
+          {monXp.map((xpRow, index) => (
+            <div key={"xp" + index}>
+              <label htmlFor={"character-level-input-" + index}>Monster:</label>
               <input
-                id={"character-level-input-" + i}
-                value={xp.rating}
+                id={"character-level-input-" + index}
+                value={xpRow.rating}
                 type="number"
-                onChange={(e) => updateMonRating(e.currentTarget.value, i)}
+                onChange={(e) => updateMonRating(e.currentTarget.value, index)}
               ></input>
 
-              <label htmlFor={"character-input-" + i}>Monster Quantity:</label>
+              <label htmlFor={"character-input-" + index}>
+                Monster Quantity:
+              </label>
               <input
-                id={"character-input-" + i}
-                value={xp.numMons}
+                id={"character-input-" + index}
+                value={xpRow.numMons}
                 type="number"
-                onChange={(e) => updateNumMons(e.currentTarget.value, i)}
+                onChange={(e) => updateNumMons(e.currentTarget.value, index)}
               ></input>
             </div>
           ))}
           <div>
             <div>
               <span>Total: </span>
-              <span>{calculateXpTotal(monXp, {})}</span>
+              <span>{calculateXpTotal(monXp)}</span>
             </div>
           </div>
         </div>
