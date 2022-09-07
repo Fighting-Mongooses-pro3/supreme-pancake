@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Tab } from "./Tab";
 
 export const TabsContainer = (props) => {
-  const { children, defaultTab } = props;
+  const { children, defaultTab, className } = props;
   const [activeTab, setActiveTab] = useState(defaultTab || "");
 
   const handleTabClick = (tabLabel) => {
@@ -10,23 +10,26 @@ export const TabsContainer = (props) => {
   };
 
   return (
-    <div>
-      <ol>
+    <div className={className}>
+      <ol className="flex flex-row justify-start gap-x-1">
         {children.map((child, index) => {
-          const { label } = child.props;
+          const { label, longName } = child.props;
           return (
             <Tab
-              activeTab={activeTab}
+              isActive={activeTab === label}
               key={label}
               label={label}
+              longName={longName}
               onClick={handleTabClick}
             />
           );
         })}
       </ol>
-      <div>
+      <div className="border-2 border-amber-300">
         {children.map((child) =>
-          child.props.label === activeTab ? child.props.children : null
+          child.props.label === activeTab ? (
+            <div>{child.props.children}</div>
+          ) : null
         )}
       </div>
     </div>

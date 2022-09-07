@@ -17,6 +17,7 @@ export { HeroC } from "./hero/heroC";
 export { MonsterXp } from "./encounters/MonsterXp";
 export { Layoutblock } from "./layoutblock/Layoutblock";
 export { Textblock } from "./textblock/Textblock";
+export { EncounterBalancer } from "./encounters/EncounterBalancer";
 export { TabsContainer } from "./tabscontainer/TabsContainer";
 
 export {
@@ -24,6 +25,7 @@ export {
   challengeProficiencyBonus,
   skillModifierCalculation,
   challengeRatingXpTable,
+  encounterXpTable,
 } from "./utils/customHooks/DnDMath";
 
 export { capitalizeString } from "./utils/customHooks/Strings";
