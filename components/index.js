@@ -16,6 +16,7 @@ export { HeroR } from "./hero/heroR";
 export { HeroC } from "./hero/heroC";
 export { Layoutblock } from "./layoutblock/Layoutblock";
 export { Textblock } from "./textblock/Textblock";
+export { TabsContainer } from "./tabscontainer/TabsContainer";
 
 export {
   abilityModifierCalculation,
