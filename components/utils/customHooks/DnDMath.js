@@ -18,7 +18,7 @@ export const skillModifierCalculation = (challengeRating, abilityNumber) => {
 };
 
 export const challengeRatingXpTable = {
-  0: "0 or 10",
+  0: 0,
   "1/8": 25,
   "1/4": 50,
   "1/2": 100,
