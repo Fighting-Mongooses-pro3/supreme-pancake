@@ -15,3 +15,4 @@ export { BuilderEntitySkills } from "./BuilderStatblock/BuilderEntitySkills/Buil
 export { BuilderEntityActionsBlock } from "./BuilderStatblock/BuilderEntityActionsBlock/BuilderEntityActionsBlock";
 export { EntityBuilder } from "./EntityBuilder/EntityBuilder";
 export { TextEditor } from "./TextEditor/TextEditor";
+export { MonsterBuilder } from "./MonsterBuilder/MonsterBuilder";

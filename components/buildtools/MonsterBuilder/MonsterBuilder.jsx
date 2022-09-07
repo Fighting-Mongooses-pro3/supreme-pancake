@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { EntityBuilder } from "../components/buildtools/EntityBuilder/EntityBuilder";
+import { EntityBuilder } from "../";
 
 export const MonsterBuilder = (props) => {
   const { monsterUrl } = props;

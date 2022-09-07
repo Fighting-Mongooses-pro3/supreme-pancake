@@ -14,6 +14,8 @@ export { EntityBuilder } from "./buildtools/EntityBuilder/EntityBuilder";
 export { HeroL } from "./hero/heroL";
 export { HeroR } from "./hero/heroR";
 export { HeroC } from "./hero/heroC";
+export { Layoutblock } from "./layoutblock/Layoutblock";
+export { Textblock } from "./textblock/Textblock";
 
 export {
   abilityModifierCalculation,
