@@ -51,16 +51,10 @@ export const Statblock = (props) => {
       <section className="ae-stat-border"></section>
 
       <section className={`ae-border ${props.customCss}`}>
-        <h1
-          className="text-red-600 font-mono text-lg md:text-3xl cursor-cell ml-2"
-          contentEditable
-        >
-          {props.monName}
+        <h1 className="text-red-600 font-mono text-lg md:text-3xl ml-2">
+          {props.name}
         </h1>
-        <p
-          className="text-black font-serif text-sm cursor-cell ml-2"
-          contentEditable
-        >
+        <p className="text-black font-serif text-sm ml-2">
           {props.size} , {props.type}
           {props.subtype ? "," + props.subtype : null} {props.alignment}
         </p>
@@ -71,7 +65,7 @@ export const Statblock = (props) => {
       <article className="inline-flex ml-2">
         <h1 className="text-red-600 font-mono">Armor Class</h1>
         &nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
+        <p className="font-serif">
           {props.armor_class} {props.armor_desc ? "," + props.armor_desc : null}
         </p>
       </article>
@@ -79,7 +73,7 @@ export const Statblock = (props) => {
 
       <article className="inline-flex ml-2">
         <h1 className="text-red-600 font-mono">Hit Points</h1>&nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
+        <p className="font-serif">
           {props.hit_points} ({props.hit_dice})
         </p>
       </article>
@@ -87,9 +81,7 @@ export const Statblock = (props) => {
 
       <article className="inline-flex ml-2">
         <h1 className="text-red-600 font-mono">Speed</h1>&nbsp;
-        <p className="font-serif cursor-cell" contentEditable>
-          {props.speed}
-        </p>
+        <p className="font-serif">{props.speed?.walk}</p>
       </article>
       <br />
 
@@ -109,43 +101,25 @@ export const Statblock = (props) => {
           </thead>
           <tbody>
             <tr className="">
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
+              <td className="text-black text-lg border-r-8 border-transparent">
                 {props.strength}(
                 {"+" + Math.ceil((props.strength - 1) / 2 + -5)})
               </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
+              <td className="text-black text-lg border-r-8 border-transparent">
                 {props.dexterity}({Math.ceil((props.dexterity - 1) / 2 + -5)})
               </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
+              <td className="text-black text-lg border-r-8 border-transparent">
                 {props.constitution}(
                 {Math.ceil((props.constitution - 1) / 2 + -5)})
               </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
+              <td className="text-black text-lg border-r-8 border-transparent">
                 {props.intelligence}(
                 {Math.ceil((props.intelligence - 1) / 2 + -5)})
               </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
+              <td className="text-black text-lg border-r-8 border-transparent">
                 {props.wisdom}({Math.ceil((props.wisdom - 1) / 2 + -5)})
               </td>
-              <td
-                className="text-black text-lg border-r-8 border-transparent cursor-cell"
-                contentEditable
-              >
+              <td className="text-black text-lg border-r-8 border-transparent">
                 {props.charisma}({Math.ceil((props.charisma - 1) / 2 + -5)})
               </td>
             </tr>
@@ -158,33 +132,25 @@ export const Statblock = (props) => {
       <section className="mt-2 ml-2">
         <article className="inline-flex mb-2">
           <h1>Senses</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.senses}
-          </p>
+          <p className="">{props.senses}</p>
         </article>
         <br />
 
         <article className="inline-flex mb-2">
           <h1>Languages </h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.languages}
-          </p>
+          <p className="">{props.languages}</p>
         </article>
         <br />
 
         <article className="inline-flex mb-2">
           <h1>Challenge</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {props.challenge}
-          </p>
+          <p className="">{props.challenge}</p>
         </article>
         <br />
 
         <article className="inline-flex mb-2">
           <h1>Proficenicy Bonus</h1>&nbsp;
-          <p className="cursor-cell" contentEditable>
-            {proficiencyBonus()}
-          </p>
+          <p className="">{proficiencyBonus()}</p>
         </article>
         <br />
 
@@ -192,9 +158,7 @@ export const Statblock = (props) => {
           <>
             <article className="inline-flex mb-2">
               <h1>Damage Immunities</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.damage_vulnerabilities}
-              </p>
+              <p className="">{props.damage_vulnerabilities}</p>
             </article>
             <br />
           </>
@@ -203,9 +167,7 @@ export const Statblock = (props) => {
           <>
             <article className="inline-flex mb-2">
               <h1>Damage Resistances</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.damage_resistances}
-              </p>
+              <p className="">{props.damage_resistances}</p>
             </article>
             <br />
           </>
@@ -214,20 +176,7 @@ export const Statblock = (props) => {
           <>
             <article className="inline-flex mb-2">
               <h1>Damage Immunities</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.damage_immunities}
-              </p>
-            </article>
-            <br />
-          </>
-        ) : null}
-        {props.condition_immunities ? (
-          <>
-            <article className="inline-flex mb-2">
-              <h1>Condition Immunities</h1>&nbsp;
-              <p className="cursor-cell" contentEditable>
-                {props.condition_immunities}
-              </p>
+              <p className="">{props.damage_immunities}</p>
             </article>
             <br />
           </>
@@ -241,9 +190,7 @@ export const Statblock = (props) => {
               return (
                 <article className="inline-flex mb-2" key={index}>
                   <h1>{action.name}</h1>&nbsp;
-                  <p className="cursor-cell" contentEditable>
-                    {action.desc}
-                  </p>
+                  <p className="">{action.desc}</p>
                   <br />
                 </article>
               );
@@ -255,26 +202,11 @@ export const Statblock = (props) => {
 
       {props.reactions ? (
         <section className="mt-2 ml-2">
-          {props.reactions.map((reactions, index) => {
+          {props.reactions.map((reaction, index) => {
             return (
               <article className="inline-flex mb-2" key={index}>
-                <h1>{reactions.name}</h1>&nbsp;
-                <p className="cursor-cell" contentEditable>
-                  {reactions.desc}
-                </p>
-                <br />
-              </article>
-            );
-          })}
-        </section>
-      ) : null}
-
-      {props.legendary_desc ? (
-        <section className="mt-2 ml-2">
-          {props.legendary_desc.map((legendary_desc, index) => {
-            return (
-              <article className="inline-flex mb-2" key={index}>
-                <h1>{legendary_desc}</h1>
+                <h1>{reaction.name}</h1>&nbsp;
+                <p className="">{reaction.desc}</p>
                 <br />
               </article>
             );
@@ -284,13 +216,11 @@ export const Statblock = (props) => {
 
       {props.legendary_actions ? (
         <section className="mt-2 ml-2">
-          {props.legendary_actions.map((legendary_actions, index) => {
+          {props.legendary_actions.map((legendary_action, index) => {
             return (
               <article className="inline-flex mb-2" key={index}>
-                <h1>{legendary_actions.name}</h1>&nbsp;
-                <p className="cursor-cell" contentEditable>
-                  {legendary_actions.desc}
-                </p>
+                <h1>{legendary_action.name}</h1>&nbsp;
+                <p className="">{legendary_action.desc}</p>
                 <br />
               </article>
             );
@@ -300,13 +230,11 @@ export const Statblock = (props) => {
 
       {props.special_abilities ? (
         <section className="mt-2 ml-2">
-          {props.special_abilities.map((special_abilities, index) => {
+          {props.special_abilities.map((special_ability, index) => {
             return (
               <article className="inline-flex mb-2" key={index}>
-                <h1>{special_abilities.name}</h1>&nbsp;
-                <p className="cursor-cell" contentEditable>
-                  {special_abilities.desc}
-                </p>
+                <h1>{special_ability.name}</h1>&nbsp;
+                <p className="">{special_ability.desc}</p>
                 <br />
               </article>
             );
