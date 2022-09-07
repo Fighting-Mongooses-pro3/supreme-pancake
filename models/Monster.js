@@ -1,5 +1,10 @@
 import mongoose, { Schema, model } from "mongoose";
 
+const ActionSchema = new Schema({
+  name: { type: String, required: true },
+  desc: { type: String, required: true },
+});
+
 const monsterSchema = new Schema({
   id: { type: String, required: true, maxLength: 36 },
   name: {
@@ -39,6 +44,7 @@ const monsterSchema = new Schema({
   speed: {
     type: Map,
     of: Number,
+    required: true,
   },
   strength: {
     type: Number,
@@ -82,6 +88,10 @@ const monsterSchema = new Schema({
   charisma_save: {
     type: Number,
   },
+  challenge_rating: {
+    type: Number,
+    required: true,
+  },
   skills: {
     type: Map,
     of: Number,
@@ -114,11 +124,6 @@ const monsterSchema = new Schema({
   reactions: [ActionSchema],
   legendary_actions: [ActionSchema],
   special_abilities: [ActionSchema],
-});
-
-const ActionSchema = new Schema({
-  name: { type: String, required: true },
-  desc: { type: String, required: true },
 });
 
 const Monster = mongoose.models.Monster || model("Monster", monsterSchema);

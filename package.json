@@ -17,6 +17,7 @@
     "@auth0/nextjs-auth0": "^1.9.1",
     "@headlessui/react": "latest",
     "@headlessui/tailwindcss": "^0.1.0",
+    "@saeris/apollo-server-vercel": "^1.0.1",
     "@tanstack/react-table": "^8.5.13",
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
