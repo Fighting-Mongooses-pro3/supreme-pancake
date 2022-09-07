@@ -1,40 +1,13 @@
-import { useEffect, useState } from "react";
-import { Page, Statblock } from "../components";
-
-const loadMonsters = () => {
-  let adventureMonsters = [];
-  const storedValue = localStorage.getItem("monsters");
-  if (storedValue !== null) {
-    adventureMonsters = JSON.parse(storedValue);
-  }
-
-  return adventureMonsters;
-};
-
-import React from "react";
-
-export const StatblockWrapper = () => {
-  const [currentMonster, setCurrentMonster] = useState(0);
-  const [monsters, setMonsters] = useState([]);
-
-  useEffect(() => {
-    setMonsters(loadMonsters());
-  }, []);
-
-  return (
-    <div>
-      {monsters.length > 0 ? <Statblock {...monsters[currentMonster]} /> : null}
-    </div>
-  );
-};
+import React, { useEffect, useState } from "react";
+import { Layoutblock } from "../components";
 
 const render = () => {
   return (
-    <Page currentPage="Builder Test">
-      <div className="w-screen h-screen ae-paper bg-center bg-no-repeat bg-cover p-56">
-        <StatblockWrapper />
+    <div className="w-screen ae-paper bg-center bg-no-repeat bg-cover flex justify-center z-0 pr-4">
+      <div className="w-11/12 z-10">
+        <Layoutblock />
       </div>
-    </Page>
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ import {
   useBuilderContext,
   BuilderStatblock,
 } from "../";
+import { v4 as uuidv4 } from "uuid";
 
 export const EntityBuilder = (props) => {
   const { defaultListText, entityList, saveFunction, appendFunction } = props;
@@ -47,19 +48,31 @@ export const EntityBuilder = (props) => {
 };
 
 const EntityBuilderFrame = (props) => {
-  const { saveFunction, appendFunction } = props;
+  const { appendFunction, updateFunction, saveFunction } = props;
   const { entityObject } = useBuilderContext();
+  const [uuid, setUuid] = useState("");
 
   return (
     <>
       <BuilderStatblock />
       <button
         onClick={() => {
-          appendFunction(entityObject());
+          const newUuid = uuidv4();
+          appendFunction({ id: newUuid, ...entityObject() });
+          setUuid(newUuid);
         }}
       >
         {Math.random() * 1000 < 1 ? "Add to Your Hot Mess" : "Add to Adventure"}
       </button>
+      {uuid !== "" ? (
+        <button
+          onClick={() => {
+            updateFunction({ id: uuid, ...entityObject() });
+          }}
+        >
+          {"Update Appended Text"}
+        </button>
+      ) : null}
       <button
         onClick={() => {
           const entity = entityObject();
@@ -72,24 +85,3 @@ const EntityBuilderFrame = (props) => {
     </>
   );
 };
-
-// name={passedEntity.name}
-// name="Monster"
-// size="Medium"
-// type="humanoid"
-// alignment="true neutral"
-// armor_class="10"
-// hit_points="22"
-// hit_dice="5d8"
-// speed={{ walk: 30 }}
-// strength="1"
-// strength_save="4"
-// dexterity="17"
-// constitution="13"
-// intelligence="11"
-// wisdom="13"
-// charisma="17"
-// senses="blindsight 120 ft., passive Perception 10"
-// lang="----"
-// challenge_rating="12"
-// skills={{ history: 12 }}

@@ -34,6 +34,11 @@ module.exports = {
       gridTemplateColumns: {
         16: "repeat(16, minmax(0, 1fr))",
       },
+      backgroundImage: {
+        parchment: 'url("/images/statblockparch.jpg")',
+        paper: 'url("/images/paper.jpg")',
+        papyr: 'url("/images/papyr.jpg")',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
