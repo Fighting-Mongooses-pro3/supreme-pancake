@@ -24,7 +24,7 @@ export const Tab = (props) => {
   return (
     <li key={ind} className="ml-5">
       <button
-        className={`text-4xl rounded-xl p-2 text-center ${
+        className={`text-4xl rounded-t-lg p-2 text-center ${
           isActive ? "ae-bg-active" : "ae-bg-inactive"
         } border-amber-300`}
         onClick={handleClick}

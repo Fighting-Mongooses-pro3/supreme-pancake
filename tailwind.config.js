@@ -38,6 +38,7 @@ module.exports = {
         parchment: 'url("/images/statblockparch.jpg")',
         paper: 'url("/images/paper.jpg")',
         papyr: 'url("/images/papyr.jpg")',
+        gunmetal: 'url("/images/gun-metal.png")',
       },
     },
   },

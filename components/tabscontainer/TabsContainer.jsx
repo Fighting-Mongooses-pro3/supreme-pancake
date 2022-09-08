@@ -10,7 +10,7 @@ export const TabsContainer = (props) => {
   };
 
   return (
-    <div className={`${className} w-full`}>
+    <div className={`${className} w-full `}>
       <section className="w-full">
         <ol className="inline-flex w-full">
           {children.map((child, index) => {
@@ -28,7 +28,7 @@ export const TabsContainer = (props) => {
           })}
         </ol>
       </section>
-      <div className="border-2 border-amber-300 p-5">
+      <div className="border-2 p-5 border-amber-300  bg-repeat bg-red-800 bg-gunmetal">
         {children.map((child, i) =>
           child.props.label === activeTab ? (
             <div key={i}>{child.props.children}</div>
