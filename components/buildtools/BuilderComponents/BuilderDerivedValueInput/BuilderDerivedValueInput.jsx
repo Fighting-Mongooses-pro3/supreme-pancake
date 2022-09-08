@@ -18,7 +18,7 @@ export const BuilderDerivedValueInput = (props) => {
       <label className={labelClasses} htmlFor={label}>
         {label}
       </label>
-      <div className="inline">
+      <div>
         <BuilderInput
           id={label}
           value={value}
