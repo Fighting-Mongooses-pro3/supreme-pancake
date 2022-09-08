@@ -3,7 +3,6 @@ import { EntityBuilder } from "../";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export const MonsterBuilder = (props) => {
-  const baseurl = "http://localhost:3000";
   const { user } = useUser();
 
   const [monsterUrl, setMonsterUrl] = useState(props.monsterUrl || "");
@@ -23,7 +22,7 @@ export const MonsterBuilder = (props) => {
 
     // Loading monsters from the database
     if (user) {
-      fetch(`${baseurl}/api/monster/owner/${user.email}`)
+      fetch(`/api/monster/owner/${user.email}`)
         .then((res) => res.json())
         .then((monsterObj) =>
           setDbMonsters((curMonsters) => [monsterObj, ...curMonsters])

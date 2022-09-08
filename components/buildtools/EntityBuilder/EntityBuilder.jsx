@@ -37,7 +37,9 @@ export const EntityBuilder = (props) => {
           <div className="flex justify-between">
             {entityLists.map((entityList, index) => (
               <div key={index}>
-                <span>Select from:</span>
+                <span className="text-slate-300 font-semibold">
+                  Select from:
+                </span>
                 <select
                   onChange={(e) =>
                     setSelectedEntity(entityList.monsters[e.target.value])
