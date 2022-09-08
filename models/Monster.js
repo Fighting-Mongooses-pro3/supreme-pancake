@@ -6,7 +6,7 @@ const ActionSchema = new Schema({
 });
 
 const monsterSchema = new Schema({
-  id: { type: String, required: true, maxLength: 36 },
+  UUID: { type: String, required: true, maxLength: 36 },
   name: {
     type: String,
     required: true,
