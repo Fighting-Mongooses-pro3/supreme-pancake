@@ -70,9 +70,23 @@ export const MonsterBuilder = (props) => {
           if (storedValue !== null) {
             adventureMonsters = JSON.parse(storedValue);
           }
-          adventureMonsters[entity.id] = entity;
+          adventureMonsters[entity.uuid] = entity;
           localStorage.setItem("monsters", JSON.stringify(adventureMonsters));
           setLocalMonsters((curMonsters) => [entity, ...curMonsters]);
+        }}
+        updateFunction={(entity) => {
+          let adventureMonsters = {};
+          const storedValue = localStorage.getItem("monsters");
+          if (storedValue !== null) {
+            adventureMonsters = JSON.parse(storedValue);
+          }
+          adventureMonsters[entity.uuid] = entity;
+          localStorage.setItem("monsters", JSON.stringify(adventureMonsters));
+          setLocalMonsters((curMonsters) => {
+            curMonsters[entity.uuid] = entity;
+            console.log("curmons", curMonsters);
+            return [...curMonsters];
+          });
         }}
         saveFunction={(entity) => {
           fetch(`${baseurl}/api/monster/post`, {
