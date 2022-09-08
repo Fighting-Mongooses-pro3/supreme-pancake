@@ -1,4 +1,4 @@
-import { Blurb } from "../../models/Monster";
+import { Blurb } from "../../../../models/Blurb";
 import mongoose from "mongoose";
 import connectMongo from "../../../../utils/connectMongo";
 export default async function handler(req, res) {

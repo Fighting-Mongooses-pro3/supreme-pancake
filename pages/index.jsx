@@ -12,7 +12,7 @@ const omnibus = () => {
   return (
     <Page currentPage="Home">
       <div className="w-screen bg-center bg-no-repeat bg-cover flex justify-center">
-        <div className="w-11/12 z-10">
+        <div className="flex justify-center w-11/12 z-10">
           <TabsContainer defaultTab="👹" className="pt-2">
             <div label="👹" longName="Monster Builder">
               <MonsterBuilder monsterUrl="https://api.open5e.com/monsters/?document__slug=wotc-srd" />

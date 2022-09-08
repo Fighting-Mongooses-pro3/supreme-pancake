@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
-import { Page, ProjectCards, Jumbotron } from "../../components";
+import { Page, ProjectCards } from "../../components";
 import axios from "axios";
 
 const Dashboard = (props) => {
@@ -24,7 +24,7 @@ const Dashboard = (props) => {
     <Page currentPage="Dashboard">
       {user ? (
         <>
-          <Jumbotron />
+          {/* <Jumbotron /> */}
           <div className="w-full min-h-screen flex-wrap flex border border-black">
             <aside className="border border-black h-full w-1/12">
               <section className="mt-5 text-center w-full">{user.name}</section>

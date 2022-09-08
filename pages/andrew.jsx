@@ -1,10 +1,8 @@
 import React from "react";
-import { Login, Page, BuilderInput, Sidebar } from "../components";
+import { Page } from "../components";
 
 const Andrew = () => (
-  <Page currentPage="Andrew's Stuff">
-    <Sidebar />
-  </Page>
+  <Page currentPage="Andrew's Stuff">{/* <Sidebar /> */}</Page>
 );
 
 export default Andrew;
