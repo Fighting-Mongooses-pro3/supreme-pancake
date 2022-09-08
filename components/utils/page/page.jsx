@@ -11,7 +11,7 @@ export const Page = (props, { children }) => {
   }`;
 
   return (
-    <div>
+    <div className="bg-zinc-600">
       <Head>
         <title>{pageTitle}</title>
         <meta name="title" content={pageTitle} />
@@ -20,7 +20,7 @@ export const Page = (props, { children }) => {
       </Head>
 
       <main>
-        <nav className="fixed top-0 right-0 left-0 h-20 inline-flex drop-shadow-lg items-center justify-between bg-white ae-nav z-50">
+        <nav className="fixed top-0 right-0 left-0 h-20  inline-flex drop-shadow-lg items-center justify-between border-amber-300  bg-repeat bg-red-900 bg-gunmetal ae-nav z-50">
           <div className="hidden md:inline-flex w-full items-center justify-between">
             <Navbar currentPage={`${pageTitle}`} />
           </div>
@@ -28,7 +28,7 @@ export const Page = (props, { children }) => {
             <MobileMenu currentPage={currentPage} />
           </div> */}
         </nav>
-          <div className="mt-20 w-full flex flex-wrap">
+          <div className="mt-20 w-full flex flex-wrap min-h-screen">
         {props.children}
           </div>
       </main>

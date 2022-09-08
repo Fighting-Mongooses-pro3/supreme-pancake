@@ -19,7 +19,7 @@ export const Navbar = (currentPage) => {
 
   return (
     <>
-      <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-full overflow-hidden h-16 w-16 drop-shadow-sm relative">
+      <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-xl overflow-hidden h-16 w-16 drop-shadow-sm relative">
         <Link href="/">
           <a>
             <Logo customCss="" />
@@ -34,7 +34,7 @@ export const Navbar = (currentPage) => {
               className={`mr-5 hover:border-gray-300 transition-all duration-700 hover:duration-100 hover:scale-125 mt-4 ${
                 currentPage === item.title
                   ? "text-lime-500 hover:text-black"
-                  : "opacity-70 hover:opacity-100 transition-opacity text-black hover:text-black "
+                  : "opacity-70 hover:opacity-100 transition-opacity text-black text-3xl hover:text-black "
               }`}
             >
               <Link href={item.path}>{item.title}</Link>
@@ -48,13 +48,13 @@ export const Navbar = (currentPage) => {
               height="32"
               width="32"
               src={user?.picture ?? "/img/default-profile.jpg"}
-              className="rounded-full"
+              // className="rounded-lg"
             ></Image>
           </button>
         ) : (
           <Link href="/api/auth/login">
             <a
-              className="text-black hover:border-gray-300 transition-all duration-700 hover:duration-100 hover:scale-125 mt-4 opacity-70 mr-5 hover:text-black hover:opacity-100"
+              className="text-black text-3xl hover:border-gray-300 transition-all duration-700 hover:duration-100 hover:scale-125 mt-4 opacity-70 mr-5 hover:text-black hover:opacity-100"
               onClick={handleDrop}
             >
               Log In
