@@ -13,13 +13,8 @@ export const TextEditor = (props) => {
   const [uuid, setUuid] = useState("");
 
   return (
-<<<<<<< HEAD
-    <div className="bg-purple-700">
-      <div>
-=======
     <div className="bg-no-repeat bg-cover bg-paper font-semibold text-2xl">
-      <div >
->>>>>>> 5054e3d8b261c1ff720b6d304d0cbd2fbc8ec0ea
+      <div>
         <BuilderInput
           label="Title (optional)"
           containerClasses="flex flex-col "

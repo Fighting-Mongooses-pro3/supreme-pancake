@@ -30,9 +30,7 @@ export const TabsContainer = (props) => {
       </section>
       <div className="border-2 p-5 border-amber-300  bg-repeat bg-red-800 bg-gunmetal">
         {children.map((child, i) =>
-          child.props.label === activeTab ? (
-            <div key={i}>{child.props.children}</div>
-          ) : null
+          i === activeTab ? <div key={i}>{child.props.children}</div> : null
         )}
       </div>
     </div>
