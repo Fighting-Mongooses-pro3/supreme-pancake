@@ -13,7 +13,7 @@ export const TextEditor = (props) => {
   const [uuid, setUuid] = useState("");
 
   return (
-    <div>
+    <div className="bg-purple-700">
       <div>
         <BuilderInput
           label="Optional Header Text"

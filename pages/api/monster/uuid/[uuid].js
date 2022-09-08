@@ -8,9 +8,9 @@ export default async function handler(req, res) {
     await connectMongo();
     console.log("CONNECTED TO MONGO");
 
-    const { id } = req.query;
-    console.log(id);
-    const monster = await Monster.findOne({ _id: id });
+    const { uuid } = req.query;
+    console.log(uuid);
+    const monster = await Monster.findOne({ uuid: uuid });
 
     if (!monster) return res.status(404).json("no monsters found");
 
