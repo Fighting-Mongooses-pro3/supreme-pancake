@@ -20,7 +20,7 @@ export const Page = (props, { children }) => {
       </Head>
 
       <main>
-        <nav className="fixed top-0 right-0 left-0 h-20  inline-flex drop-shadow-lg items-center justify-between border-amber-300  bg-repeat bg-red-900 bg-gunmetal ae-nav z-50">
+        <nav className="fixed top-0 right-0 left-0 h-20  inline-flex drop-shadow-lg items-center justify-between border-amber-300  bg-repeat bg-red-500 bg-scales ae-nav z-50">
           <div className="hidden md:inline-flex w-full items-center justify-between">
             <Navbar currentPage={`${pageTitle}`} />
           </div>

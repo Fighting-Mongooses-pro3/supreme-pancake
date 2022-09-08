@@ -4,6 +4,7 @@ import { routes } from "../../data/global";
 import { useUser } from "@auth0/nextjs-auth0";
 import Image from "next/image";
 import Logo from "../logo/logo";
+import houseRuled from "../../public/images/house-ruled-vert.png";
 
 // show log in button if user is on blog page
 
@@ -22,10 +23,14 @@ export const Navbar = (currentPage) => {
       <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-xl overflow-hidden h-16 w-16 drop-shadow-sm relative">
         <Link href="/">
           <a>
-            <Logo customCss="" />
+            <Logo customCss="" /> 
           </a>
         </Link>
+        
       </logo>
+      <div>
+            <image className="h-4 w-full" src= {houseRuled} alt="houseRuled" /> 
+        </div>
       <ul className="nav-menu inline-flex mr-4 flex-wrap ae-nav-links text-lg lg:text-xl 2xl:text-2xl ae-text-outline-small-dark">
         {routes.map((item, index) => {
           return (
