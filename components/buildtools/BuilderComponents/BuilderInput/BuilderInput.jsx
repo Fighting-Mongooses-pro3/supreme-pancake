@@ -8,22 +8,19 @@ export const BuilderInput = (props) => {
     containerClasses,
     value,
     label,
-    id = label
-      ? label.toLowerCase() + Math.random() * 10000
-      : Math.random() * 10000,
     placeholder,
   } = props;
 
   return (
     <div className={containerClasses}>
       {label && (
-        <label className={labelClasses} htmlFor={id}>
+        <label className={labelClasses} htmlFor={label}>
           {label}
         </label>
       )}
       <input
         type="text"
-        id={id}
+        id={label}
         className={inputClasses}
         value={value}
         placeholder={placeholder ?? "Placeholder Text..."}

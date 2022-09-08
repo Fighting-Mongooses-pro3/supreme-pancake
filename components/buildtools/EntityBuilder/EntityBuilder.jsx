@@ -26,7 +26,7 @@ export const EntityBuilder = (props) => {
   return (
     <div>
       <select onChange={(e) => setSelectedEntity(entityList[e.target.value])}>
-        <option value="" selected>
+        <option value="">
           {defaultListText}
         </option>
         {entityList.map((entity, index) => (

@@ -17,7 +17,8 @@ export const TabsContainer = (props) => {
           return (
             <Tab
               isActive={activeTab === label}
-              key={label}
+              key={index}
+              ind={index}
               label={label}
               longName={longName}
               onClick={handleTabClick}
@@ -26,9 +27,9 @@ export const TabsContainer = (props) => {
         })}
       </ol>
       <div className="border-2 border-amber-300">
-        {children.map((child) =>
+        {children.map((child, i) =>
           child.props.label === activeTab ? (
-            <div>{child.props.children}</div>
+            <div key={i}>{child.props.children}</div>
           ) : null
         )}
       </div>

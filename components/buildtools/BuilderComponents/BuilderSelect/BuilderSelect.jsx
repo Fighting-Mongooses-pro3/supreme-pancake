@@ -19,7 +19,7 @@ export const BuilderSelect = (props) => {
         onChange={(e) => setSelectedItem(e.target.value)}
         className={selectClasses}
       >
-        <option value="" selected>
+        <option value="" defaultValue>
           {promptText}
         </option>
         {itemsList.map((item) => (

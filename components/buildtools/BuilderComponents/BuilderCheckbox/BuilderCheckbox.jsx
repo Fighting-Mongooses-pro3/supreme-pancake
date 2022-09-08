@@ -8,21 +8,18 @@ export const BuilderCheckbox = (props) => {
     containerClasses,
     checked,
     label,
-    id = label
-      ? label.toLowerCase() + Math.random() * 10000
-      : Math.random() * 10000,
   } = props;
 
   return (
     <div className={containerClasses}>
       {label && (
-        <label className={labelClasses} htmlFor={id}>
+        <label className={labelClasses} htmlFor={label}>
           {label}
         </label>
       )}
       <input
         type="checkbox"
-        id={id}
+        label={label}
         checked={checked}
         className={inputClasses}
         onChange={(e) => onChange(e.target.checked)}
