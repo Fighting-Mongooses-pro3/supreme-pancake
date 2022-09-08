@@ -34,7 +34,7 @@ export const TextEditor = (props) => {
         <button
           onClick={() => {
             const newUuid = uuidv4();
-            appendFunction({ id: newUuid, header, body, important });
+            appendFunction({ newUuid, header, body, important });
             setUuid(newUuid);
           }}
         >
@@ -45,7 +45,7 @@ export const TextEditor = (props) => {
         {uuid !== "" ? (
           <button
             onClick={() => {
-              updateFunction({ id: uuid, header, body, important });
+              updateFunction({ uuid, header, body, important });
             }}
           >
             {"Update Appended Text"}
@@ -53,8 +53,8 @@ export const TextEditor = (props) => {
         ) : null}
         <button
           onClick={() => {
-            appendFunction({ id: uuid, header, body, important });
-            saveFunction({ id: uuid, header, body, important });
+            appendFunction({ uuid, header, body, important });
+            saveFunction({ uuid, header, body, important });
           }}
         >
           Save to Account

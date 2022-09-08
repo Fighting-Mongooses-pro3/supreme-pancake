@@ -5,6 +5,7 @@ import {
   BuilderStatblock,
 } from "../";
 import { v4 as uuidv4 } from "uuid";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export const EntityBuilder = (props) => {
   const { defaultListText, entityList, saveFunction, appendFunction } = props;
@@ -26,9 +27,7 @@ export const EntityBuilder = (props) => {
   return (
     <div>
       <select onChange={(e) => setSelectedEntity(entityList[e.target.value])}>
-        <option value="">
-          {defaultListText}
-        </option>
+        <option value="">{defaultListText}</option>
         {entityList.map((entity, index) => (
           <option key={"entity-" + index} value={index}>
             {entity.name}
@@ -51,6 +50,7 @@ const EntityBuilderFrame = (props) => {
   const { appendFunction, updateFunction, saveFunction } = props;
   const { entityObject } = useBuilderContext();
   const [uuid, setUuid] = useState("");
+  const { user } = useUser();
 
   return (
     <>
@@ -73,15 +73,19 @@ const EntityBuilderFrame = (props) => {
           {"Update Appended Text"}
         </button>
       ) : null}
-      <button
-        onClick={() => {
-          const entity = entityObject();
-          appendFunction(entity);
-          saveFunction(entity);
-        }}
-      >
-        Save to Account
-      </button>
+      {user?.email ? (
+        <button
+          onClick={() => {
+            const id = uuid !== "" ? uuid : uuidv4();
+            const entity = { owner: user.email, uuid: id, ...entityObject() };
+            appendFunction(entity);
+            saveFunction(entity);
+            setUuid(id);
+          }}
+        >
+          Save to Account
+        </button>
+      ) : null}
     </>
   );
 };

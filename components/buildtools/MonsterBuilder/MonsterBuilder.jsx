@@ -4,7 +4,8 @@ import { useUser } from "@auth0/nextjs-auth0";
 
 export const MonsterBuilder = (props) => {
   const { monsterUrl } = props;
-  const { user } = useUser();
+
+  const baseurl = "http://localhost:3000";
 
   const [monsters, setMonsters] = useState([]);
   useEffect(() => {
@@ -41,7 +42,7 @@ export const MonsterBuilder = (props) => {
           localStorage.setItem("monsters", JSON.stringify(adventureMonsters));
         }}
         saveFunction={(entity) => {
-          fetch(URL, {
+          fetch(`${baseurl}/api/monster/post`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
