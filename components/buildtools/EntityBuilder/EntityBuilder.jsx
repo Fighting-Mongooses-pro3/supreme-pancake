@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export const EntityBuilder = (props) => {
-  const { defaultListText, entityList, saveFunction, appendFunction } = props;
+  const { defaultListText, entityLists, saveFunction, appendFunction } = props;
 
   const [selectedEntity, setSelectedEntity] = useState({});
   const [entityChanged, setEntityChanged] = useState(false);
@@ -26,14 +26,23 @@ export const EntityBuilder = (props) => {
 
   return (
     <div>
-      <select onChange={(e) => setSelectedEntity(entityList[e.target.value])}>
-        <option value="">{defaultListText}</option>
-        {entityList.map((entity, index) => (
-          <option key={"entity-" + index} value={index}>
-            {entity.name}
-          </option>
+      <div>
+        {entityLists.map((entityList, index) => (
+          <select
+            key={index}
+            onChange={(e) =>
+              setSelectedEntity(entityList.monsters[e.target.value])
+            }
+          >
+            <option value="">{entityList.defaultString}</option>
+            {entityList.monsters.map((entity, index) => (
+              <option key={"entity-" + index} value={index}>
+                {entity.name}
+              </option>
+            ))}
+          </select>
         ))}
-      </select>
+      </div>
       {entityChanged ? null : (
         <BuilderContextProvider {...selectedEntity}>
           <EntityBuilderFrame

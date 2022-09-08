@@ -15,7 +15,7 @@ const omnibus = () => {
         <div className="w-11/12 z-10">
           <TabsContainer defaultTab="👹" className="pt-2">
             <div label="👹" longName="Monster Builder">
-              <MonsterBuilder />
+              <MonsterBuilder monsterUrl="https://api.open5e.com/monsters/?document__slug=wotc-srd" />
             </div>
             <div label="📝" longName="Text Editor">
               <TextEditor />
