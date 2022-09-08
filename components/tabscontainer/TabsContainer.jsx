@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Tab } from "./Tab";
 
 export const TabsContainer = (props) => {
-  const { children, defaultTab, className } = props;
-  const [activeTab, setActiveTab] = useState(defaultTab || "");
+  const { children, className } = props;
+  const [activeTab, setActiveTab] = useState(0);
 
-  const handleTabClick = (tabLabel) => {
-    setActiveTab(tabLabel);
+  const handleTabClick = (index) => {
+    setActiveTab(index);
   };
 
   return (
@@ -17,21 +17,21 @@ export const TabsContainer = (props) => {
             const { label, longName } = child.props;
             return (
               <Tab
-                isActive={activeTab === label}
+                isActive={activeTab === index}
                 key={index}
-                ind={index}
+                index={index}
                 label={label}
                 longName={longName}
-                onClick={handleTabClick}
+                onClick={() => handleTabClick(index)}
               />
             );
           })}
         </ol>
       </section>
       <div className="border-2 border-amber-300 p-5">
-        {children.map((child, i) =>
-          child.props.label === activeTab ? (
-            <div key={i}>{child.props.children}</div>
+        {children.map((child, index) =>
+          index === activeTab ? (
+            <div key={index}>{child.props.children}</div>
           ) : null
         )}
       </div>
