@@ -59,12 +59,12 @@ export const Layoutblock = () => {
   };
 
   return (
-    <div className="flex flex-row flex-wrap justify-around bg-papyr gap-y-1">
+    <div className="flex flex-row flex-wrap justify-around bg-papyr gap-y-1 p-4">
       {layoutData?.map(({ id, type, data }, index) => {
         switch (type) {
           case "monsters":
             return (
-              <div className="relative w-[48%]">
+              <div className="relative">
                 <div className="text-xl flex gap-x-3 absolute right-2 top-3 z-10">
                   <button data-set-key={id} onClick={() => moveUp(index)}>
                     🔼
@@ -81,7 +81,7 @@ export const Layoutblock = () => {
             );
           case "texts":
             return (
-              <div className="relative w-[48%]">
+              <div className="relative">
                 <div className="text-xl flex gap-x-3 absolute right-2 top-3 z-10">
                   <button data-set-key={id} onClick={() => edit(index)}>
                     <a href={`/texteditor?${id}`}>📝</a>
