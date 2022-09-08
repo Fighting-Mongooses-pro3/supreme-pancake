@@ -1,7 +1,15 @@
 import mongoose, { Schema, model } from "mongoose";
 
 const blurbSchema = new Schema({
-  id: { type: String, required: true, maxLength: 36 },
+  uuid: {
+    type: String,
+    required: true,
+    maxLength: 36,
+    match: [
+      /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/,
+      "Must provide a UUID",
+    ],
+  },
   header: {
     type: String,
   },

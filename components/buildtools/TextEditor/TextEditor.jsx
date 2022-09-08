@@ -14,7 +14,7 @@ export const TextEditor = (props) => {
 
   return (
     <div className="bg-no-repeat bg-cover bg-paper font-semibold text-2xl px-4 py-2">
-      <div >
+      <div>
         <BuilderInput
           label="Title (optional)"
           containerClasses="flex flex-col "
@@ -34,10 +34,11 @@ export const TextEditor = (props) => {
           checked={important}
           onChange={(importance) => setImportant(importance)}
         />
-        <button className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
+        <button
+          className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
           onClick={() => {
             const newUuid = uuidv4();
-            appendFunction({ id: newUuid, header, body, important });
+            appendFunction({ newUuid, header, body, important });
             setUuid(newUuid);
           }}
         >
@@ -46,18 +47,20 @@ export const TextEditor = (props) => {
             : "Add Text to Adventure"}
         </button>
         {uuid !== "" ? (
-          <button className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
+          <button
+            className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
             onClick={() => {
-              updateFunction({ id: uuid, header, body, important });
+              updateFunction({ uuid, header, body, important });
             }}
           >
             {"Update Appended Text"}
           </button>
         ) : null}
-        <button className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
+        <button
+          className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
           onClick={() => {
-            appendFunction({ id: uuid, header, body, important });
-            saveFunction({ id: uuid, header, body, important });
+            appendFunction({ uuid, header, body, important });
+            saveFunction({ uuid, header, body, important });
           }}
         >
           Save to Account

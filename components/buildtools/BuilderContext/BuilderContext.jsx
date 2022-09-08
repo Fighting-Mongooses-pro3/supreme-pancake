@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
 import { abilityModifierCalculation, challengeProficiencyBonus } from "../../";
+import { v4 as uuidv4 } from "uuid";
 
 const BuilderContext = createContext({
   // name: "",
@@ -45,6 +46,7 @@ const BuilderContext = createContext({
 export const useBuilderContext = () => useContext(BuilderContext);
 
 export const BuilderContextProvider = ({ children, ...existingEntity }) => {
+  const [uuid, setUuid] = useState(existingEntity.uuid || "");
   const [name, setName] = useState(existingEntity.name || "");
   const [size, setSize] = useState(existingEntity.size || "");
   const [type, setType] = useState(existingEntity.type || "");
@@ -132,7 +134,10 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   const [conditionImmunities, setConditionsImmunities] = useState(
     existingEntity.condition_immunities
       ?.split(", ")
-      .reduce((obj, con_immunity) => (obj[con_immunity] = true), {}) || {}
+      .reduce((obj, con_immunity) => {
+        obj[con_immunity] = true;
+        return obj;
+      }, {}) || {}
   );
 
   const [actions, setActions] = useState([...(existingEntity.actions ?? [])]);
@@ -217,6 +222,10 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
   return (
     <BuilderContext.Provider
       value={{
+        uuid,
+        updateUuid: (value) => {
+          setUuid(value);
+        },
         name,
         updateName: (value) => {
           setName(value);
@@ -546,11 +555,12 @@ export const BuilderContextProvider = ({ children, ...existingEntity }) => {
             charisma_save: charismaSave,
             skills,
             senses: senses.join(", ") + "passive Perception " + -9999,
-            languages,
+            languages: languages.join(", "),
             damage_vulnerabilities: damageVulnerabilities,
             damage_resistances: damageResistances,
             damage_immunities: damageImmunities,
-            condition_immunities: {},
+            condition_immunities:
+              Object.keys(conditionImmunities).join(", ") || "",
             actions,
             reactions,
             legendary_actions: legendaryActions,

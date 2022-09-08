@@ -1,12 +1,12 @@
-import Monster from "../../models/Monster";
+import Monster from "../../../../models/Monster";
 import mongoose from "mongoose";
 import connectMongo from "../../../../utils/connectMongo";
 
 export default async function handler(req, res) {
   try {
     console.log("CONNECTING TO MONGO");
-  await connectMongo();
-  console.log("CONNECTED TO MONGO");
+    await connectMongo();
+    console.log("CONNECTED TO MONGO");
 
     const { id } = req.query;
     console.log(id);
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     res.status(200).json(monster);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json(error);
   }
 }

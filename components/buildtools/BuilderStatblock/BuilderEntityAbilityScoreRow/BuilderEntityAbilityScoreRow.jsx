@@ -36,7 +36,7 @@ export const BuilderEntityAbilityScoreRow = () => {
           label="STR"
           value={strength}
           placeholder="0"
-          containerClasses="flex flex-col items-center max-w-[55px]"
+          containerClasses="flex flex-col items-center max-w-[40px]"
           inputClasses="w-full"
           labelClasses="font-bold"
           valueCalculationFunction={abilityModifierCalculation}
@@ -53,7 +53,7 @@ export const BuilderEntityAbilityScoreRow = () => {
           label="DEX"
           value={dexterity}
           placeholder="0"
-          containerClasses="flex flex-col items-center max-w-[55px]"
+          containerClasses="flex flex-col items-center max-w-[40px]"
           inputClasses="w-full"
           labelClasses="font-bold"
           valueCalculationFunction={abilityModifierCalculation}
@@ -72,7 +72,7 @@ export const BuilderEntityAbilityScoreRow = () => {
           label="CON"
           value={constitution}
           placeholder="0"
-          containerClasses="flex flex-col items-center max-w-[55px]"
+          containerClasses="flex flex-col items-center max-w-[40px]"
           inputClasses="w-full"
           labelClasses="font-bold"
           valueCalculationFunction={abilityModifierCalculation}
@@ -91,7 +91,7 @@ export const BuilderEntityAbilityScoreRow = () => {
           label="INT"
           value={intelligence}
           placeholder="0"
-          containerClasses="flex flex-col items-center max-w-[55px]"
+          containerClasses="flex flex-col items-center max-w-[40px]"
           inputClasses="w-full"
           labelClasses="font-bold"
           valueCalculationFunction={abilityModifierCalculation}
@@ -110,7 +110,7 @@ export const BuilderEntityAbilityScoreRow = () => {
           label="WIS"
           value={wisdom}
           placeholder="0"
-          containerClasses="flex flex-col items-center max-w-[55px]"
+          containerClasses="flex flex-col items-center max-w-[40px]"
           inputClasses="w-full"
           labelClasses="font-bold"
           valueCalculationFunction={abilityModifierCalculation}
@@ -127,7 +127,7 @@ export const BuilderEntityAbilityScoreRow = () => {
           label="CHA"
           value={charisma}
           placeholder="0"
-          containerClasses="flex flex-col items-center max-w-[55px]"
+          containerClasses="flex flex-col items-center max-w-[40px]"
           inputClasses="w-full"
           labelClasses="font-bold"
           valueCalculationFunction={abilityModifierCalculation}

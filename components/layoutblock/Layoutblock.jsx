@@ -59,7 +59,7 @@ export const Layoutblock = () => {
   };
 
   return (
-    <div className="flex flex-col gap-y-1">
+    <div className="flex flex-row flex-wrap justify-around bg-papyr gap-y-1 p-4">
       {layoutData?.map(({ id, type, data }, index) => {
         switch (type) {
           case "monsters":

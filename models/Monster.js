@@ -6,7 +6,19 @@ const ActionSchema = new Schema({
 });
 
 const monsterSchema = new Schema({
-  UUID: { type: String, required: true, maxLength: 36 },
+  owner: {
+    type: String,
+    required: true,
+    match: [/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/],
+  },
+  uuid: {
+    type: String,
+    required: true,
+    match: [
+      /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/,
+      "Must provide a UUID",
+    ],
+  },
   name: {
     type: String,
     required: true,

@@ -1,21 +1,20 @@
-import { GiMonsterGrasp } from "react-icons/gi";
 import {
   EncounterBalancer,
   Layoutblock,
   Page,
   TabsContainer,
-  MonsterBuilder,
-  TextEditor,
 } from "../components";
+import { MonsterBuilder } from "../components/buildtools";
+import { TextEditor } from "../components/buildtools";
 
 const omnibus = () => {
   return (
-    <Page currentPage="Home">
-      <div className="w-screen bg-center bg-no-repeat bg-cover flex justify-center">
-        <div className="flex justify-center w-11/12 z-10">
+    <Page currentPage="Tools Page">
+      <div className="w-screen bg-center bg-no-repeat bg-cover flex justify-center z-0 pr-4">
+        <div className="w-11/12 z-10">
           <TabsContainer defaultTab="👹" className="pt-2">
             <div label="👹" longName="Monster Builder">
-              <MonsterBuilder monsterUrl="https://api.open5e.com/monsters/?document__slug=wotc-srd" />
+              <MonsterBuilder monsterUrl="https://api.open5e.com/monsters/?document__slug=wotc-srd&format=json" />
             </div>
             <div label="📝" longName="Text Editor">
               <TextEditor />

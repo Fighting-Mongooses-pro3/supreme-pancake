@@ -4,32 +4,34 @@ import { BsJournalText } from "react-icons/bs";
 import { FiLayout } from "react-icons/fi";
 
 export const Tab = (props) => {
-  const { label, longName, onClick, isActive, className, ind } = props;
+  const { label, longName, onClick, isActive, className, ind: index } = props;
 
   const icon = () => {
     if (label === "👹") {
-      return <GiMonsterGrasp />;
+      return <GiMonsterGrasp className="inline" />;
     } else if (label === "📝") {
-      return <BsJournalText />;
+      return <BsJournalText className="inline" />;
     } else if (label === "⚔") {
-      return <GiCrossedSwords />;
-    } else if (label === "⚔") {
-      return <FiLayout />;
+      return <GiCrossedSwords className="inline" />;
+    } else if (label === "🖼") {
+      return <FiLayout className="inline" />;
     }
   };
 
-  const handleClick = () => {
-    onClick(label);
-  };
   return (
-    <li key={ind} className="ml-5">
+    <li key={index} className="ml-5">
       <button
         className={`text-4xl rounded-t-lg p-2 text-center ${
           isActive ? "ae-bg-active" : "ae-bg-inactive"
         } border-amber-300`}
-        onClick={handleClick}
+        onClick={onClick}
       >
-        {label + (isActive && longName ? " " + longName : "")}
+        {
+          <div className="flex items-center gap-x-2">
+            {icon()}
+            <span>{isActive && longName ? " " + longName : ""}</span>
+          </div>
+        }
       </button>
     </li>
   );

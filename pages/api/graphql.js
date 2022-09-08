@@ -148,8 +148,16 @@ const resolvers = {
     monsterById: async (parent, { id }) => {
       return Monster.findOne({ id: id });
     },
-    monsterByCR: async (parent, { challenge_rating }) => {
-      return Monster.findAll({ challenge_rating: challenge_rating });
+    monsterByCR: async (parent, args) => {
+      try {
+        console.log("args", args);
+        const { challenge_rating } = args;
+        console.log(challenge_rating);
+        return Monster.find({ challenge_rating: challenge_rating });
+      } catch (e) {
+        console.error(e);
+        return [];
+      }
     },
 
     blurbs: async () => {

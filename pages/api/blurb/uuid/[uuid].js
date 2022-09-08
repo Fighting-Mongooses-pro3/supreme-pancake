@@ -7,9 +7,9 @@ export default async function handler(req, res) {
     await connectMongo();
     console.log("CONNECTED TO MONGO");
 
-    const { id } = req.query;
-    console.log(id);
-    const Blurb = await Blurb.findOne({ _id: id });
+    const { uuid } = req.query;
+    console.log(uuid);
+    const Blurb = await Blurb.findOne({ uuid: uuid });
 
     if (!Blurb) return res.status(404).json("no blurb found");
 

@@ -18,10 +18,11 @@ export const BuilderEntityHeader = (props) => {
   return (
     <div className={`ae-border ${customCss}`}>
       <BuilderInput
-        inputClasses="font-semibold bg-transparent text-red-600 text-3xl font-mono"
+        labelClasses="font-semibold text-black text-2xl"
+        inputClasses="rounded font-medium bg-slate-500/10 placeholder:text-slate-400 text-red-600 text-2xl font-mono"
         label={"Name"}
         value={name}
-        placeholder="name"
+        placeholder="Enter monster name..."
         onChange={updateName}
       />
       <div className="flex flex-wrap gap-x-1">
