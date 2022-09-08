@@ -10,7 +10,7 @@ export const TabsContainer = (props) => {
   };
 
   return (
-    <div className={`${className} w-full `}>
+    <div className={`${className} w-8/12`}>
       <section className="w-full">
         <ol className="inline-flex w-full">
           {children.map((child, index) => {

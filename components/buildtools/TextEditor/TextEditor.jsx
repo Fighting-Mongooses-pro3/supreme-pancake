@@ -13,7 +13,7 @@ export const TextEditor = (props) => {
   const [uuid, setUuid] = useState("");
 
   return (
-    <div className="bg-no-repeat bg-cover bg-paper font-semibold text-2xl">
+    <div className="bg-no-repeat bg-cover bg-paper font-semibold text-2xl px-4 py-2">
       <div>
         <BuilderInput
           label="Title (optional)"
@@ -29,12 +29,13 @@ export const TextEditor = (props) => {
           onChange={(value) => setBody(value)}
         />
       </div>
-      <div className="bg-no-repeat bg-cover bg-paper">
+      <div>
         <BuilderCheckbox
           checked={important}
           onChange={(importance) => setImportant(importance)}
         />
         <button
+          className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
           onClick={() => {
             const newUuid = uuidv4();
             appendFunction({ newUuid, header, body, important });
@@ -47,6 +48,7 @@ export const TextEditor = (props) => {
         </button>
         {uuid !== "" ? (
           <button
+            className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
             onClick={() => {
               updateFunction({ uuid, header, body, important });
             }}
@@ -55,6 +57,7 @@ export const TextEditor = (props) => {
           </button>
         ) : null}
         <button
+          className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
           onClick={() => {
             appendFunction({ uuid, header, body, important });
             saveFunction({ uuid, header, body, important });
