@@ -5,7 +5,7 @@ export default function Logo(props) {
   return (
     <div className={`${props.customCss}`}>
       <Image
-        src="/images/houseruled-final.png"
+        src="/images/houseruled-image-logo.png"
         alt="logo"
         layout="fill"
         priority

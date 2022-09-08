@@ -13,20 +13,28 @@ export const TextEditor = (props) => {
   const [uuid, setUuid] = useState("");
 
   return (
+<<<<<<< HEAD
     <div className="bg-purple-700">
       <div>
+=======
+    <div className="bg-no-repeat bg-cover bg-paper font-semibold text-2xl">
+      <div >
+>>>>>>> 5054e3d8b261c1ff720b6d304d0cbd2fbc8ec0ea
         <BuilderInput
-          label="Optional Header Text"
-          containerClasses="flex flex-col"
+          label="Title (optional)"
+          containerClasses="flex flex-col "
+          // labelClasses="bg-white/20"
+          inputClasses="bg-white/50"
           onChange={(value) => setHeader(value)}
         />
         <BuilderTextArea
-          label="Body Text"
-          inputClasses="w-full"
+          label="Text Block"
+          // containerClasses="flex flex-col bg-paper"
+          inputClasses="w-full bg-white/50"
           onChange={(value) => setBody(value)}
         />
       </div>
-      <div>
+      <div className="bg-no-repeat bg-cover bg-paper">
         <BuilderCheckbox
           checked={important}
           onChange={(importance) => setImportant(importance)}
