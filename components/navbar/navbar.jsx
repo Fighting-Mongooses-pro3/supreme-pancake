@@ -10,7 +10,7 @@ import Logo from "../logo/logo";
 export const Navbar = (currentPage) => {
   const { user, error, isLoading } = useUser();
   const [drop, setDrop] = useState(false);
-
+  console.log(user)
   const handleDrop = () => {
     if (user) {
       setDrop((current) => !current);
@@ -19,7 +19,7 @@ export const Navbar = (currentPage) => {
 
   return (
     <>
-      <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-full overflow-hidden h-16 w-16 drop-shadow-sm">
+      <logo className="transition-transform duration-500 hover:translate-y-1 hover:scale-105 my-auto ml-2 p-2 rounded-full overflow-hidden h-16 w-16 drop-shadow-sm relative">
         <Link href="/">
           <a>
             <Logo customCss="" />

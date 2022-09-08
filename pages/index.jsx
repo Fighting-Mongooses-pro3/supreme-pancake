@@ -1,16 +1,17 @@
+import { GiMonsterGrasp } from "react-icons/gi";
 import {
   EncounterBalancer,
   Layoutblock,
   Page,
   TabsContainer,
+  MonsterBuilder,
+  TextEditor,
 } from "../components";
-import { MonsterBuilder } from "../components/buildtools";
-import { TextEditor } from "../components/buildtools";
 
 const omnibus = () => {
   return (
-    <Page currentPage="Tools Page">
-      <div className="w-screen bg-center bg-no-repeat bg-cover flex justify-center z-0 pr-4">
+    <Page currentPage="Home">
+      <div className="w-screen bg-center bg-no-repeat bg-cover flex justify-center">
         <div className="w-11/12 z-10">
           <TabsContainer defaultTab="👹" className="pt-2">
             <div label="👹" longName="Monster Builder">

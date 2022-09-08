@@ -19,6 +19,8 @@ export { Layoutblock } from "./layoutblock/Layoutblock";
 export { Textblock } from "./textblock/Textblock";
 export { EncounterBalancer } from "./encounters/EncounterBalancer";
 export { TabsContainer } from "./tabscontainer/TabsContainer";
+export { TextEditor } from "./buildtools";
+export { MonsterBuilder } from "./buildtools";
 
 export {
   abilityModifierCalculation,

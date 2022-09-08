@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { EntityBuilder } from "../";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export const MonsterBuilder = (props) => {
   const { monsterUrl } = props;
+  const { user } = useUser();
+
   const [monsters, setMonsters] = useState([]);
   useEffect(() => {
     if (monsterUrl) {
@@ -13,6 +16,15 @@ export const MonsterBuilder = (props) => {
         });
     }
   }, [monsterUrl]);
+
+  /* 
+  user ? show button : dont show button
+
+  user.email
+
+  
+
+  */
 
   return (
     <div>
