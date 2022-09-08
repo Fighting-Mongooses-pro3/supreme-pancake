@@ -10,23 +10,25 @@ export const TabsContainer = (props) => {
   };
 
   return (
-    <div className={className}>
-      <ol className="flex flex-row justify-start gap-x-1">
-        {children.map((child, index) => {
-          const { label, longName } = child.props;
-          return (
-            <Tab
-              isActive={activeTab === label}
-              key={index}
-              ind={index}
-              label={label}
-              longName={longName}
-              onClick={handleTabClick}
-            />
-          );
-        })}
-      </ol>
-      <div className="border-2 border-amber-300">
+    <div className={`${className} w-full`}>
+      <section className="w-full">
+        <ol className="inline-flex w-full">
+          {children.map((child, index) => {
+            const { label, longName } = child.props;
+            return (
+              <Tab
+                isActive={activeTab === label}
+                key={index}
+                ind={index}
+                label={label}
+                longName={longName}
+                onClick={handleTabClick}
+              />
+            );
+          })}
+        </ol>
+      </section>
+      <div className="border-2 border-amber-300 p-5">
         {children.map((child, i) =>
           child.props.label === activeTab ? (
             <div key={i}>{child.props.children}</div>

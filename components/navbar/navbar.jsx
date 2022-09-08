@@ -10,7 +10,7 @@ import Logo from "../logo/logo";
 export const Navbar = (currentPage) => {
   const { user, error, isLoading } = useUser();
   const [drop, setDrop] = useState(false);
-
+  console.log(user)
   const handleDrop = () => {
     if (user) {
       setDrop((current) => !current);
