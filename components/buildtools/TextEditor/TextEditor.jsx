@@ -13,58 +13,66 @@ export const TextEditor = (props) => {
   const [uuid, setUuid] = useState("");
 
   return (
-    <div className="bg-no-repeat bg-cover bg-paper font-semibold text-2xl px-4 py-2">
-      <div>
-        <BuilderInput
-          label="Title (optional)"
-          containerClasses="flex flex-col "
-          // labelClasses="bg-white/20"
-          inputClasses="bg-white/50"
-          onChange={(value) => setHeader(value)}
-        />
-        <BuilderTextArea
-          label="Text Block"
-          // containerClasses="flex flex-col bg-paper"
-          inputClasses="w-full bg-white/50"
-          onChange={(value) => setBody(value)}
-        />
+    <div>
+      <section className="ae-stat-border"></section>
+      <div className="bg-no-repeat bg-cover bg-paper font-semibold text-2xl px-4 py-2">
+        <div>
+          <BuilderInput
+            label="Title (optional)"
+            containerClasses="flex flex-col "
+            // labelClasses="bg-white/20"
+            inputClasses="bg-white/50"
+            onChange={(value) => setHeader(value)}
+          />
+          <BuilderTextArea
+            label="Text Block"
+            // containerClasses="flex flex-col bg-paper"
+            inputClasses="w-full bg-white/50"
+            onChange={(value) => setBody(value)}
+          />
+          <BuilderCheckbox
+            label="Noteworthy?"
+            checked={important}
+            onChange={(importance) => setImportant(importance)}
+            containerClasses="flex gap-x-3 items-center"
+          />
+        </div>
       </div>
-      <div>
-        <BuilderCheckbox
-          checked={important}
-          onChange={(importance) => setImportant(importance)}
-        />
-        <button
-          className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
-          onClick={() => {
-            const newUuid = uuidv4();
-            appendFunction({ newUuid, header, body, important });
-            setUuid(newUuid);
-          }}
-        >
-          {Math.random() * 1000 < 1
-            ? "Add Text to Your Hot Mess"
-            : "Add Text to Adventure"}
-        </button>
-        {uuid !== "" ? (
+      <section className="ae-stat-border"></section>
+      <div className="mt-4">
+        <div className="flex justify-around">
           <button
-            className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
+            className="bg-paper font-semibold rounded px-2 py-1"
             onClick={() => {
-              updateFunction({ uuid, header, body, important });
+              const newUuid = uuidv4();
+              appendFunction({ newUuid, header, body, important });
+              setUuid(newUuid);
             }}
           >
-            {"Update Appended Text"}
+            {Math.random() * 1000 < 1
+              ? "Add Text to Your Hot Mess"
+              : "Add Text to Adventure"}
           </button>
-        ) : null}
-        <button
-          className="bg-amber-600 color-white px-5 py-5 rounded-2xl outline-0 uppercase mx-10 cursor-pointer shadow-md hover:bg-amber-700"
-          onClick={() => {
-            appendFunction({ uuid, header, body, important });
-            saveFunction({ uuid, header, body, important });
-          }}
-        >
-          Save to Account
-        </button>
+          {uuid !== "" ? (
+            <button
+              className="bg-paper font-semibold rounded px-2 py-1"
+              onClick={() => {
+                updateFunction({ uuid, header, body, important });
+              }}
+            >
+              {"Update Appended Text"}
+            </button>
+          ) : null}
+          <button
+            className="bg-paper font-semibold rounded px-2 py-1"
+            onClick={() => {
+              appendFunction({ uuid, header, body, important });
+              saveFunction({ uuid, header, body, important });
+            }}
+          >
+            Save to Account
+          </button>
+        </div>
       </div>
     </div>
   );
