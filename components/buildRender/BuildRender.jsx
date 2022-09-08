@@ -10,7 +10,7 @@ export default function BuildRender() {
   const [cardInfo, setCardInfo] = useState([]);
   const exportPdf = () => {
 
-    html2canvas(document.querySelector("#page")).then(canvas => {
+    html2canvas(document.querySelector("#page1")).then(canvas => {
        const imgData = canvas.toDataURL('image/png');
        const pdf = new jsPDF();
        const imgProps= pdf.getImageProperties(imgData);
